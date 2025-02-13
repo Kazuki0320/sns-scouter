@@ -1,6 +1,6 @@
 ## フォロワー数の取得方法を調査
 ### 認証用のBearer 認証ヘッダーを取得する方法
-- X のDeveloper Portalにて、自分のプロジェクトとアプリを作成すると、その中で生成ができます。
+- [X のDeveloper Portal](https://developer.x.com/en/portal/dashboard)にて、自分のプロジェクトとアプリを作成すると、その中で生成ができます。
 ![image](./スクリーンショット%202025-02-13%2022.24.04.png)
 
 ### 調査メモ
