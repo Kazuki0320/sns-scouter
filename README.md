@@ -1,1 +1,1 @@
-# SNS_Scouter
+# sns-scouter
