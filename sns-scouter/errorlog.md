@@ -1,3 +1,21 @@
+## pnpm
+### pnpm dev
+```
+% pnpm dev
+
+> sns-scouter@0.1.0 dev /Users/kenyakudo/Practice/sns-scouter/sns-scouter
+> next dev --turbopack
+
+sh: next: command not found
+ ELIFECYCLE  Command failed.
+```
+
+解決策
+-  pnpm i すればOK
+  - package.json の中に書いてあるライブラリを一通りインストールしてくれる
+  - インストールしたものはいつの間にかできている node_modules の中にある
+
+## npm
 ### npm run dev
 ```
 % npm run dev
