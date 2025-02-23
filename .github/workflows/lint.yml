@@ -17,9 +17,15 @@ jobs:
 
       - name: Install pnpm manually
         run: npm install -g pnpm
+    
+      - name: Verify node_modules exists
+        run: ls -la node_modules || echo "node_modules not found"
 
       - name: Verify pnpm installation
         run: pnpm --version
+    
+      - name: Check next version
+        run: pnpm exec next --version || echo "next not found"
 
       - name: Run lint
-        run: pnpm lint
+        run: pnpm exec next lint
