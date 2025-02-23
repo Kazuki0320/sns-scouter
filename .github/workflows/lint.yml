@@ -14,16 +14,17 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '16'
-          cache: 'pnpm'
 
-      - name: Enable corepack (pnpm)
-        run: corepack enable
+      - name: Enable corepack and setup pnpm
+        run: |
+          corepack enable
+          corepack prepare pnpm@latest --activate
 
       - name: Install pnpm
         run: npm install -g pnpm@8
 
       - name: Add pnpm to PATH
-        run: echo "$(npm root -g)/pnpm" >> $GITHUB_PATH
+        run: echo "$HOME/.local/share/pnpm" >> $GITHUB_PATH
 
       - name: Install dependencies
         run: pnpm install
