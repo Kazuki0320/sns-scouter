@@ -17,6 +17,9 @@ jobs:
 
       - name: Install pnpm manually
         run: npm install -g pnpm
+
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
     
       - name: Verify node_modules exists
         run: ls -la node_modules || echo "node_modules not found"
