@@ -18,17 +18,28 @@ jobs:
       - name: Install pnpm manually
         run: npm install -g pnpm@22
 
+      - name: Verify pnpm installation
+        run: |
+          if ! pnpm --version; then
+            echo "pnpm is not installed"
+            exit 1
+          fi
+
       - name: Install dependencies
         run: pnpm install --no-frozen-lockfile
     
       - name: Verify node_modules exists
-        run: ls -la node_modules || echo "node_modules not found"
+        run: |
+          if [ ! -d "node_modules" ]; then
+            echo "node_modules not found" && exit 1
+          fi
 
-      - name: Verify pnpm installation
-        run: pnpm --version
-    
       - name: Check next version
-        run: pnpm exec next --version || echo "next not found"
+        run: |
+          if ! pnpm exec next --version; then
+            echo "next not found"
+            exit 1
+          fi
 
       - name: Run lint
         run: pnpm exec next lint --max-warnings=0
