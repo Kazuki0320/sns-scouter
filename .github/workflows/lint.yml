@@ -15,16 +15,8 @@ jobs:
         with:
           node-version: '22'
 
-      - name: Enable corepack and setup pnpm
-        run: |
-          corepack enable
-          corepack prepare pnpm@latest --activate
-
-      - name: Add pnpm to PATH
-        run: echo "$HOME/.local/share/pnpm" >> $GITHUB_PATH
-
-      - name: Install dependencies
-        run: pnpm install
+      - name: Install pnpm manually
+        run: npm install -g pnpm
 
       - name: Verify pnpm installation
         run: pnpm --version
