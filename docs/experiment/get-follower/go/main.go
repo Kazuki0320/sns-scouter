@@ -1,3 +1,4 @@
+// 後でJSに書き直す前提で、一旦慣れてる Go で書いた dump code
 package main
 
 import (
