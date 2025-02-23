@@ -31,4 +31,4 @@ jobs:
         run: pnpm exec next --version || echo "next not found"
 
       - name: Run lint
-        run: pnpm exec next lint
+        run: pnpm exec next lint --max-warnings=0
