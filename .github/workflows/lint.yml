@@ -16,11 +16,20 @@ jobs:
           node-version: '16'
           cache: 'pnpm'
 
+      - name: Enable corepack (pnpm)
+        run: corepack enable
+
       - name: Install pnpm
-        run: npm install -g pnpm
+        run: npm install -g pnpm@8
+
+      - name: Add pnpm to PATH
+        run: echo "$(npm root -g)/pnpm" >> $GITHUB_PATH
 
       - name: Install dependencies
         run: pnpm install
+
+      - name: Verify pnpm installation
+        run: pnpm --version
 
       - name: Run lint
         run: pnpm lint
