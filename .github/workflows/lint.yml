@@ -20,9 +20,6 @@ jobs:
           corepack enable
           corepack prepare pnpm@latest --activate
 
-      - name: Install pnpm
-        run: npm install -g pnpm@8
-
       - name: Add pnpm to PATH
         run: echo "$HOME/.local/share/pnpm" >> $GITHUB_PATH
 
