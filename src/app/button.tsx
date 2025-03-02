@@ -31,6 +31,6 @@ export function Button(props: ButtonProps): JSX.Element {
     );
 }
 
-export function newButtonProps(type: "submit" | "reset" | "button" | undefined, name: string, color: string) : Button{
+export function createButtonProps(type: "submit" | "reset" | "button" | undefined, name: string, color: string) : Button{
     return {type, name, color};
 } 
