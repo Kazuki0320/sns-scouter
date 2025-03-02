@@ -10,16 +10,12 @@
 			function Button({type="button", name, color}){
 				return (
 					<>
-						<input
-							type={type}
-							value={name}
-							style={{ backgroundColor: color }}
-						/>
+                        <button type={type} style={{ backgroundColor: color }}>{name}</button>
 					</>
 				);
 			}
 			const root = ReactDOM.createRoot(domNode);
-			root.render(<Button type = "submit" name="test" color="plum"/>);
+			root.render(<Button type = "submit" name="testbutton" color="plum"/>);
 		</script>
 	</body>
 </html>
