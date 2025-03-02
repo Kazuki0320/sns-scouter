@@ -6,7 +6,7 @@ type Button = {
     color: string;
 }
 
-type buttonProps = {
+type ButtonProps = {
     button: Button;
 }
 
@@ -21,7 +21,7 @@ type buttonProps = {
 //     );
 // }
 
-export function Button(props: buttonProps): JSX.Element {
+export function Button(props: ButtonProps): JSX.Element {
     const { button } = props;
 
     return (
