@@ -1,0 +1,31 @@
+<html>
+	<body>
+        <link rel="stylesheet" href="style.css">
+		<div id="app"></div>
+		<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    	<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    	
+    	<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+		<script type="text/jsx">
+			const domNode = document.getElementById('app');
+			
+			function Header({title}){
+				return <h1>{title}</h1>;
+			}
+
+            function Button({type="button", name, color}){
+                return (
+                    <div>
+                    <input
+                        type={type}
+                        value={name}
+                        style={{ backgroundColor: color }}
+                    />
+                    </div>
+                );
+            }
+			const root = ReactDOM.createRoot(domNode);
+            root.render(<Button type = "submit" name="test" color="green"/>);
+		</script>
+	</body>
+</html>
