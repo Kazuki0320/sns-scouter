@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, createButtonProps } from '../button';
+import { Button, createButtonProps } from '@/app/button';
 
 export default function Page() {
     const buttonProps = createButtonProps("button", "Submit", "lightblue");
