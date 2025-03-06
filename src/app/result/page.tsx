@@ -1,4 +1,5 @@
 async function fetchData() {
+    // NOTE: ローデイング画面を確認するための一時的な処理
     await new Promise((resolve) => setTimeout(resolve, 3000)); // 3秒待つ
     return {message: "SNSの結果表示"};
 }
