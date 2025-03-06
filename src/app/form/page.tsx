@@ -1,5 +1,4 @@
-"use client"; // useRouterを使うために必要
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function Page() {
   const router = useRouter();
