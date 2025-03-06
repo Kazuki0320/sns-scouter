@@ -1,8 +1,6 @@
 import Link from "next/link";
 
 export default function Page() {
-  const router = useRouter();
-
   return (
     <>
       <h2>Form Page</h2>
