@@ -69,5 +69,6 @@ yarn-error.log*
 coverage/
 
 # Optional IDE directories
+.vscode/
 !/.vscode/extensions.json
 .idea/
