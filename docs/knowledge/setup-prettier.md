@@ -65,3 +65,34 @@
 
 - pnpmを使用してパッケージをインストールする方法を学びました。
 - Prettierの設定ファイルと無視ファイルの作成方法を理解しました。
+
+## エディタ統合
+
+### Visual Studio Code (VSCode)
+
+1. **Prettier拡張機能のインストール**
+
+   VSCodeの拡張機能マーケットプレイスから「Prettier - Code formatter」をインストールします。
+
+2. **設定ファイルを開く方法**
+
+   VSCodeのメニューから「ファイル」 > 「基本設定」 > 「設定」を選択し、右上のアイコンから`settings.json`を開きます。
+   ![settings.json の開き方](open-settings-json.png)
+
+3. **設定の変更**
+
+   VSCodeの設定ファイル（`settings.json`）に以下の設定を追加します。
+
+   - 一番トップの階層で問題なし
+
+   ```json
+   {
+     // 〜〜既存のコードの下か、好きなところに以下を追記〜〜
+     "editor.formatOnSave": true,
+     "editor.defaultFormatter": "esbenp.prettier-vscode"
+   }
+   ```
+
+### その他のエディタ
+
+他のエディタでも、Prettierのプラグインや拡張機能をインストールし、保存時に自動整形されるように設定を変更してください。詳細は各エディタのドキュメントを参照してください。
