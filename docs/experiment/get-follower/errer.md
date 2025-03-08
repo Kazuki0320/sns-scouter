@@ -62,7 +62,6 @@ ChatGPT
 panic: interface conversion: interface {} is nil, not map[string]interface {}
 ```
 
-````
 これは **Twitter API のレート制限 (Rate Limit) に引っかかったエラー** です。
 
 ---
