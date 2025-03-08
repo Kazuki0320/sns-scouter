@@ -13,10 +13,9 @@ sns-scouter/
 │   │   └── technology.md
 │   ├── experiment/
 │   └── survey/
-├── pages/
+├── src/
+│   └── app/
 ├── public/
-├── styles/
-├── components/
 ├── node_modules/
 ├── package.json
 ├── README.md
@@ -29,10 +28,8 @@ sns-scouter/
 - **guide/**: ガイドドキュメント
 - **experiment/**: 実験用のコードを格納
 - **survey/**: 調査内容をまとめたディレクトリ
-- **pages/**: Next.jsのページコンポーネント
-- **public/**: 公開用の静的ファイル
-- **styles/**: スタイルシート
-- **components/**: 再利用可能なReactコンポーネント
-- **node_modules/**: npmパッケージ
-- **package.json**: プロジェクトの設定と依存関係
-- **README.md**: プロジェクトの概要
+- **src/app/**: Next.jsのページコンポーネントを格納
+- **public/**: 公開用の静的ファイルを格納
+- **node_modules/**: npmパッケージを格納
+- **package.json**: プロジェクトの設定と依存関係を定義
+- **README.md**: プロジェクトの概要を記載
