@@ -123,3 +123,10 @@
 以下の記事にもあるように、チーム内でVSCodeの拡張機能・設定を共有することができる。
 
 - [VSCodeの拡張機能・設定を共有してチームみんなでエンジョイナイスDX](https://qiita.com/otsuky/items/f46f5ee9eb11b3a9a4ba)
+- .vscode/extensions.json を作成し、以下のように記述することで、チーム内で共有できる。（完了）
+
+```json
+{
+  "recommendations": ["esbenp.prettier-vscode", "dbaeumer.vscode-eslint"]
+}
+```
