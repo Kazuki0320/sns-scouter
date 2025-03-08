@@ -70,4 +70,5 @@ coverage/
 
 # Optional IDE directories
 .vscode/
+!/.vscode/extensions.json
 .idea/
