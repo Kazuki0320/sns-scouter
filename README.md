@@ -33,3 +33,30 @@ pnpm dev
 ```bash
 pnpm lint
 ```
+
+### **ビルド && プロジェクトの開始**
+
+> [!NOTE]
+> 普段の開発ではpnpm devを実施すれば十分です
+
+以下のコマンドを実行して、プロジェクトをビルドします。
+
+```bash
+pnpm build
+```
+
+以下のコマンドを実行して、ビルドされたプロジェクトを開始します。
+
+```bash
+pnpm start
+```
+
+### **コードの整形**
+
+以下のコマンドを実行して、Prettierでコードを整形します。
+
+```bash
+pnpm fmt
+```
+
+VSCodeの設定でファイル保存時に自動でPrettierが走るようにする方法については、[こちら](./docs/knowledge/setup-prettier.md#visual-studio-code-vscode)を参照してください。
