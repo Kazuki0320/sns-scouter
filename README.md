@@ -1,6 +1,5 @@
 # sns-scouter
-
-# Next.js プロジェクト
+フォロワー数の入力を受け取り、SNSアカウントのスコアを算出するアプリケーションです。
 
 ## 📌 プロジェクト概要
 このプロジェクトは Next.js を使用した Web アプリケーションです。
@@ -21,37 +20,8 @@ pnpm dev
 
 デフォルトでは、`http://localhost:3000` でアプリが起動します。
 
-## 📦 ビルドとデプロイ
-本番環境向けにビルドするには、以下のコマンドを実行します。
-```bash
-npm run build
-```
-
-ビルド完了後、サーバーを起動するには以下を実行します。
-```bash 
-npm run start
-```
-
-## 📂 ディレクトリ構成
-```
-/
-├── app/              # Next.jsのApp Routerディレクトリ
-│   ├── layout.tsx   # 共通レイアウト
-│   ├── api/         # APIエンドポイント
-│   └── _components/ # 再利用可能なUIコンポーネント
-├── public/          # 静的ファイル（画像, フォントなど）
-├── styles/          # グローバルCSS
-├── package.json     # プロジェクト設定と依存関係
-└── next.config.js   # Next.js の設定
-```
-
 ## 🛠️ その他のコマンド
 ### **Lint チェック**
 ```bash
-npm run lint
-```
-
-### **テスト実行**（Jest を使用する場合）
-```bash
-npm run test
+pnpm lint
 ```
