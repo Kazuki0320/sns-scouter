@@ -4,9 +4,11 @@
 
 - [プロジェクトの構造](./guide/structure.md)
 - [使用技術](./guide/technology.md)
+- [Prettierの導入手順](./knowledge/setup-prettier.md)
 
 ## ディレクトリ概要
 
 - **guide/**: プロジェクトの構造や使用技術に関するガイドドキュメントを格納しています。
 - **experiment/**: 実験用のコードを格納しています。
 - **survey/**: 調査内容をまとめたドキュメントを格納しています。
+- **knowledge/**: プロジェクトに関する知識や設定手順をまとめたドキュメントを格納しています。
