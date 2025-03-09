@@ -23,6 +23,12 @@ const eslintConfig = [
         // Next.js のコンポーネント名は PascalCase が推奨されているため許可する
         { selector: 'function', format: ['camelCase', 'PascalCase'] },
       ],
+      semi: ['error', 'always'],
+      quotes: [
+        'error',
+        'single',
+        { avoidEscape: true, allowTemplateLiterals: true },
+      ],
     },
   },
 ];
