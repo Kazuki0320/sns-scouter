@@ -1,23 +1,18 @@
 # sns-scouter
 
-フォロワー数の入力を受け取り、SNSアカウントのスコアを算出するアプリケーションです。
+# Next.js プロジェクト
 
 ## 📌 プロジェクト概要
-
 このプロジェクトは Next.js を使用した Web アプリケーションです。
 
 ## 🚀 セットアップ
-
 ### 1️⃣ リポジトリのクローン
-
 ```bash
 git clone https://github.com/your-username/sns-scouter.git
 ```
 
 ## 🏃‍♂️ 開発サーバーの起動
-
 開発環境でアプリを実行するには、以下のコマンドを使用します。
-
 ```bash
 pnpm i
 
@@ -26,37 +21,37 @@ pnpm dev
 
 デフォルトでは、`http://localhost:3000` でアプリが起動します。
 
+## 📦 ビルドとデプロイ
+本番環境向けにビルドするには、以下のコマンドを実行します。
+```bash
+npm run build
+```
+
+ビルド完了後、サーバーを起動するには以下を実行します。
+```bash 
+npm run start
+```
+
+## 📂 ディレクトリ構成
+```
+/
+├── app/              # Next.jsのApp Routerディレクトリ
+│   ├── layout.tsx   # 共通レイアウト
+│   ├── api/         # APIエンドポイント
+│   └── _components/ # 再利用可能なUIコンポーネント
+├── public/          # 静的ファイル（画像, フォントなど）
+├── styles/          # グローバルCSS
+├── package.json     # プロジェクト設定と依存関係
+└── next.config.js   # Next.js の設定
+```
+
 ## 🛠️ その他のコマンド
-
 ### **Lint チェック**
-
 ```bash
-pnpm lint
+npm run lint
 ```
 
-### **ビルド && プロジェクトの開始**
-
-> [!NOTE]
-> 普段の開発ではpnpm devを実施すれば十分です
-
-以下のコマンドを実行して、プロジェクトをビルドします。
-
+### **テスト実行**（Jest を使用する場合）
 ```bash
-pnpm build
+npm run test
 ```
-
-以下のコマンドを実行して、ビルドされたプロジェクトを開始します。
-
-```bash
-pnpm start
-```
-
-### **コードの整形**
-
-以下のコマンドを実行して、Prettierでコードを整形します。
-
-```bash
-pnpm fmt
-```
-
-VSCodeの設定でファイル保存時に自動でPrettierが走るようにする方法については、[こちら](./docs/knowledge/setup-prettier.md#visual-studio-code-vscode)を参照してください。
