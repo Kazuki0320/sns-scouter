@@ -4,7 +4,7 @@
 
 - [プロジェクトの構造](./guide/structure.md)
 - [使用技術](./guide/technology.md)
-- [Prettierの導入手順](./knowledge/setup-prettier.md)
+- [Prettier の導入手順](./knowledge/setup-prettier.md)
 
 ## ディレクトリ概要
 

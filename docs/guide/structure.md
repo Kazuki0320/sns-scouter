@@ -28,8 +28,8 @@ sns-scouter/
 - **guide/**: ガイドドキュメント
 - **experiment/**: 実験用のコードを格納
 - **survey/**: 調査内容をまとめたディレクトリ
-- **src/app/**: Next.jsのページコンポーネントを格納
+- **src/app/**: Next.js のページコンポーネントを格納
 - **public/**: 公開用の静的ファイルを格納
-- **node_modules/**: npmパッケージを格納
+- **node_modules/**: npm パッケージを格納
 - **package.json**: プロジェクトの設定と依存関係を定義
 - **README.md**: プロジェクトの概要を記載

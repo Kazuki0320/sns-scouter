@@ -31,7 +31,7 @@ pnpm dev
 ### **Lint チェック**
 
 ```bash
-pnpm lint
+npm run lint
 ```
 
 ### **ビルド && プロジェクトの開始**

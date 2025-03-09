@@ -4,16 +4,16 @@
 
 ## フロントエンド
 
-- **Next.js**: Reactフレームワーク (バージョン 15.1.7)
-- **React**: ユーザインターフェースを構築するためのJavaScriptライブラリ (バージョン ^19.0.0)
-- **TypeScript**: 型安全なJavaScriptのスーパーセット
+- **Next.js**: React フレームワーク (バージョン 15.1.7)
+- **React**: ユーザインターフェースを構築するための JavaScript ライブラリ (バージョン ^19.0.0)
+- **TypeScript**: 型安全な JavaScript のスーパーセット
 
 ## スタイリング
 
-- **Tailwind CSS**: ユーティリティファーストのCSSフレームワーク
+- **Tailwind CSS**: ユーティリティファーストの CSS フレームワーク
 
 ## その他
 
 - **pnpm**: パッケージマネージャー
 - **ESLint**: コードの品質を保つための静的解析ツール
-- **App Router**: Next.jsの新しいルーティングシステム
+- **App Router**: Next.js の新しいルーティングシステム
