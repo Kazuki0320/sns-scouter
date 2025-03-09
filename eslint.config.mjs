@@ -20,8 +20,14 @@ const eslintConfig = [
         { selector: 'enum', format: ['PascalCase'] },
         { selector: 'enumMember', format: ['UPPER_CASE'] },
         { selector: 'variable', format: ['camelCase'] },
-        // Next.js のコンポーネント名は PascalCase がなため許可する
+        // Next.js のコンポーネント名は PascalCase が推奨されているため許可する
         { selector: 'function', format: ['camelCase', 'PascalCase'] },
+      ],
+      semi: ['error', 'always'],
+      quotes: [
+        'error',
+        'single',
+        { avoidEscape: true, allowTemplateLiterals: true },
       ],
     },
   },
