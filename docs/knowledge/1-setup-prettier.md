@@ -77,7 +77,6 @@
 2. **設定ファイルを開く方法**
 
    VSCode のメニューから「ファイル」 > 「基本設定」 > 「設定」を選択し、右上のアイコンから`settings.json`を開きます。
-   ![settings.json の開き方](open-settings-json.png)
 
 3. **設定の変更**
 
