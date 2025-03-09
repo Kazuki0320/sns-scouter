@@ -12,7 +12,7 @@ function calculateBattlePower(followers: number): number {
   if (followers < 0) return 0;
 
   const range = battlePowerMultipliers.find(
-    (r) => followers >= r.min && followers <= r.max
+    (r) => r.min <= followers && followers <= r.max
   );
   if (!range) return 0;
 
