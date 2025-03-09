@@ -2,8 +2,10 @@ import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import { FlatCompat } from '@eslint/eslintrc';
 
+/* eslint-disable @typescript-eslint/naming-convention */
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+/* eslint-enable @typescript-eslint/naming-convention */
 
 const compat = new FlatCompat({
   baseDirectory: __dirname,

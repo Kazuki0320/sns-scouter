@@ -68,9 +68,35 @@ const eslintConfig = [
 2. 拡張機能タブを開き、`ESLint` 拡張機能をインストールします。 識別子: dbaeumer.vscode-eslint
 3. VSCodeの設定を開きます（`Cmd + ,`）。
 4. 設定検索バーに `eslint` と入力し、`ESLint: Enable` を有効にします。
-   ![ESLint: Enable](image.png)
+   ![ESLint: Enable](eslint-enable.png)
 
 これで、VSCodeでコードを書いている際に、ESLintの設定に違反している部分に波線で警告が表示されるようになります。
+
+## 一部のエラーを無視する方法
+
+ESLintで一部のエラーを無視するには、以下の方法があります。
+
+### 特定の行を無視する
+
+特定の行のエラーを無視するには、その行の上に以下のコメントを追加します。
+
+```javascript
+// eslint-disable-next-line @typescript-eslint/naming-convention
+const __filename = fileURLToPath(import.meta.url);
+```
+
+### 特定のブロックを無視する
+
+特定のブロックのエラーを無視するには、以下のようにコメントを追加します。
+
+```javascript
+/* eslint-disable @typescript-eslint/naming-convention */
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+/* eslint-enable @typescript-eslint/naming-convention */
+```
+
+これにより、指定したルールのエラーを無視することができます。
 
 ## 振り返り
 
