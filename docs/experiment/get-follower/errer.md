@@ -68,7 +68,9 @@ panic: interface conversion: interface {} is nil, not map[string]interface {}
 ---
 
 ## **エラーの解析**
+
 1. **HTTP ステータスコード**: `429 Too Many Requests`
+
    - **短時間に API を呼びすぎたため、一時的にリクエストがブロックされた。**
    - Twitter API はレート制限 (Rate Limit) を設けており、**一定時間内に許可された回数以上のリクエストを送るとブロックされる。**
 
