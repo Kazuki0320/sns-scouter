@@ -1,13 +1,13 @@
-"use client";
+'use client';
 
-import { useState } from "react";
+import { useState } from 'react';
 
 type FormProps = {
   onSubmit: (e: React.FormEvent<HTMLFormElement>) => void;
 };
 
 export default function Form({ onSubmit }: FormProps) {
-  const [inputValue, setInputValue] = useState("");
+  const [inputValue, setInputValue] = useState('');
 
   return (
     <form onSubmit={onSubmit} className="flex flex-col gap-4 w-80">

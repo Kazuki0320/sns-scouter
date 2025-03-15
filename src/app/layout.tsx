@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import Form from "@/components/Form";
-import { useRouter } from "next/navigation";
+import Form from '@/components/Form';
+import { useRouter } from 'next/navigation';
 import './globals.css';
 
 export default function RootLayout({
@@ -13,7 +13,7 @@ export default function RootLayout({
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    router.push("/start");
+    router.push('/start');
   };
   return (
     <html lang="en">
