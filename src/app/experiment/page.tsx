@@ -13,6 +13,9 @@ export default function Page() {
         例えば、ここでフォロワー数取得のロジックを置いて挙動のテストをする
       </h3>
       <p>hello, world</p>
+      <div className="container mx-auto p-4">
+        <h1 className="text-4xl font-bold">Hello, Tailwind CSS!</h1>
+      </div>
     </>
   );
 }
