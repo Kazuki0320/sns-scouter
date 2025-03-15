@@ -47,22 +47,21 @@ interface ShareButtonProps {
 
 //シェアボタン
 //TODO：将来的にはボタンコンポーネントを使用してシェアボタンを作成する。現状UIが未定なので別でシェアボタンを作成
-export const ShareButton: React.FC<ShareButtonProps> = ({ text }) => {
-
-  const _url = new URL("https://twitter.com/intent/tweet");
+export function ShareButton({ text }: ShareButtonProps): JSX.Element {
+  const url = new URL('https://x.com/intent/post');
   
-  if (text !== undefined) _url.searchParams.set("text", text);
-  _url.searchParams.append("hashtags", "SNSスカウター");
+  if (text !== undefined) url.searchParams.set('text', text);
+  url.searchParams.append('hashtags', 'SNSスカウター');
   
   return (
     <>
     <a
-      href={_url.toString()}
-      target="_blank"
-      rel="noopener noreferrer"
+      href={url.toString()}
+      target='_blank'
+      rel='noopener noreferrer'
     >
       シェアする
     </a>
   </>
   );
-}
+};
