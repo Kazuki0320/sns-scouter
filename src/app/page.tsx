@@ -4,11 +4,7 @@ import Form from '@/components/Form';
 import { useRouter } from 'next/navigation';
 import './globals.css';
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout() {
   const router = useRouter();
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -21,7 +17,6 @@ export default function RootLayout({
         <h1 className="text-3xl font-bold mb-6 text-blue-500">SNSスカウター</h1>
         <Form onSubmit={handleSubmit} />
       </body>
-      {children}
     </html>
   );
 }
