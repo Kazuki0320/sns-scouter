@@ -40,3 +40,28 @@ export function createButtonProps(
 ): Button {
   return { type, name, color };
 }
+
+interface ShareButtonProps {
+  text: string;
+}
+
+//シェアボタン
+//TODO：将来的にはボタンコンポーネントを使用してシェアボタンを作成する。現状UIが未定なので別でシェアボタンを作成
+export function ShareButton({ text }: ShareButtonProps): JSX.Element {
+  const url = new URL('https://x.com/intent/post');
+  
+  url.searchParams.set('text', text);
+  url.searchParams.append('hashtags', 'SNSスカウター');
+  
+  return (
+    <button>
+      <a
+        href={url.toString()}
+        target='_blank'
+        rel='noopener noreferrer'
+      >
+        シェアする
+      </a>
+    </button>
+  );
+};

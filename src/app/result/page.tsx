@@ -1,3 +1,5 @@
+import {ShareButton} from '@/app/button';
+
 async function fetchData() {
   // NOTE: ローデイング画面を確認するための一時的な処理
   await new Promise((resolve) => setTimeout(resolve, 3000)); // 3秒待つ
@@ -10,8 +12,9 @@ export default async function Page() {
     <>
       <h2>Result Page</h2>
       <h3>
-        ここでスカウターの測定結果を表示する。Xへのシェアボタンもここに配置
+        ここでスカウターの測定結果を表示する。
       </h3>
+      <ShareButton text="test"/>
       <h3>{data.message}</h3>
     </>
   );
