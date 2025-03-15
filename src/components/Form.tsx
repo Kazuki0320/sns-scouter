@@ -13,7 +13,7 @@ export default function Form({ onSubmit }: FormProps) {
     <form onSubmit={onSubmit} className="flex flex-col gap-4 w-80">
       <input
         type="text"
-        placeholder="入力してください"
+        placeholder="フォロワー数を入力してください"
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
         className="p-2 border border-gray-300 rounded-md"

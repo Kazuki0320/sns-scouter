@@ -9,14 +9,12 @@ export default function RootLayout() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    router.push('/start');
+    router.push('/result');
   };
   return (
-    <html lang="ja">
-      <body className="flex flex-col items-center justify-center min-h-screen p-4">
+    <div className="flex flex-col items-center justify-center min-h-screen p-4">
         <h1 className="text-3xl font-bold mb-6 text-blue-500">SNSスカウター</h1>
         <Form onSubmit={handleSubmit} />
-      </body>
-    </html>
+    </div>
   );
 }
