@@ -5,7 +5,7 @@ export default function Page() {
   const buttonProps = createButtonProps('button', 'Submit', 'lightblue');
 
   return (
-    <div>
+    <>
       <h2>Experiment Page</h2>
       <h3>例えば、ここでコンポーネントのボタンを置いて挙動のテストをする</h3>
       <Button button={buttonProps} />
@@ -16,6 +16,6 @@ export default function Page() {
       <div className="mx-auto p-4">
         <h1 className="text-4xl font-bold">Hello, Tailwind CSS!</h1>
       </div>
-    </div>
+    </>
   );
 }
