@@ -50,18 +50,18 @@ interface ShareButtonProps {
 export function ShareButton({ text }: ShareButtonProps): JSX.Element {
   const url = new URL('https://x.com/intent/post');
   
-  if (text !== undefined) url.searchParams.set('text', text);
+  url.searchParams.set('text', text);
   url.searchParams.append('hashtags', 'SNSスカウター');
   
   return (
-    <>
-    <a
-      href={url.toString()}
-      target='_blank'
-      rel='noopener noreferrer'
-    >
-      シェアする
-    </a>
-  </>
+    <button>
+      <a
+        href={url.toString()}
+        target='_blank'
+        rel='noopener noreferrer'
+      >
+        シェアする
+      </a>
+    </button>
   );
 };
