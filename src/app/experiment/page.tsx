@@ -5,7 +5,7 @@ export default function Page() {
   const buttonProps = createButtonProps('button', 'Submit', 'lightblue');
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen">
+    <div>
       <h2>Experiment Page</h2>
       <h3>例えば、ここでコンポーネントのボタンを置いて挙動のテストをする</h3>
       <Button button={buttonProps} />
