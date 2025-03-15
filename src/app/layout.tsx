@@ -13,7 +13,7 @@ export default function RootLayout({
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    router.push('/start');
+    router.push('/result');
   };
   return (
     <html lang="ja">
