@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import Form from '@/components/Form';
 import { useRouter } from 'next/navigation';
