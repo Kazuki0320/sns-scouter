@@ -14,12 +14,16 @@ export default function Loading() {
   return (
     <div className={styles.lpage}>
       <div className={styles.countUp}>
-        <span className={styles.text}>Loading</span>
+        <span className={styles.text}>測定中...</span>
       </div>
     </div>
   );
 }
 ```
+
+### 効果
+
+- ローディング画面に「測定中...」というテキストが表示され、ユーザーに処理が進行中であることを視覚的に伝えます。
 
 ## 2. `loading.module.css`の更新
 
@@ -61,3 +65,8 @@ CSSにアニメーションとスタイルを追加します：
   }
 }
 ```
+
+### 効果
+
+- `countUp`に`position: relative;`を追加することで、内部のテキストが相対的に配置されます。
+- `text`クラスを追加し、テキストにフェードイン・フェードアウトのアニメーションを適用することで、ユーザーに動的な視覚効果を提供します。
