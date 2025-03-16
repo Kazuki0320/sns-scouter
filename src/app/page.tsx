@@ -2,7 +2,6 @@
 
 import Form from '@/components/Form';
 import { useRouter } from 'next/navigation';
-import './globals.css';
 import { getBattlePower } from './calc/ScouterCalculator';
 
 export default function RootLayout() {
