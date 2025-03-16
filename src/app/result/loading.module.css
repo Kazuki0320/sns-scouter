@@ -6,7 +6,7 @@
 
 .countUp {
   counter-set: countUp var(--count);
-  animation: countUp 3.6s 1;
+  animation: countUp 4.6s 1;
   animation-fill-mode: forwards;
   animation-timing-function: cubic-bezier(1, 0.4, 0.2, 1);
   font-variant-numeric: tabular-nums;
@@ -20,7 +20,7 @@
 
 @keyframes countUp {
   100% {
-    --count: 100000000;
+    --count: 1000000000;
   }
 }
 
