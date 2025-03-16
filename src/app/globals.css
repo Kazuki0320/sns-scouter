@@ -14,18 +14,6 @@
   }
 }
 
-@layer utilities {
-  .no-spinner {
-    -moz-appearance: textfield;
-    appearance: textfield;
-  }
-  .no-spinner::-webkit-outer-spin-button,
-  .no-spinner::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-  }
-}
-
 body {
   color: var(--foreground);
   background: var(--background);
