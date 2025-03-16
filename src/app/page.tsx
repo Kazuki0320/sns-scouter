@@ -9,7 +9,7 @@ export default function RootLayout() {
 
   const handleSubmit = (value: number) => {
     const battlePower = getBattlePower(value);
-    router.push(`/result?followers=${battlePower}`);
+    router.push(`/result?score=${battlePower}`);
   };
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-4">

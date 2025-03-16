@@ -9,6 +9,7 @@ type FormProps = {
 export default function Form({ onSubmit }: FormProps) {
   const [inputValue, setInputValue] = useState('');
   const [error, setError] = useState('');
+  const isDisabled = inputValue === '';
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
@@ -59,7 +60,12 @@ export default function Form({ onSubmit }: FormProps) {
       )}
       <button
         type="submit"
-        className="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition"
+        disabled={isDisabled}
+        className={`py-2 px-4 rounded-md transition ${
+          isDisabled
+            ? 'bg-[#324E54] cursor-not-allowed'
+            : 'bg-blue-500 hover:bg-blue-600 text-white'
+        }`}
       >
         はじめる
       </button>
