@@ -8,8 +8,8 @@ export default function RootLayout() {
   const router = useRouter();
 
   const handleSubmit = (value: number) => {
-    const followersPower = getBattlePower(value);
-    router.push(`/result?followers=${followersPower}`);
+    const battlePower = getBattlePower(value);
+    router.push(`/result?followers=${battlePower}`);
   };
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-4">
