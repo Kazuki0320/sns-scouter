@@ -10,12 +10,14 @@
   animation-fill-mode: forwards;
   animation-timing-function: cubic-bezier(1, 0.4, 0.2, 1);
   font-variant-numeric: tabular-nums;
-  font-size: 3rem;
+  font-size: 2rem; /* フォントサイズを調整 */
   position: relative;
   background-color: black;
   color: white;
   padding: 1rem;
   border-radius: 0.5rem;
+  width: 15rem; /* 固定の幅を設定 */
+  text-align: center; /* テキストを中央に配置 */
 }
 
 .countUp::after {
@@ -30,12 +32,12 @@
 
 .text {
   position: absolute;
-  top: -2rem;
+  top: -2rem; /* 数字の背景の外に配置 */
   left: 50%;
   transform: translateX(-50%);
   font-size: 1.5rem;
   animation: textFade 1.5s infinite;
-  color: black;
+  color: black; /* 文字色を黒に設定 */
 }
 
 @keyframes textFade {
