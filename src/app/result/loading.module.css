@@ -1,0 +1,66 @@
+/* カウンターのプロパティを定義 */
+@property --count {
+  syntax: '<integer>';
+  inherits: false;
+  initial-value: 0;
+}
+
+.countUp {
+  counter-set: countUp var(--count); /* カウンターの初期値を設定 */
+  animation: countUp 4.6s 1; /* カウンターをアニメーションさせる */
+  animation-fill-mode: forwards; /* アニメーション終了時の状態を保持 */
+  animation-timing-function: cubic-bezier(
+    1,
+    0.4,
+    0.2,
+    1
+  ); /* イージング関数を設定 */
+  font-variant-numeric: tabular-nums; /* 等幅の数字を使用 */
+  font-size: 2rem;
+  position: relative; /* 相対配置を設定 */
+  background-color: black;
+  color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  width: 15rem; /* 固定の幅を設定 */
+  text-align: center;
+}
+
+/* カウンターの値を表示 */
+.countUp::after {
+  content: counter(countUp);
+}
+
+/* カウンターの最大値を設定 */
+@keyframes countUp {
+  100% {
+    --count: 1000000000;
+  }
+}
+
+.text {
+  position: absolute;
+  top: -2rem; /* 数字の背景の外に配置 */
+  left: 50%;
+  transform: translateX(-50%); /* 水平方向に中央に配置 */
+  font-size: 1.5rem;
+  animation: textFade 1.5s infinite; /* テキストを点滅させる */
+  color: black;
+}
+
+/* カウンターの値を点滅させる */
+@keyframes textFade {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.lpage {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+}
