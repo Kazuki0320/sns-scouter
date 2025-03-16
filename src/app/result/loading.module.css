@@ -1,0 +1,34 @@
+@property --count {
+  syntax: '<integer>';
+  inherits: false;
+  initial-value: 0;
+}
+
+.countUp {
+  counter-set: countUp var(--count);
+  animation: countUp 3.6s 1;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(1, 0.4, 0.2, 1);
+  font-variant-numeric: tabular-nums;
+  font-size: 3rem;
+}
+
+.countUp::after {
+  content: counter(countUp);
+}
+
+@keyframes countUp {
+  100% {
+    --count: 100000000;
+  }
+}
+
+body {
+  font-family: 'Roboto Mono', monospace;
+}
+
+.lpage {
+  display: grid;
+  min-height: 100vh;
+  place-items: center;
+}
