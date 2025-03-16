@@ -47,7 +47,6 @@ export default function Form({ onSubmit }: FormProps) {
     <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-80">
       <input
         type="text"
-        step="1"
         placeholder="フォロワー数を入力してください"
         value={inputValue}
         onChange={handleChange}
