@@ -146,3 +146,55 @@ CSSにアニメーションとスタイルを追加します：
 #### 効果
 
 - `countUp`クラスに背景色と文字色を追加することで、数字の背景が黒くなり、文字が白く表示されます。
+
+## 数字背景の横幅を固定に変更
+
+以下の変更を行います：
+
+1. `countUp`クラスに固定の幅を設定し、テキストが中央に配置されるようにします。
+2. `overflow: hidden;`を削除し、`countUp`要素の幅を調整します。
+
+```css
+/* filepath: /sns-scouter/src/app/result/loading.module.css */
+.countUp {
+  counter-set: countUp var(--count);
+  animation: countUp 3.6s 1;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(1, 0.4, 0.2, 1);
+  font-variant-numeric: tabular-nums;
+  font-size: 3rem;
+  position: relative;
+  background-color: black;
+  color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  width: 15rem; /* 固定の幅を設定 */
+  text-align: center; /* テキストを中央に配置 */
+  /* overflow: hidden; 削除 */
+}
+
+.text {
+  position: absolute;
+  top: -2rem; /* 数字の背景の外に配置 */
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.5rem;
+  animation: textFade 1.5s infinite;
+  color: black; /* 文字色を黒に設定 */
+}
+
+@keyframes textFade {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+```
+
+### 効果
+
+- `countUp`クラスに固定の幅を設定することで、数字の背景が横に広がらず、一定の幅を保ちます。
+- `overflow: hidden;`を削除することで、`text`クラスのテキストが隠れずに表示されます。
