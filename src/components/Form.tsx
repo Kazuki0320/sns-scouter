@@ -17,7 +17,7 @@ export default function Form({ onSubmit }: FormProps) {
 
     if (sanitizedValue === '') {
       setInputValue('');
-      setError('');
+      setError('半角数字を入力してください');
       return;
     }
 
@@ -46,6 +46,7 @@ export default function Form({ onSubmit }: FormProps) {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-80">
+      <label htmlFor="follower" className="sr-only">フォロワー数</label>
       <input
         type="text"
         placeholder="フォロワー数を入力してください"
