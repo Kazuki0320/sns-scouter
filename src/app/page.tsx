@@ -7,8 +7,7 @@ import './globals.css';
 export default function RootLayout() {
   const router = useRouter();
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  const handleSubmit = (value: number) => {
     router.push('/result');
   };
   return (
