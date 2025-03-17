@@ -48,6 +48,7 @@ export default function Form({ onSubmit }: FormProps) {
     <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-80">
       <label htmlFor="follower" className="sr-only">フォロワー数</label>
       <input
+        id="follower"
         type="text"
         placeholder="フォロワー数を入力してください"
         value={inputValue}
