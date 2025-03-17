@@ -1,19 +1,16 @@
-import { ShareButton } from '@/app/button';
+'use client';
 
-async function fetchData() {
-  // NOTE: ローディング画面を一定時間表示するための一時的な処理
-  await new Promise((resolve) => setTimeout(resolve, 4000));
-  return { message: 'SNSの結果表示' };
-}
+import { ShareButton } from '@/components/ui/Button';
+import { useSearchParams } from 'next/navigation';
 
-export default async function Page() {
-  const data = await fetchData();
+export default function Page() {
+  const battlePowerResult = useSearchParams();
+  const followers = Number(battlePowerResult.get('score'));
   return (
     <>
       <h2>Result Page</h2>
-      <h3>ここでスカウターの測定結果を表示する。</h3>
+      <h3>{followers}</h3>
       <ShareButton text="test" />
-      <h3>{data.message}</h3>
     </>
   );
 }
