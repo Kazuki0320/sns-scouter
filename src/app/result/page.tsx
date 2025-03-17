@@ -21,7 +21,7 @@ export default function Page() {
 
   return (
     <>
-      <h2>Result Page</h2>
+      <h2>結果</h2>
       <h3>{followers}</h3>
       <ShareButton text="test" />
     </>
