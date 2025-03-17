@@ -16,7 +16,7 @@ export default function Page() {
   }, []);
 
   if (loading) {
-    return Loading()
+    return Loading();
   }
 
   return (
