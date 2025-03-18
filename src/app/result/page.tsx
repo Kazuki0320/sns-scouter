@@ -11,13 +11,7 @@ export default function Page() {
   const battlePowerResult = useSearchParams();
   const score = Number(battlePowerResult.get('score'));
 
-  useEffect(() => {
-    if (score === null || isNaN(score)) {
-      setError('適切な値ではありません');
-    } else {
-      setError('');
-    }
-  }, [score]);
+  const error = score === null || Number.isNaN(Number(score)) ? '適切な値ではありません' : '';
 
   // NOTE: ローディング画面を一定時間表示するための一時的な処理
   useEffect (() => {
