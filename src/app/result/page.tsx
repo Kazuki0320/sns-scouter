@@ -7,7 +7,6 @@ import Loading from './loading';
 
 export default function Page() {
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState('');
   const battlePowerResult = useSearchParams();
   const score = Number(battlePowerResult.get('score'));
 
