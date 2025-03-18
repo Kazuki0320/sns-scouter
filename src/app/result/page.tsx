@@ -9,10 +9,10 @@ export default function Page() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
   const battlePowerResult = useSearchParams();
-  const score = battlePowerResult.get('score');
+  const score = Number(battlePowerResult.get('score'));
 
   useEffect(() => {
-    if (score === null || isNaN(Number(score))) {
+    if (score === null || isNaN(score)) {
       setError('適切な値ではありません');
     } else {
       setError('');
