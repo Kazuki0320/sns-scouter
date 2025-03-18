@@ -7,9 +7,19 @@ import Loading from './loading';
 
 export default function Page() {
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
   const battlePowerResult = useSearchParams();
-  const followers = Number(battlePowerResult.get('score'));
+  const score = battlePowerResult.get('score');
 
+  useEffect(() => {
+    if (score === null || isNaN(Number(score))) {
+      setError('適切な値ではありません');
+    } else {
+      setError('');
+    }
+  }, [score]);
+
+  // NOTE: ローディング画面を一定時間表示するための一時的な処理
   useEffect (() => {
     const timer = setTimeout(() => setLoading(false), 4000);
     return () => clearTimeout(timer);
@@ -22,7 +32,12 @@ export default function Page() {
   return (
     <>
       <h2>結果</h2>
-      <h3>{followers}</h3>
+      <h3>{score}</h3>
+      {error && (
+        <div className="text-red-500 text-sm">
+          {error}
+        </div>
+      )}
       <ShareButton text="test" />
     </>
   );
