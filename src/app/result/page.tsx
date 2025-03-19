@@ -1,19 +1,37 @@
-import { ShareButton } from '@/app/button';
+'use client';
 
-async function fetchData() {
+import { ShareButton } from '@/components/ui/Button';
+import { useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import Loading from './loading';
+
+export default function Page() {
+  const [loading, setLoading] = useState(true);
+  const battlePowerResult = useSearchParams();
+  const score = Number(battlePowerResult.get('score'));
+
+  const error = score === null || Number.isNaN(Number(score)) ? '適切な値ではありません' : '';
+
   // NOTE: ローディング画面を一定時間表示するための一時的な処理
-  await new Promise((resolve) => setTimeout(resolve, 4000));
-  return { message: 'SNSの結果表示' };
-}
+  useEffect (() => {
+    const timer = setTimeout(() => setLoading(false), 4000);
+    return () => clearTimeout(timer);
+  }, []);
 
-export default async function Page() {
-  const data = await fetchData();
+  if (loading) {
+    return Loading();
+  }
+
   return (
     <>
-      <h2>Result Page</h2>
-      <h3>ここでスカウターの測定結果を表示する。</h3>
+      <h2>結果</h2>
+      <h3>{score}</h3>
+      {error && (
+        <div className="text-red-500 text-sm">
+          {error}
+        </div>
+      )}
       <ShareButton text="test" />
-      <h3>{data.message}</h3>
     </>
   );
 }
