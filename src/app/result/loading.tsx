@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import styles from '@/app/result/loading.module.css';
 import { ScouterModel } from '@/components/ui/Scouter';
