@@ -1,8 +1,5 @@
-'use client';
-
 import React from 'react';
 import { Button, createButtonProps } from '@/components/ui/Button';
-import { App } from '@/app/Scouter';
 
 export default function Page() {
   const buttonProps = createButtonProps('button', 'Submit', 'lightblue');
@@ -18,9 +15,6 @@ export default function Page() {
       <p>hello, world</p>
       <div className="mx-auto p-4">
         <h1 className="text-4xl font-bold">Hello, Tailwind CSS!</h1>
-      </div>
-      <div className="w-full h-[400px]">
-        <App />
       </div>
     </>
   );

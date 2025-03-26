@@ -7,7 +7,7 @@ function Model() {
   return <primitive object={gltf.scene} scale={1} />;
 }
 
-export function App() {
+export function ScouterModel() {
   return (
     <Canvas 
       camera={{ position: [0, 2, 5], fov: 50 }}>
