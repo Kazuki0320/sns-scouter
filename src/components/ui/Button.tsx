@@ -1,4 +1,4 @@
-import React, {JSX} from 'react';
+import React, { JSX } from 'react';
 
 type Button = {
   type: 'submit' | 'reset' | 'button' | undefined;
@@ -8,7 +8,7 @@ type Button = {
 
 type ButtonProps = {
   button: Button;
-  onClick?: () => void; 
+  onClick?: () => void;
 };
 
 export function Button(props: ButtonProps): JSX.Element {
@@ -16,7 +16,11 @@ export function Button(props: ButtonProps): JSX.Element {
 
   return (
     <>
-      <button type={button.type} style={{ backgroundColor: button.color }} onClick={onClick}>
+      <button
+        type={button.type}
+        style={{ backgroundColor: button.color }}
+        onClick={onClick}
+      >
         {button.name}
       </button>
     </>
