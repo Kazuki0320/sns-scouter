@@ -12,6 +12,7 @@ export default function Page() {
     ? Number(battlePowerResult.get('score'))
     : null;
 
+  // TODO: 以下のエラーが発生した時、ユーザーのトップページに戻すための何かしらの処理を考える
   const error =
     score === null || Number.isNaN(Number(score))
       ? 'スカウターの測定に失敗しました。もう一度お試しください。'
