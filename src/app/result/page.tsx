@@ -8,9 +8,7 @@ import Loading from './loading';
 export default function Page() {
   const [loading, setLoading] = useState(true);
   const battlePowerResult = useSearchParams();
-  const score = battlePowerResult
-    ? Number(battlePowerResult.get('score'))
-    : null;
+  const score = battlePowerResult ? battlePowerResult.get('score') : null;
 
   // TODO: 以下のエラーが発生した時、ユーザーのトップページに戻すための何かしらの処理を考える
   const error =
@@ -31,7 +29,8 @@ export default function Page() {
   return (
     <>
       <h2>結果</h2>
-      <h3>{score}</h3>
+      {/* 以下のscoreを、error が true なら出さないようにする */}
+      {!error && <h3>{score}</h3>}
       {error && <div className="text-red-500 text-sm">{error}</div>}
       <ShareButton text="test" />
     </>
