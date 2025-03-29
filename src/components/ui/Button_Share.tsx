@@ -2,7 +2,7 @@ import React, {JSX} from 'react';
 import { Button } from './Button';
 
 type ShareButtonProps = {
-  text: string; // ツイートに含めるテキスト
+  tweetText: string;
 };
 
 export function ShareButton(props: ShareButtonProps): JSX.Element {
