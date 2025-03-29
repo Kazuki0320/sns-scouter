@@ -26,3 +26,11 @@ export function Button(props: ButtonProps): JSX.Element {
     </>
   );
 }
+
+export function createButtonProps(
+  type: 'submit' | 'reset' | 'button' | undefined,
+  name: string,
+  color: string
+): Button {
+  return { type, name, color };
+}
