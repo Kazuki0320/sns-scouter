@@ -12,7 +12,7 @@ export default function Page() {
 
   // TODO: 以下のエラーが発生した時、ユーザーのトップページに戻すための何かしらの処理を考える
   const error =
-    score === null || Number.isNaN(Number(score))
+    score === null || score === '' || Number.isNaN(Number(score))
       ? 'スカウターの測定に失敗しました。もう一度お試しください。'
       : '';
 
@@ -29,7 +29,6 @@ export default function Page() {
   return (
     <>
       <h2>結果</h2>
-      {/* 以下のscoreを、error が true なら出さないようにする */}
       {!error && <h3>{score}</h3>}
       {error && <div className="text-red-500 text-sm">{error}</div>}
       <ShareButton text="test" />
