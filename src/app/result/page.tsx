@@ -8,7 +8,9 @@ import Loading from './loading';
 export default function Page() {
   const [loading, setLoading] = useState(true);
   const battlePowerResult = useSearchParams();
-  const score = Number(battlePowerResult.get('score'));
+  const score = battlePowerResult
+    ? Number(battlePowerResult.get('score'))
+    : null;
 
   const error =
     score === null || Number.isNaN(Number(score))
