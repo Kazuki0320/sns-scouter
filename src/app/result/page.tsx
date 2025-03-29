@@ -14,7 +14,7 @@ export default function Page() {
 
   const error =
     score === null || Number.isNaN(Number(score))
-      ? '適切な値ではありません'
+      ? 'スカウターの測定に失敗しました。もう一度お試しください。'
       : '';
 
   // NOTE: ローディング画面を一定時間表示するための一時的な処理
