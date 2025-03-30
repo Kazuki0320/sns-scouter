@@ -1,6 +1,6 @@
 'use client';
 
-import { ShareButton } from '@/components/ui/Button';
+import { ShareButton } from '@/components/ui/ShareButton';
 import { useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import Loading from './loading';
@@ -31,7 +31,7 @@ export default function Page() {
       <h2>結果</h2>
       {!error && <h3>{score}</h3>}
       {error && <div className="text-red-500 text-sm">{error}</div>}
-      <ShareButton text="test" />
+      <ShareButton tweetText={String(score)} />
     </>
   );
 }
