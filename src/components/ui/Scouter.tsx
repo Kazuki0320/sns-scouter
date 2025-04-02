@@ -41,8 +41,8 @@ function RandomNumberHTML({
 
 // 3Dモデル + 数字を表示するコンポーネント
 function ScouterModel() {
-  const MODEL_PATH = '/scouter1.glb';
-  const { scene } = useGLTF(MODEL_PATH);
+  const modelPath = '/scouter1.glb';
+  const { scene } = useGLTF(modelPath);
   const modelRef = useRef(null);
 
   const [textPosition, setTextPosition] = useState<
