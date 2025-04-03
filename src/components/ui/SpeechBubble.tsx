@@ -1,8 +1,8 @@
 import React from 'react';
 
 import Image from 'next/image';
-import webpImage from '../../../public/e1325_1.webp';
-import webpMobileImage from '../../../public/e1241_1.webp';
+import webpImage from '../../../public/pc-speech-bubble.webp';
+import webpMobileImage from '../../../public/mobile-speech-bubble.webp';
 
 export function SpeechBubble({ mode = 'mobile' }) {
   if (mode === 'mobile') {
