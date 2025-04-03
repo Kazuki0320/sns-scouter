@@ -11,6 +11,10 @@ export default function Page() {
       <h3>例えば、ここでコンポーネントのボタンを置いて挙動のテストをする</h3>
       <Button button={buttonProps} />
       <SpeechBubble />
+      <SpeechBubble direction="up" /> {/* 上向き */}
+      <SpeechBubble direction="right" /> {/* 右向き */}
+      <SpeechBubble direction="down" /> {/* 下向き（デフォルト） */}
+      <SpeechBubble direction="left" /> {/* 左向き */}
       <h3>
         例えば、ここでフォロワー数取得のロジックを置いて挙動のテストをする
       </h3>

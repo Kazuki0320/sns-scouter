@@ -1,21 +1,41 @@
 .speechBubble {
-  width: 150px; /* 吹き出しの幅 */
-  height: 100px; /* 吹き出しの高さ */
-  background-color: white; /* 背景色 */
-  border: 2px solid darkred; /* 枠線 */
-  border-radius: 50%; /* 角を丸くする */
-  position: relative; /* 相対配置 */
+  width: 150px;
+  height: 100px;
+  background-color: white;
+  border: 2px solid darkred;
+  border-radius: 50%;
+  position: relative;
+  display: inline-block; /* インラインブロック要素にする */
 }
 
-/* 吹き出しの三角形の部分 */
-.speechBubble::after {
-  content: '';
+.arrow {
   position: absolute;
-  bottom: -15px; /* 下からの距離 */
-  left: 30px; /* 左からの距離 */
   width: 0;
   height: 0;
   border-left: 15px solid transparent;
   border-right: 15px solid transparent;
-  border-top: 15px solid darkred; /* 枠線と同じ色 */
+  border-top: 15px solid white; /* 矢印を白に変更 */
+}
+
+.arrow-down {
+  bottom: -15px;
+  left: 30px;
+}
+
+.arrow-up {
+  top: -15px;
+  left: 30px;
+  transform: rotate(180deg); /* 上向きにするために回転 */
+}
+
+.arrow-left {
+  left: -15px;
+  bottom: 30px;
+  transform: rotate(90deg); /* 左向きにするために回転 */
+}
+
+.arrow-right {
+  right: -15px;
+  bottom: 30px;
+  transform: rotate(-90deg); /* 右向きにするために回転 */
 }
