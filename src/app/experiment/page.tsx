@@ -3,9 +3,6 @@ import { Button, createButtonProps } from '@/components/ui/Button';
 import { ExperimentSpeechBubble } from '@/components/ui/experimentSpeechBubble';
 import { SpeechBubble } from '@/components/ui/SpeechBubble';
 
-import Image from 'next/image';
-import localImage from '../../../public/e1325_1.webp';
-
 export default function Page() {
   const buttonProps = createButtonProps('button', 'Submit', 'lightblue');
 
