@@ -19,8 +19,9 @@ export default function Page() {
       <ExperimentSpeechBubble direction="right" /> {/* 右向き */}
       <ExperimentSpeechBubble direction="down" /> {/* 下向き（デフォルト） */}
       <ExperimentSpeechBubble direction="left" /> {/* 左向き */}
-      <Image src={localImage} alt="WebP Image"/>
+      {/* <Image src={localImage} alt="WebP Image"/> */}
       <SpeechBubble />
+      <SpeechBubble mode='pc'/>
       <h3>
         例えば、ここでフォロワー数取得のロジックを置いて挙動のテストをする
       </h3>
