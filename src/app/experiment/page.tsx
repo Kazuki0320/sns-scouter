@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button, createButtonProps } from '@/components/ui/Button';
-import { ExperimentSpeechBubble } from '@/components/ui/experimentSpeechBubble';
+import { ExperimentSpeechBubble } from '@/components/ui/ExperimentSpeechBubble';
 import { SpeechBubble } from '@/components/ui/SpeechBubble';
 
 export default function Page() {
