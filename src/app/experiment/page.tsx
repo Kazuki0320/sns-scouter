@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, createButtonProps } from '@/components/ui/Button';
+import { SpeechBubble } from '@/components/ui/SpeechBubble';
 
 export default function Page() {
   const buttonProps = createButtonProps('button', 'Submit', 'lightblue');
@@ -9,6 +10,7 @@ export default function Page() {
       <h2>Experiment Page</h2>
       <h3>例えば、ここでコンポーネントのボタンを置いて挙動のテストをする</h3>
       <Button button={buttonProps} />
+      <SpeechBubble />
       <h3>
         例えば、ここでフォロワー数取得のロジックを置いて挙動のテストをする
       </h3>
