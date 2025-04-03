@@ -5,15 +5,14 @@ import webpImage from '../../../public/e1325_1.webp';
 import webpMobileImage from '../../../public/e1241_1.webp';
 
 export function SpeechBubble({ mode = 'mobile' }) {
-
   if (mode === 'mobile') {
     return (
       <div style={{ position: 'relative', display: 'inline-block' }}>
         <Image 
           src={webpMobileImage} 
           alt="WebP Mobile Image" 
-          width={300} // 幅を300pxに設定
-          height={300} // 高さを200pxに設定
+          width={300}
+          height={300}
           style={{ display: 'block' }}
         />
         <div
@@ -40,8 +39,8 @@ export function SpeechBubble({ mode = 'mobile' }) {
       <Image 
         src={webpImage} 
         alt="WebP Image" 
-        width={300} // 幅を300pxに設定
-        height={300} // 高さを200pxに設定
+        width={300}
+        height={300}
         style={{ display: 'block' }}
       />
       <div

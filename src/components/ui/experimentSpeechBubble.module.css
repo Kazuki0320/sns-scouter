@@ -5,7 +5,7 @@
   border: 2px solid darkred;
   border-radius: 50%;
   position: relative;
-  display: inline-block; /* インラインブロック要素にする */
+  display: inline-block;
 }
 
 .arrow {
