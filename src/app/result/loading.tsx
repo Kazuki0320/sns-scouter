@@ -1,7 +1,7 @@
 'use client';
 
 import styles from '@/app/result/loading.module.css';
-import { ScouterModel } from '@/components/ui/Scouter';
+import { ScouterViewer } from '@/components/ui/Scouter';
 
 export default function Loading() {
   return (
@@ -12,7 +12,7 @@ export default function Loading() {
         </div>
       </div>
       <div className="w-full h-[400px]">
-        <ScouterModel />
+        <ScouterViewer />
       </div>
     </>
   );
