@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Image from "next/image";
+import Image from 'next/image';
 import webpImage from '../../../public/e1325_1.webp';
 import webpMobileImage from '../../../public/e1241_1.webp';
 
