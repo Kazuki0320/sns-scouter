@@ -1,0 +1,21 @@
+.speechBubble {
+  width: 150px; /* 吹き出しの幅 */
+  height: 100px; /* 吹き出しの高さ */
+  background-color: white; /* 背景色 */
+  border: 2px solid darkred; /* 枠線 */
+  border-radius: 50%; /* 角を丸くする */
+  position: relative; /* 相対配置 */
+}
+
+/* 吹き出しの三角形の部分 */
+.speechBubble::after {
+  content: '';
+  position: absolute;
+  bottom: -15px; /* 下からの距離 */
+  left: 30px; /* 左からの距離 */
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-top: 15px solid darkred; /* 枠線と同じ色 */
+}
