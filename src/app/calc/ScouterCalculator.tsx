@@ -12,7 +12,7 @@ function calculateBattlePower(followers: number): number {
   if (
     !Number.isFinite(followers) ||
     followers < 0 ||
-    followers > 1000000000 // 100億フォロワーを上限とする
+    followers > 10000000000 // 100億フォロワーを上限とする
   ) {
     return 0;
   }
