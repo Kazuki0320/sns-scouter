@@ -8,7 +8,7 @@ const battlePowerMultipliers = [
   { min: 10000, max: Infinity, multiplier: 50 },
 ];
 
-function calculateBattlePower(followers: number): number {
+export function calculateBattlePower(followers: number): number {
   if (followers < 0) return 0;
 
   const range = battlePowerMultipliers.find(
