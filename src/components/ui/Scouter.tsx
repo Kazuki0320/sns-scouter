@@ -9,8 +9,7 @@ function Model() {
 
 export function ScouterModel() {
   return (
-    <Canvas 
-      camera={{ position: [0, 2, 5], fov: 50 }}>
+    <Canvas camera={{ position: [0, 2, 5], fov: 50 }}>
       <ambientLight intensity={0.5} />
       <directionalLight position={[2, 2, 2]} />
       <Suspense fallback={null}>

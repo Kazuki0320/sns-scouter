@@ -18,7 +18,7 @@ export default function Page() {
       <ExperimentSpeechBubble direction="down" />
       <ExperimentSpeechBubble direction="left" />
       <SpeechBubble />
-      <SpeechBubble mode='pc'/>
+      <SpeechBubble mode="pc" />
       <h3>
         例えば、ここでフォロワー数取得のロジックを置いて挙動のテストをする
       </h3>

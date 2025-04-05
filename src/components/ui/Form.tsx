@@ -33,7 +33,7 @@ export default function Form({ onSubmit }: FormProps) {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
+
     if (inputValue === '') {
       setError('数値を入力してください');
       return;
@@ -46,7 +46,9 @@ export default function Form({ onSubmit }: FormProps) {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-80">
-      <label htmlFor="follower" className="sr-only">フォロワー数</label>
+      <label htmlFor="follower" className="sr-only">
+        フォロワー数
+      </label>
       <input
         id="follower"
         type="text"
@@ -55,11 +57,7 @@ export default function Form({ onSubmit }: FormProps) {
         onChange={handleChange}
         className="p-2 border-gray-300 rounded-md text-black"
       />
-      {error && (
-        <div className="text-red-500 text-sm">
-          {error}
-        </div>
-      )}
+      {error && <div className="text-red-500 text-sm">{error}</div>}
       <button
         type="submit"
         disabled={isDisabled}

@@ -8,9 +8,9 @@ export function SpeechBubble({ mode = 'mobile' }) {
   if (mode === 'mobile') {
     return (
       <div style={{ position: 'relative', display: 'inline-block' }}>
-        <Image 
-          src={webpMobileImage} 
-          alt="WebP Mobile Image" 
+        <Image
+          src={webpMobileImage}
+          alt="WebP Mobile Image"
           width={300}
           height={300}
           style={{ display: 'block' }}
@@ -36,9 +36,9 @@ export function SpeechBubble({ mode = 'mobile' }) {
 
   return (
     <div style={{ position: 'relative', display: 'inline-block' }}>
-      <Image 
-        src={webpImage} 
-        alt="WebP Image" 
+      <Image
+        src={webpImage}
+        alt="WebP Image"
         width={300}
         height={300}
         style={{ display: 'block' }}
