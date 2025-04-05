@@ -144,3 +144,40 @@ export function ScouterViewer() {
     </div>
   );
 }
+
+/**
+ * 1. 主要なコンポーネント構成
+RandomNumberHTML: ランダムな4桁の数字を生成し、HTMLで表示するコンポーネント
+
+ScouterModel: 3Dスカウターモデルを読み込み、数字表示位置を計算するコンポーネント
+
+ModelWithErrorHandling: モデル読み込み中のフォールバックUIを提供するSuspenseコンポーネント
+
+ScouterViewer: メインのビューアーコンポーネントで、Canvasやライティングを設定
+
+2. 数字表示の仕組み
+generateRandomNumber()関数で1000-9999のランダムな数字を生成
+
+useEffect内で2秒ごとに数字を更新
+
+Htmlコンポーネント（@react-three/drei）を使用して3D空間内にHTMLコンテンツを表示
+
+数字はCSSアニメーション（styles.countUp）で表示される
+
+3. 3Dモデルの処理
+useGLTFフックでGLTF形式の3Dモデルを読み込み
+
+THREE.Box3を使用してモデルの境界ボックスを計算
+
+モデルの中心位置を取得し、その位置に数字を表示
+
+モデルは少し回転（rotation={[0, Math.PI / 4, 0]}）させて見栄えを良くしている
+
+4. エラーハンドリング
+Suspenseでラッピングし、モデル読み込み中は代替の球体メッシュと「読み込み中...」テキストを表示
+
+5. カメラとライティング
+OrbitControlsでユーザーがモデルを回転/ズームできるように
+
+複数のライト（環境光、指向性ライト、スポットライト）を設定
+ */
