@@ -1,3 +1,5 @@
+# テストを導入する
+
 repomix にて、 https://github.com/Kazuki0320/sns-scouter の全体像を作成
 
 プロンプト
