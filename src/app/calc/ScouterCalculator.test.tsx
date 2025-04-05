@@ -9,9 +9,23 @@ describe('SNSスカウターのスコア計算ロジック', () => {
     });
 
     it('境界値を正しく処理すること', () => {
+      // 最小値周辺のテスト
+      expect(calculateBattlePower(0)).toBe(0);
+      expect(calculateBattlePower(1)).toBe(10);
+      expect(calculateBattlePower(9)).toBe(90);
+
+      // 倍率変更の境界値テスト
       expect(calculateBattlePower(999)).toBe(9990);
       expect(calculateBattlePower(1000)).toBe(15000);
-      expect(calculateBattlePower(0)).toBe(0);
+      expect(calculateBattlePower(1001)).toBe(15015);
+
+      // 大きな値の境界値テスト
+      expect(calculateBattlePower(99999)).toBe(4999950);
+      expect(calculateBattlePower(100000)).toBe(5000000);
+      expect(calculateBattlePower(1000000)).toBe(50000000);
+
+      // 極端な大きな値のテスト
+      expect(calculateBattlePower(Number.MAX_SAFE_INTEGER)).toBe(0); // 大きすぎる値は0を返す
     });
   });
 

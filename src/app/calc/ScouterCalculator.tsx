@@ -9,7 +9,15 @@ const battlePowerMultipliers = [
 ];
 
 export function calculateBattlePower(followers: number): number {
-  if (followers < 0) return 0;
+  // 不正な値や大きすぎる値のチェック
+  if (
+    !Number.isFinite(followers) ||
+    followers < 0 ||
+    followers > Number.MAX_SAFE_INTEGER ||
+    followers > 1000000000 // 100億フォロワーを上限とする
+  ) {
+    return 0;
+  }
 
   const range = battlePowerMultipliers.find(
     (r) => r.min <= followers && followers <= r.max
