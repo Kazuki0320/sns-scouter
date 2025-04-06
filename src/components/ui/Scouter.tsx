@@ -5,39 +5,7 @@ import { Suspense, useState, useEffect, useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Html, useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
-
-// ランダム数字を生成する関数
-const generateRandomNumber = () => Math.floor(Math.random() * 9000) + 1000;
-
-// HTMLベースのデジタルUI表示コンポーネント
-function RandomNumberHTML({
-  position = [0, 0, 0] as [number, number, number],
-  rotation = [0, 0, 0] as [number, number, number],
-}) {
-  const [number, setNumber] = useState(generateRandomNumber());
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setNumber(generateRandomNumber());
-    }, 2000);
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <Html
-      position={position}
-      rotation={rotation}
-      transform
-      distanceFactor={2} // 👈 スケーリングを抑える
-      scale={1} // 👈 遠近効果を軽減
-      occlude={false}
-    >
-      <div key={number} className={styles.countUp}>
-        {number}
-      </div>
-    </Html>
-  );
-}
+import Loading from '@/app/result/loading';
 
 // 3Dモデル + 数字を表示するコンポーネント
 function ScouterModel() {
@@ -85,7 +53,7 @@ function ScouterModel() {
         rotation={[0, Math.PI / 4, 0]}
       />
       {textPosition && (
-        <RandomNumberHTML position={textPosition} rotation={textRotation} />
+        <Loading />
       )}
     </group>
   );
@@ -167,8 +135,6 @@ export function ScouterViewer() {
 RandomNumberHTML: ランダムな4桁の数字を生成し、HTMLで表示するコンポーネント
 
 ScouterModel: 3Dスカウターモデルを読み込み、数字表示位置を計算するコンポーネント
-
-ModelWithErrorHandling: モデル読み込み中のフォールバックUIを提供するSuspenseコンポーネント
 
 ScouterViewer: メインのビューアーコンポーネントで、Canvasやライティングを設定
 
