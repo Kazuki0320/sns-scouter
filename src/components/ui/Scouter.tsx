@@ -91,7 +91,7 @@ function RandomNumberHTML({
       scale={1} // 👈 遠近効果を軽減
       occlude={false}
     >
-      <div key={number} className={styles.countUp}>
+      <div key={number} className={styles.randomNumber}>
         {number}
       </div>
     </Html>
