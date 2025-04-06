@@ -75,6 +75,7 @@ function RandomNumberHTML({
 }) {
   const [number, setNumber] = useState(generateRandomNumber());
 
+  // 2秒ごとにランダムな数字を生成して状態を更新する
   useEffect(() => {
     const interval = setInterval(() => {
       setNumber(generateRandomNumber());
