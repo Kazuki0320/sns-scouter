@@ -4,7 +4,7 @@ import { ScouterViewer } from '@/components/ui/Scouter';
 
 export default function Loading() {
   return (
-    <div>
+    <div className="w-full h-[400px]">
       <ScouterViewer />
     </div>
   );
