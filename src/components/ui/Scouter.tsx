@@ -138,7 +138,7 @@ function ScouterModel() {
     <group ref={modelRef}>
       <primitive
         object={scene}
-        scale={0.5}
+        scale={0.8}
         position={[0, 0, 0.7]}
         rotation={[0, Math.PI / 4, 0]}
       />

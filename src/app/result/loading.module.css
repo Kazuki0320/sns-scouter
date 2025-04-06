@@ -42,7 +42,7 @@
   text-align: center;
   text-shadow: 0 0 2px #0f0, 0 0 4px #0f0;
   background-color: transparent;
-  font-size: 1rem;
+  font-size: 2rem;
   /* 👇 ここでアニメーション追加 */
   animation: fadeIn 0.8s ease-out;
 }
