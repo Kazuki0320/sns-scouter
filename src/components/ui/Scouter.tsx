@@ -97,7 +97,7 @@ function ModelWithErrorHandling() {
 <Suspense
   fallback={
     <Html fullscreen>
-      <div className="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-4 py-2 rounded-xl">
+      <div className={styles.loadingBanner}>
         <svg
           className="animate-spin h-5 w-5 text-white"
           xmlns="http://www.w3.org/2000/svg"
@@ -163,38 +163,60 @@ export function ScouterViewer() {
 }
 
 /**
- * 1. 主要なコンポーネント構成
-RandomNumberHTML: ランダムな4桁の数字を生成し、HTMLで表示するコンポーネント
 
-ScouterModel: 3Dスカウターモデルを読み込み、数字表示位置を計算するコンポーネント
+---
 
-ModelWithErrorHandling: モデル読み込み中のフォールバックUIを提供するSuspenseコンポーネント
+### 1. 主要なコンポーネント構成
 
-ScouterViewer: メインのビューアーコンポーネントで、Canvasやライティングを設定
+- **RandomNumberHTML**  
+  4桁のランダムな数字を一定間隔で生成し、3D空間内にHTMLとして表示するコンポーネント。`<Html />` を使って3Dモデル上にオーバーレイ表示される。
 
-2. 数字表示の仕組み
-generateRandomNumber()関数で1000-9999のランダムな数字を生成
+- **ScouterModel**  
+  GLB形式のスカウターモデルを読み込み、モデルの中心座標をもとに数字表示の位置と回転を動的に計算・表示する。
 
-useEffect内で2秒ごとに数字を更新
+- **ModelWithErrorHandling**  
+  Suspenseを利用し、モデル読み込み中にアニメーション付きのローディングUI（スピナーとテキスト）を表示する。
 
-Htmlコンポーネント（@react-three/drei）を使用して3D空間内にHTMLコンテンツを表示
+- **ScouterViewer**  
+  シーン全体を構成するメインコンポーネント。`Canvas` によって3D空間を構築し、ライティングやカメラコントロールも含まれる。
 
-数字はCSSアニメーション（styles.countUp）で表示される
+---
 
-3. 3Dモデルの処理
-useGLTFフックでGLTF形式の3Dモデルを読み込み
+### 2. 数字表示の仕組み
 
-THREE.Box3を使用してモデルの境界ボックスを計算
+- `generateRandomNumber()` により 1000〜9999 のランダムな数字を生成。
+- `useEffect` フックを使って2秒ごとに数字を自動更新。
+- `@react-three/drei` の `<Html />` コンポーネントで、3Dモデル上に直接HTMLを表示。
+- 表示される数字は `loading.module.css` 内の `.countUp` クラスによりアニメーション効果がつけられる。
 
-モデルの中心位置を取得し、その位置に数字を表示
+---
 
-モデルは少し回転（rotation={[0, Math.PI / 4, 0]}）させて見栄えを良くしている
+### 3. 3Dモデルの処理
 
-4. エラーハンドリング
-Suspenseでラッピングし、モデル読み込み中は代替の球体メッシュと「読み込み中...」テキストを表示
+- `useGLTF()` で `/scouter1.glb` モデルを読み込み。
+- `THREE.Box3` でモデルの境界を取得し、中心位置を算出。
+- 中心より少し前方（Z方向）にHTML数字を配置し、モデルと同じ角度（回転）で表示。
+- モデル自体は `[0, 0, 0.7]` に配置され、`Math.PI / 4` ラジアン（約45度）回転されている。
 
-5. カメラとライティング
-OrbitControlsでユーザーがモデルを回転/ズームできるように
+---
 
-複数のライト（環境光、指向性ライト、スポットライト）を設定
+### 4. ローディングとエラーハンドリング
+
+- Suspenseによる読み込み中UIは、全画面表示の `<Html fullscreen />` 内にスピナーアイコンと「読み込み中...」テキストを表示。
+- ユーザーに読み込み状況を視覚的に知らせ、UXを向上。
+
+---
+
+### 5. カメラとライティング設定
+
+- `Canvas` のカメラは `[0, 0, 2]` に配置、視野角（fov）は50度。
+- ライティングは以下の構成：
+  - 環境光（ambientLight）で全体の明るさを確保
+  - 指向性ライトとスポットライトで立体感と陰影を演出
+- `OrbitControls` によりユーザーがモデルを回転、ズーム、パン操作可能。
+  - 最小距離1、最大距離10に制限
+
+---
+
+必要があれば、この文章をドキュメントやREADME用にもっと整えたり、日本語⇔英語翻訳もできます！他にも手伝えることがあれば言ってくださいね。
  */

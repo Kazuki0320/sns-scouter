@@ -35,12 +35,23 @@
   content: counter(countUp);
 }
 
-
 /* カウンターの最大値を設定 */
 @keyframes countUp {
   100% {
     --count: 1000000000;
   }
+}
+
+.loadingBanner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem; /* gap-3 */
+  background-image: linear-gradient(to right, #6366f1, #8b5cf6); /* from-indigo-500 to-purple-600 */
+  color: white;
+  padding: 0.5rem 1rem; /* py-2 px-4 */
+  border-radius: 0.75rem; /* rounded-xl */
 }
 
 .text {
