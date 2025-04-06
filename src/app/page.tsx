@@ -2,7 +2,7 @@
 
 import Form from '@/components/ui/Form';
 import { useRouter } from 'next/navigation';
-import { getBattlePower } from './calc/ScouterCalculator';
+import { getBattlePower } from '@/app/calc/ScouterCalculator';
 
 export default function RootLayout() {
   const router = useRouter();
