@@ -94,21 +94,38 @@ function ScouterModel() {
 // モデル読み込み中のローダー
 function ModelWithErrorHandling() {
   return (
-    <Suspense
-      fallback={
-        <mesh>
-          <sphereGeometry args={[0.5, 16, 16]} />
-          <meshStandardMaterial color="blue" />
-          <Html position={[0, 1, 0]}>
-            <div className="bg-black text-white px-3 py-2 rounded-md">
-              読み込み中...
-            </div>
-          </Html>
-        </mesh>
-      }
-    >
-      <ScouterModel />
-    </Suspense>
+<Suspense
+  fallback={
+    <Html fullscreen>
+      <div className="w-full flex items-center justify-center gap-3 bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-4 py-2 rounded-xl shadow-lg animate-pulse">
+        <svg
+          className="animate-spin h-5 w-5 text-white"
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+        >
+          <circle
+            className="opacity-25"
+            cx="12"
+            cy="12"
+            r="10"
+            stroke="currentColor"
+            strokeWidth="4"
+          ></circle>
+          <path
+            className="opacity-75"
+            fill="currentColor"
+            d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+          ></path>
+        </svg>
+        <span className="text-sm font-semibold">読み込み中...</span>
+      </div>
+    </Html>
+  }
+>
+  <ScouterModel />
+</Suspense>
+
   );
 }
 
