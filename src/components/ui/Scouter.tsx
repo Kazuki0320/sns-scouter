@@ -65,14 +65,14 @@ import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Html, useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
 
-// ランダム数字を生成する関数
-const generateRandomNumber = () => Math.floor(Math.random() * 9000) + 1000;
-
 // HTMLベースのデジタルUI表示コンポーネント
 function RandomNumberHTML({
   position = [0, 0, 0] as [number, number, number],
   rotation = [0, 0, 0] as [number, number, number],
 }) {
+  // ランダム数字を生成する関数
+  const generateRandomNumber = () => Math.floor(Math.random() * 9000) + 1000;
+
   const [number, setNumber] = useState(generateRandomNumber());
 
   // 2秒ごとにランダムな数字を生成して状態を更新する
