@@ -1,9 +1,3 @@
-/* カウンターのプロパティを定義 */
-@property --count {
-  syntax: '<integer>';
-  inherits: false;
-  initial-value: 0;
-}
 
 @keyframes fadeIn {
   from {
@@ -16,7 +10,7 @@
   }
 }
 
-/* カウンターの値を点滅させる */
+/* ランダム生成した数値を点滅させる  */
 @keyframes textFade {
   0%,
   100% {

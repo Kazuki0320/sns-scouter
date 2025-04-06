@@ -29,7 +29,7 @@
 
 ### 3. 3Dモデルの処理
 
-- `useGLTF()` で `/scouter1.glb` モデルを読み込み。
+- `useGLTF()` で `/scouterModel.glb` モデルを読み込み。
 - `THREE.Box3` でモデルの境界を取得し、中心位置を算出。
 - 中心より少し前方（Z方向）にHTML数字を配置し、モデルと同じ角度（回転）で表示。
 - モデル自体は `[0, 0, 0.7]` に配置され、`Math.PI / 4` ラジアン（約45度）回転されている。
@@ -53,8 +53,6 @@
   - 最小距離1、最大距離10に制限
 
 ---
-
-必要があれば、この文章をドキュメントやREADME用にもっと整えたり、日本語⇔英語翻訳もできます！他にも手伝えることがあれば言ってくださいね。
  */
 
 'use client';
@@ -101,7 +99,7 @@ function RandomNumberHTML({
 
 // 3Dモデル + 数字を表示するコンポーネント
 function ScouterModel() {
-  const modelPath = '/scouter1.glb';
+  const modelPath = '/scouterModel.glb';
   const { scene } = useGLTF(modelPath);
   const modelRef = useRef(null);
 
