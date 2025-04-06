@@ -33,4 +33,4 @@ jobs:
         run: pnpm install --no-frozen-lockfile
 
       - name: Run tests with Jest
-        run: pnpm test --ci --coverage
+        run: pnpm test:coverage
