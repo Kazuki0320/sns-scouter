@@ -29,3 +29,23 @@ function calculateBattlePower(followers: number): number {
 export function getBattlePower(followers: number): number {
   return calculateBattlePower(followers);
 }
+
+export function getPercentileRanking(battlePower: number): string {
+  if (battlePower >= 100000) {
+    return '人気インフルエンサー (Top 0.1%)';
+  } else if (battlePower >= 50000) {
+    return 'プロ (Top 1%)';
+  } else if (battlePower >= 10000) {
+    return 'エキスパート (Top 5%)';
+  } else if (battlePower >= 5000) {
+    return 'トップアマ (Top 10%)';
+  } else if (battlePower >= 1000) {
+    return 'アマチュア (Top 30%)';
+  } else if (battlePower >= 500) {
+    return 'ノービス (Top 50%)';
+  } else if (battlePower >= 100) {
+    return 'ルーキー (Top 70%)';
+  } else {
+    return 'ビギナー (Top 100%)';
+  }
+}
