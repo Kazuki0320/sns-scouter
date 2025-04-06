@@ -54,6 +54,24 @@
   border-radius: 0.75rem; /* rounded-xl */
 }
 
+.loadingIcon {
+  animation: spin 1s linear infinite;
+  height: 1.25rem; /* h-5 */
+  width: 1.25rem;  /* w-5 */
+  color: white;
+}
+
+.iconCircle {
+  opacity: 0.25;
+  stroke: currentColor;
+  stroke-width: 4;
+}
+
+.iconPath {
+  opacity: 0.75;
+  fill: currentColor;
+}
+
 .text {
   position: absolute;
   top: -2rem; /* 数字の背景の外に配置 */
@@ -72,6 +90,12 @@
   }
   50% {
     opacity: 0;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
 }
 
