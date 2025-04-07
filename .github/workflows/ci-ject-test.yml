@@ -1,0 +1,36 @@
+name: JectTest
+
+on:
+  push:
+    branches: ['main']
+  pull_request:
+    branches: ['main']
+
+jobs:
+  jest-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '22'
+
+      - name: Install pnpm manually
+        run: npm install -g pnpm@9
+
+      - name: Verify pnpm installation
+        run: |
+          if ! pnpm --version; then
+            echo "pnpm is not installed"
+            exit 1
+          fi
+
+      - name: Install dependencies
+        run: pnpm install --no-frozen-lockfile
+
+      - name: Run tests with Jest
+        run: pnpm test:coverage
