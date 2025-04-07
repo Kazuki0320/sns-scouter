@@ -1,54 +1,16 @@
-/* カウンターのプロパティを定義 */
-@property --count {
-  syntax: '<integer>';
-  inherits: false;
-  initial-value: 0;
-}
 
-.countUp {
-  counter-set: countUp var(--count); /* カウンターの初期値を設定 */
-  animation: countUp 4.6s 1; /* カウンターをアニメーションさせる */
-  animation-fill-mode: forwards; /* アニメーション終了時の状態を保持 */
-  animation-timing-function: cubic-bezier(
-    1,
-    0.4,
-    0.2,
-    1
-  ); /* イージング関数を設定 */
-  font-variant-numeric: tabular-nums; /* 等幅の数字を使用 */
-  font-size: 2rem;
-  position: relative; /* 相対配置を設定 */
-  background-color: black;
-  color: white;
-  padding: 1rem;
-  border-radius: 0.5rem;
-  width: 15rem; /* 固定の幅を設定 */
-  text-align: center;
-}
-
-/* カウンターの値を表示 */
-.countUp::after {
-  content: counter(countUp);
-}
-
-/* カウンターの最大値を設定 */
-@keyframes countUp {
-  100% {
-    --count: 1000000000;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-.text {
-  position: absolute;
-  top: -2rem; /* 数字の背景の外に配置 */
-  left: 50%;
-  transform: translateX(-50%); /* 水平方向に中央に配置 */
-  font-size: 1.5rem;
-  animation: textFade 1.5s infinite; /* テキストを点滅させる */
-  color: black;
-}
-
-/* カウンターの値を点滅させる */
+/* ランダム生成した数値を点滅させる  */
 @keyframes textFade {
   0%,
   100% {
@@ -59,8 +21,63 @@
   }
 }
 
-.lpage {
-  display: grid;
-  min-height: 100vh;
-  place-items: center;
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
+
+.randomNumber {
+  color: white;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  font-weight: bold;
+  font-family: 'Orbitron', monospace;
+  text-align: center;
+  text-shadow: 0 0 2px #0f0, 0 0 4px #0f0;
+  background-color: transparent;
+  font-size: 2rem;
+  /* 👇 ここでアニメーション追加 */
+  animation: fadeIn 0.8s ease-out;
+}
+
+.loadingBanner {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  background-image: linear-gradient(to right, #6366f1, #8b5cf6);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.75rem;
+}
+
+.loadingIcon {
+  animation: spin 1s linear infinite;
+  height: 1.25rem;
+  width: 1.25rem;
+  color: white;
+}
+
+.iconCircle {
+  opacity: 0.25;
+  stroke: currentColor;
+  stroke-width: 4;
+}
+
+.iconPath {
+  opacity: 0.75;
+  fill: currentColor;
+}
+
+.text {
+  position: absolute;
+  top: -2rem; /* 数字の背景の外に配置 */
+  left: 50%;
+  transform: translateX(-50%); /* 水平方向に中央に配置 */
+  font-size: 1.5rem;
+  animation: textFade 1.5s infinite; /* テキストを点滅させる */
+  color: white;
+}
+
