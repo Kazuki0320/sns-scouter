@@ -62,6 +62,7 @@ import { Suspense, useState, useEffect, useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Html, useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
+import RotatingArcs from './Arc';
 
 // HTMLベースのデジタルUI表示コンポーネント
 function RandomNumberHTML({
@@ -101,50 +102,41 @@ function RandomNumberHTML({
 function ScouterModel() {
   const modelPath = '/scouterModel.glb';
   const { scene } = useGLTF(modelPath);
-  const modelRef = useRef(null);
+  const modelRef = useRef(null)
 
-  const [textPosition, setTextPosition] = useState<
-    [number, number, number] | null
-  >(null);
-  const [textRotation, setTextRotation] = useState<[number, number, number]>([
-    0, 0, 0,
-  ]);
+  const [textPosition, setTextPosition] = useState<[number, number, number] | null>(null)
+  const [textRotation, setTextRotation] = useState<[number, number, number]>([0, 0, 0])
+  const [arcPosition, setArcPosition] = useState<[number, number, number] | null>(null)
 
   // モデルの中心座標とサイズを取得して、テキストの表示位置＆角度を設定する
   useEffect(() => {
     if (modelRef.current) {
-      const box = new THREE.Box3().setFromObject(modelRef.current);
-      const center = new THREE.Vector3();
-      const size = new THREE.Vector3();
-      box.getCenter(center);
-      box.getSize(size);
+      const box = new THREE.Box3().setFromObject(modelRef.current)
+      const center = new THREE.Vector3()
+      const size = new THREE.Vector3()
+      box.getCenter(center)
+      box.getSize(size)
 
       // モデルより少し手前に表示（Z方向）
-      const displayCenter: [number, number, number] = [
-        center.x,
-        center.y,
-        center.z + 0.02,
-      ];
-      const displayRotation: [number, number, number] = [0, Math.PI / 4, 0]; // モデルと同じ向き
+      const displayCenter: [number, number, number] = [center.x, center.y, center.z + 0.02]
+      const displayRotation: [number, number, number] = [0, Math.PI / 4, 0] // モデルと同じ向き
 
-      setTextPosition(displayCenter);
-      setTextRotation(displayRotation);
+      setTextPosition(displayCenter)
+      setTextRotation(displayRotation)
+
+      // アークは少し前に表示
+      const arcDisplayCenter: [number, number, number] = [center.x, center.y, center.z + 0.05]
+      setArcPosition(arcDisplayCenter)
     }
-  }, []);
+  }, [])
 
   return (
     <group ref={modelRef}>
-      <primitive
-        object={scene}
-        scale={0.8}
-        position={[0, 0, 0.7]}
-        rotation={[0, Math.PI / 4, 0]}
-      />
-      {textPosition && (
-        <RandomNumberHTML position={textPosition} rotation={textRotation} />
-      )}
+      <primitive object={scene} scale={0.8} position={[0, 0, 0.7]} rotation={[0, Math.PI / 4, 0]} />
+      {textPosition && <RandomNumberHTML position={textPosition} rotation={textRotation} />}
+      {arcPosition && <RotatingArcs position={arcPosition} rotation={textRotation} />}
     </group>
-  );
+  )
 }
 
 // モデル読み込み中のローダー

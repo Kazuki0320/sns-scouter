@@ -5,7 +5,6 @@ import { Button, createButtonProps } from '@/components/ui/Button';
 import { ScouterViewer } from '@/components/ui/Scouter';
 import { ExperimentSpeechBubble } from '@/components/ui/ExperimentSpeechBubble';
 import { SpeechBubble } from '@/components/ui/SpeechBubble';
-import RotatingArcs from '@/components/ui/futuristic-hud';
 
 export default function Page() {
   const buttonProps = createButtonProps('button', 'Submit', 'lightblue');
@@ -31,9 +30,6 @@ export default function Page() {
       </div>
       <div className="w-full h-[400px]">
         <ScouterViewer />
-      </div>
-      <div className="w-full h-[400px]">
-        <RotatingArcs />
       </div>
     </>
   );
