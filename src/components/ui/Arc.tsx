@@ -28,122 +28,119 @@
 
  */
 
-"use client"
+'use client';
 
-import { useEffect, useState, useRef, useCallback } from "react"
-import { Html } from "@react-three/drei"
-import styles from '@/components/ui/arc.module.css'
+import { useEffect, useState, useRef, useCallback } from 'react';
+import { Html } from '@react-three/drei';
+import styles from '@/components/ui/arc.module.css';
 
 export default function RotatingArcs({
   position = [0, 0, 0] as [number, number, number],
   rotation = [0, 0, 0] as [number, number, number],
 }) {
-  const [scanning, setScanning] = useState(false)
-  const [targeting, setTargeting] = useState(false)
-  const [offset, setOffset] = useState({ x: 0, y: 0 })
-  const animationRef = useRef<number | null>(null)
-  const startTimeRef = useRef(Date.now())
+  const [scanning, setScanning] = useState(false);
+  const [targeting, setTargeting] = useState(false);
+  const [offset, setOffset] = useState({ x: 0, y: 0 });
+  const animationRef = useRef<number | null>(null);
+  const startTimeRef = useRef(Date.now());
 
   // 特定のパスに沿ったアニメーション
   const animatePathMovement = useCallback(() => {
-    if (!targeting) return
+    if (!targeting) return;
 
-    const elapsedTime = Date.now() - startTimeRef.current
-    const totalDuration = 2000 
-    const progress = Math.min(elapsedTime / totalDuration, 1)
+    const elapsedTime = Date.now() - startTimeRef.current;
+    const totalDuration = 2000;
+    const progress = Math.min(elapsedTime / totalDuration, 1);
 
     // 3つのキーポイントを定義
     const keyPoints = [
-      { x: -80, y: -60},
+      { x: -80, y: -60 },
       { x: 100, y: -80 },
       { x: -80, y: 60 },
       { x: 0, y: 0 },
-    ]
+    ];
 
     // 進行状況に基づいて現在の位置を計算
-    let currentX, currentY
+    let currentX, currentY;
 
     if (progress < 1 / 3) {
       // セグメント1: 左上 → 右上
-      const segmentProgress = progress * 3
-      const easedProgress = 0.5 - 0.5 * Math.cos(segmentProgress * Math.PI)
-  
-      currentX = keyPoints[0].x + (keyPoints[1].x - keyPoints[0].x) * easedProgress
-      currentY = keyPoints[0].y + (keyPoints[1].y - keyPoints[0].y) * easedProgress
+      const segmentProgress = progress * 3;
+      const easedProgress = 0.5 - 0.5 * Math.cos(segmentProgress * Math.PI);
+      currentX = keyPoints[0].x + (keyPoints[1].x - keyPoints[0].x) * easedProgress;
+      currentY = keyPoints[0].y + (keyPoints[1].y - keyPoints[0].y) * easedProgress;
     } else if (progress < 2 / 3) {
       // セグメント2: 右上 → 左下
-      const segmentProgress = (progress - 1 / 3) * 3
-      const easedProgress = 0.5 - 0.5 * Math.cos(segmentProgress * Math.PI)
-  
-      currentX = keyPoints[1].x + (keyPoints[2].x - keyPoints[1].x) * easedProgress
-      currentY = keyPoints[1].y + (keyPoints[2].y - keyPoints[1].y) * easedProgress
+      const segmentProgress = (progress - 1 / 3) * 3;
+      const easedProgress = 0.5 - 0.5 * Math.cos(segmentProgress * Math.PI);
+      currentX = keyPoints[1].x + (keyPoints[2].x - keyPoints[1].x) * easedProgress;
+      currentY = keyPoints[1].y + (keyPoints[2].y - keyPoints[1].y) * easedProgress;
     } else {
       // セグメント3: 左下 → 中心
-      const segmentProgress = (progress - 2 / 3) * 3
-      const easedProgress = 0.5 - 0.5 * Math.cos(segmentProgress * Math.PI)
-  
-      currentX = keyPoints[2].x + (keyPoints[3].x - keyPoints[2].x) * easedProgress
-      currentY = keyPoints[2].y + (keyPoints[3].y - keyPoints[2].y) * easedProgress
+      const segmentProgress = (progress - 2 / 3) * 3;
+      const easedProgress = 0.5 - 0.5 * Math.cos(segmentProgress * Math.PI);
+      currentX = keyPoints[2].x + (keyPoints[3].x - keyPoints[2].x) * easedProgress;
+      currentY = keyPoints[2].y + (keyPoints[3].y - keyPoints[2].y) * easedProgress;
     }
 
     // 位置を更新
     setOffset({
       x: currentX,
       y: currentY,
-    })
+    });
 
     if (progress >= 1) {
       // アニメーション終了
-      setTargeting(false)
-      return
+      setTargeting(false);
+      return;
     }
 
-    animationRef.current = requestAnimationFrame(animatePathMovement)
-  }, [targeting])
+    animationRef.current = requestAnimationFrame(animatePathMovement);
+  }, [targeting]);
 
   // targetingがtrueになったときにパスアニメーションを開始する
   useEffect(() => {
     if (targeting) {
-      startTimeRef.current = Date.now()
+      startTimeRef.current = Date.now();
       // 初期位置を左斜め上に設定
-      setOffset({ x: -80, y: -60})
-      animationRef.current = requestAnimationFrame(animatePathMovement)
+      setOffset({ x: -80, y: -60 });
+      animationRef.current = requestAnimationFrame(animatePathMovement);
     }
 
     return () => {
       if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current)
+        cancelAnimationFrame(animationRef.current);
       }
-    }
-  }, [targeting, animatePathMovement])
+    };
+  }, [targeting, animatePathMovement]);
 
   // スキャンとターゲティングのサイクル
   useEffect(() => {
     // スキャンアニメーションを定期的に開始
     const scanInterval = setInterval(() => {
       // まずターゲティング（特定パスの動き）を開始
-      setTargeting(true)
+      setTargeting(true);
 
       // 2秒後にスキャンを開始
       setTimeout(() => {
-        setScanning(true)
-        setTimeout(() => setScanning(false), 3000)
-      }, 2000)
-    }, 5000)
+        setScanning(true);
+        setTimeout(() => setScanning(false), 3000);
+      }, 2000);
+    }, 5000);
 
     return () => {
-      clearInterval(scanInterval)
-    }
-  }, [])
+      clearInterval(scanInterval);
+    };
+  }, []);
 
   return (
     <Html position={position} rotation={rotation} transform distanceFactor={2} occlude={false}>
-      <div className="relative pointer-events-none">
+      <div className='relative pointer-events-none'>
         <div
-          className="relative scale-50 transform-gpu"
+          className='relative scale-50 transform-gpu'
           style={{
             transform: `scale(0.5) translate(${offset.x}px, ${offset.y}px)`,
-            transition: targeting ? "none" : "transform 0.5s ease-out",
+            transition: targeting ? 'none' : 'transform 0.5s ease-out',
           }}
         >
           {/* メインの円 */}
@@ -174,11 +171,11 @@ export default function RotatingArcs({
           <div className={`${styles.scanEffect} ${scanning ? styles.scanning : ''}`}></div>
 
           {/* ターゲット状態表示 */}
-          <div className="absolute top-[-30px] left-1/2 transform -translate-x-1/2 text-xs font-mono text-green-500">
-            {targeting ? "TARGETING..." : scanning ? "TARGET LOCKED" : "STANDBY"}
+          <div className='absolute top-[-30px] left-1/2 transform -translate-x-1/2 text-xs font-mono text-green-500'>
+            {targeting ? 'TARGETING...' : scanning ? 'TARGET LOCKED' : 'STANDBY'}
           </div>
         </div>
       </div>
     </Html>
-  )
+  );
 }
