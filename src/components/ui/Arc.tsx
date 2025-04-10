@@ -19,11 +19,12 @@ export default function RotatingArcs({
     if (!targeting) return
 
     const elapsedTime = Date.now() - startTimeRef.current
-    const totalDuration = 3000 
+    const totalDuration = 2000 
     const progress = Math.min(elapsedTime / totalDuration, 1)
 
     // 3つのキーポイントを定義
     const keyPoints = [
+      { x: -80, y: -60},
       { x: 100, y: -80 }, // 右斜め上（開始位置）
       { x: -80, y: 60 }, // 左斜め下（中間位置）
       { x: 0, y: 0 }, // 中心（終了位置）
@@ -32,22 +33,27 @@ export default function RotatingArcs({
     // 進行状況に基づいて現在の位置を計算
     let currentX, currentY
 
-    if (progress < 0.5) {
-      // 最初の半分: 右上から左下へ
-      const segmentProgress = progress * 2 // 0-0.5 を 0-1 にスケール
-      // イージング関数を適用（加速してから減速）
+    if (progress < 1 / 3) {
+      // セグメント1: 左上 → 右上
+      const segmentProgress = progress * 3
       const easedProgress = 0.5 - 0.5 * Math.cos(segmentProgress * Math.PI)
-
+  
       currentX = keyPoints[0].x + (keyPoints[1].x - keyPoints[0].x) * easedProgress
       currentY = keyPoints[0].y + (keyPoints[1].y - keyPoints[0].y) * easedProgress
-    } else {
-      // 後半: 左下から中心へ
-      const segmentProgress = (progress - 0.5) * 2 // 0.5-1 を 0-1 にスケール
-      // イージング関数を適用（加速してから減速）
+    } else if (progress < 2 / 3) {
+      // セグメント2: 右上 → 左下
+      const segmentProgress = (progress - 1 / 3) * 3
       const easedProgress = 0.5 - 0.5 * Math.cos(segmentProgress * Math.PI)
-
+  
       currentX = keyPoints[1].x + (keyPoints[2].x - keyPoints[1].x) * easedProgress
       currentY = keyPoints[1].y + (keyPoints[2].y - keyPoints[1].y) * easedProgress
+    } else {
+      // セグメント3: 左下 → 中心
+      const segmentProgress = (progress - 2 / 3) * 3
+      const easedProgress = 0.5 - 0.5 * Math.cos(segmentProgress * Math.PI)
+  
+      currentX = keyPoints[2].x + (keyPoints[3].x - keyPoints[2].x) * easedProgress
+      currentY = keyPoints[2].y + (keyPoints[3].y - keyPoints[2].y) * easedProgress
     }
 
     // 位置を更新
@@ -65,11 +71,12 @@ export default function RotatingArcs({
     animationRef.current = requestAnimationFrame(animatePathMovement)
   }, [targeting])
 
+  // targetingがtrueになったときにパスアニメーションを開始する
   useEffect(() => {
     if (targeting) {
       startTimeRef.current = Date.now()
       // 初期位置を右斜め上に設定
-      setOffset({ x: 100, y: -80 })
+      setOffset({ x: -80, y: -60})
       animationRef.current = requestAnimationFrame(animatePathMovement)
     }
 
@@ -92,7 +99,7 @@ export default function RotatingArcs({
         setScanning(true)
         setTimeout(() => setScanning(false), 3000)
       }, 2000)
-    }, 8000)
+    }, 5000)
 
     return () => {
       clearInterval(scanInterval)
