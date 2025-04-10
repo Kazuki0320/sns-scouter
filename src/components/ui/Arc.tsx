@@ -55,9 +55,9 @@ export default function RotatingArcs({
     // 3つのキーポイントを定義
     const keyPoints = [
       { x: -80, y: -60},
-      { x: 100, y: -80 }, // 右斜め上（開始位置）
-      { x: -80, y: 60 }, // 左斜め下（中間位置）
-      { x: 0, y: 0 }, // 中心（終了位置）
+      { x: 100, y: -80 },
+      { x: -80, y: 60 },
+      { x: 0, y: 0 },
     ]
 
     // 進行状況に基づいて現在の位置を計算
@@ -105,7 +105,7 @@ export default function RotatingArcs({
   useEffect(() => {
     if (targeting) {
       startTimeRef.current = Date.now()
-      // 初期位置を右斜め上に設定
+      // 初期位置を左斜め上に設定
       setOffset({ x: -80, y: -60})
       animationRef.current = requestAnimationFrame(animatePathMovement)
     }
