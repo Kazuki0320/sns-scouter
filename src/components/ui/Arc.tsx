@@ -96,8 +96,6 @@ export default function RotatingArcs({
       { x: 0, y: 0 },
     ];
 
-    // 進行状況に基づいて現在の位置を計算
-    let currentX, currentY;
 
     // 進行状況に基づいて現在の位置を計算
     if (progress < 1 / 3) {
