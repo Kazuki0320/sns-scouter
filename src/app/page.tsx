@@ -3,6 +3,7 @@
 import Form from '@/components/ui/Form';
 import { useRouter } from 'next/navigation';
 import { getBattlePower } from '@/app/calc/ScouterCalculator';
+import GlitchText from '@/components/ui/GlitchText';
 
 export default function RootLayout() {
   const router = useRouter();
@@ -13,7 +14,12 @@ export default function RootLayout() {
   };
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-4">
-      <h1 className="text-3xl font-bold mb-6 text-blue-500">SNSスカウター</h1>
+      {/* Always active */}
+      <div className="mb-12">
+        <GlitchText speed={1} enableShadows={true} enableOnHover={false} className="text-center">
+          SNSスカウター
+        </GlitchText>
+      </div>
       <Form onSubmit={handleSubmit} />
     </div>
   );
