@@ -105,7 +105,7 @@ export default function RotatingArcs({
 
 
     // 進行状況に基づいて現在の位置を計算
-    if (progress < 1 / 3) {
+    if (progress < stage.FIRST) {
       // セグメント移動パターン: 左上 → 右上
       const { currentX: x, currentY: y } = segmentMovementTopleftToTopright(
         progress,
@@ -113,7 +113,7 @@ export default function RotatingArcs({
       );
 
       setOffset({ x: x, y: y });
-    } else if (progress < 2 / 3) {
+    } else if (progress < stage.SECOND) {
       // セグメント移動パターン: 右上 → 左下
       const { currentX: x, currentY: y } = segmentMovementTopRightToBottomLeft(
         progress - 1 / 3,
