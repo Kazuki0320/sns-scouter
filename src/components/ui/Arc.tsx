@@ -34,6 +34,42 @@ import { useEffect, useState, useRef, useCallback } from 'react';
 import { Html } from '@react-three/drei';
 import styles from '@/components/ui/arc.module.css';
 
+const segmentMovement = (
+  progress: number,
+  startPoint: number,
+  endPoint: number,
+  keyPoints: {
+    x: number;
+    y: number;
+  }[]
+) => {
+  const segmentProgress = progress * 3;
+  const easedProgress = 0.5 - 0.5 * Math.cos(segmentProgress * Math.PI);
+  const currentX =
+    keyPoints[startPoint].x +
+    (keyPoints[endPoint].x - keyPoints[startPoint].x) * easedProgress;
+  const currentY =
+    keyPoints[startPoint].y +
+    (keyPoints[endPoint].y - keyPoints[startPoint].y) * easedProgress;
+
+  return { currentX, currentY };
+};
+
+const segmentMovementTopleftToTopright = (
+  progress: number,
+  keyPoints: { x: number; y: number }[]
+) => segmentMovement(progress, 0, 1, keyPoints);
+
+const segmentMovementTopRightToBottomLeft = (
+  progress: number,
+  keyPoints: { x: number; y: number }[]
+) => segmentMovement(progress, 1, 2, keyPoints);
+
+const segmentMovementBottomLeftToCenter = (
+  progress: number,
+  keyPoints: { x: number; y: number }[]
+) => segmentMovement(progress, 2, 3, keyPoints);
+
 export default function RotatingArcs({
   position = [0, 0, 0] as [number, number, number],
   rotation = [0, 0, 0] as [number, number, number],
