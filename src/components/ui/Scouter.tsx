@@ -62,7 +62,7 @@ import { Suspense, useState, useEffect, useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Html, useGLTF } from '@react-three/drei';
 import * as THREE from 'three';
-import RotatingArcs from './Arc';
+import RotatingArcs from './RotatingArcs';
 
 // HTMLベースのデジタルUI表示コンポーネント
 function RandomNumberHTML({

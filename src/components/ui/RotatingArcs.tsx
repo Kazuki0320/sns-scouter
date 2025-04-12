@@ -32,7 +32,7 @@
 
 import { useEffect, useState, useRef, useCallback } from 'react';
 import { Html } from '@react-three/drei';
-import styles from '@/components/ui/arc.module.css';
+import styles from '@/components/ui/rotatingArcs.module.css';
 
 const segmentMovement = (
   progress: number,
@@ -74,7 +74,7 @@ export default function RotatingArcs({
   position = [0, 0, 0] as [number, number, number],
   rotation = [0, 0, 0] as [number, number, number],
 }) {
-  const [scanning, setScanning] = useState(false);
+  const [scanning, setSegmentMove] = useState(false);
   const [targeting, setTargeting] = useState(false);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const animationRef = useRef<number | null>(null);
@@ -159,19 +159,19 @@ export default function RotatingArcs({
   // スキャンとターゲティングのサイクル
   useEffect(() => {
     // スキャンアニメーションを定期的に開始
-    const scanInterval = setInterval(() => {
+    const segmentMoveInterval = setInterval(() => {
       // まずターゲティング（特定パスの動き）を開始
       setTargeting(true);
 
       // 2秒後にスキャンを開始
       setTimeout(() => {
-        setScanning(true);
-        setTimeout(() => setScanning(false), 3000);
+        setSegmentMove(true);
+        setTimeout(() => setSegmentMove(false), 3000);
       }, 2000);
     }, 5000);
 
     return () => {
-      clearInterval(scanInterval);
+      clearInterval(segmentMoveInterval);
     };
   }, []);
 
