@@ -99,31 +99,32 @@ export default function RotatingArcs({
     // 進行状況に基づいて現在の位置を計算
     let currentX, currentY;
 
+    // 進行状況に基づいて現在の位置を計算
     if (progress < 1 / 3) {
-      // セグメント1: 左上 → 右上
-      const segmentProgress = progress * 3;
-      const easedProgress = 0.5 - 0.5 * Math.cos(segmentProgress * Math.PI);
-      currentX = keyPoints[0].x + (keyPoints[1].x - keyPoints[0].x) * easedProgress;
-      currentY = keyPoints[0].y + (keyPoints[1].y - keyPoints[0].y) * easedProgress;
-    } else if (progress < 2 / 3) {
-      // セグメント2: 右上 → 左下
-      const segmentProgress = (progress - 1 / 3) * 3;
-      const easedProgress = 0.5 - 0.5 * Math.cos(segmentProgress * Math.PI);
-      currentX = keyPoints[1].x + (keyPoints[2].x - keyPoints[1].x) * easedProgress;
-      currentY = keyPoints[1].y + (keyPoints[2].y - keyPoints[1].y) * easedProgress;
-    } else {
-      // セグメント3: 左下 → 中心
-      const segmentProgress = (progress - 2 / 3) * 3;
-      const easedProgress = 0.5 - 0.5 * Math.cos(segmentProgress * Math.PI);
-      currentX = keyPoints[2].x + (keyPoints[3].x - keyPoints[2].x) * easedProgress;
-      currentY = keyPoints[2].y + (keyPoints[3].y - keyPoints[2].y) * easedProgress;
-    }
+      // セグメント移動パターン: 左上 → 右上
+      const { currentX: x, currentY: y } = segmentMovementTopleftToTopright(
+        progress,
+        keyPoints
+      );
 
-    // 位置を更新
-    setOffset({
-      x: currentX,
-      y: currentY,
-    });
+      setOffset({ x: x, y: y });
+    } else if (progress < 2 / 3) {
+      // セグメント移動パターン: 右上 → 左下
+      const { currentX: x, currentY: y } = segmentMovementTopRightToBottomLeft(
+        progress - 1 / 3,
+        keyPoints
+      );
+
+      setOffset({ x: x, y: y });
+    } else {
+      // セグメント移動パターン: 左下 → 中心
+      const { currentX: x, currentY: y } = segmentMovementBottomLeftToCenter(
+        progress - 2 / 3,
+        keyPoints
+      );
+
+      setOffset({ x: x, y: y });
+    }
 
     if (progress >= 1) {
       // アニメーション終了
