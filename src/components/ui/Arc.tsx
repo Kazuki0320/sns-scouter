@@ -206,8 +206,8 @@ export default function RotatingArcs({
           <div className={`${styles.scanEffect} ${scanning ? styles.scanning : ''}`}></div>
 
           {/* ターゲット状態表示 */}
-          <div className='absolute top-[-30px] left-1/2 transform -translate-x-1/2 text-xs font-mono text-green-500'>
-            {targeting ? 'TARGETING...' : scanning ? 'TARGET LOCKED' : 'STANDBY'}
+          <div className='absolute top-[-30px] left-1/2 transform -translate-x-1/2 text-xl font-mono text-green-500'>
+            {targeting ? 'TARGETING...' : scanning ? 'LOCKED' : 'STANDBY'}
           </div>
         </div>
       </div>
