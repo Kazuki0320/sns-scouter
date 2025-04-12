@@ -116,7 +116,7 @@ export default function RotatingArcs({
     } else if (progress < stage.SECOND) {
       // セグメント移動パターン: 右上 → 左下
       const { currentX: x, currentY: y } = segmentMovementTopRightToBottomLeft(
-        progress - 1 / 3,
+        progress - stage.FIRST,
         keyPoints
       );
 
@@ -124,7 +124,7 @@ export default function RotatingArcs({
     } else {
       // セグメント移動パターン: 左下 → 中心
       const { currentX: x, currentY: y } = segmentMovementBottomLeftToCenter(
-        progress - 2 / 3,
+        progress - stage.SECOND,
         keyPoints
       );
 
