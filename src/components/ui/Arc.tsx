@@ -88,12 +88,19 @@ export default function RotatingArcs({
     const totalDuration = 2000;
     const progress = Math.min(elapsedTime / totalDuration, 1);
 
+    // アニメーションの各段階を定数として定義
+    const stage = {
+      FIRST: 1 / 3, // 左上 → 右上
+      SECOND: 2 / 3, // 右上 → 左下
+      THIRD: 1, // 左下 → 中心
+    };
+
     // 3つのキーポイントを定義
     const keyPoints = [
-      { x: -80, y: -60 },
-      { x: 100, y: -80 },
-      { x: -80, y: 60 },
-      { x: 0, y: 0 },
+      { x: -80, y: -60 }, // 左上
+      { x: 100, y: -80 }, // 右上
+      { x: -80, y: 60 }, // 左下
+      { x: 0, y: 0 }, // 中心
     ];
 
 
