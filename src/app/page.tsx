@@ -12,9 +12,16 @@ export default function RootLayout() {
     router.push(`/result?score=${battlePower}`);
   };
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-4">
-      <h1 className="text-3xl font-bold mb-6 text-blue-500">SNSスカウター</h1>
-      <Form onSubmit={handleSubmit} />
+    // <div className="flex flex-col items-center justify-center min-h-screen p-4">
+    //   <Form onSubmit={handleSubmit} />
+    // </div>
+    <div className="min-h-screen flex flex-col items-center justify-center p-4 from-gray-900 to-black ralative overflow-hidden">
+      {/*背景エフェクト */}
+      <div className="absolute inset-0 z-0">
+        <div className="grid-lines"></div>
+        <div className="scanline"></div>
+        <div className="particles"></div>
+      </div>
     </div>
   );
 }
