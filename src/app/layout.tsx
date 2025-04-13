@@ -16,10 +16,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja">
+    <html lang="ja" suppressHydrationWarning>
       <head>
-        <link rel="preload" href="/fonts/Saiyan-Sans.tff"
-        as="font" type="font/tff" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/Saiyan-Sans.ttf"
+        as="font" type="font/ttf" crossOrigin="anonymous" />
       </head>
       <body className={inter.className}>
         <ThemeProvider

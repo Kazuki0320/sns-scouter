@@ -12,8 +12,7 @@ export default function RootLayout() {
     router.push(`/result?score=${battlePower}`);
   };
   return (
-
-    <div className="min-h-screen flex flex-col items-center justify-center p-4 from-gray-900 to-black ralative overflow-hidden">
+    <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-gradient-to-b from-gray-900 to-black relative overflow-hidden">
       {/*背景エフェクト */}
       <div className="absolute inset-0 z-0">
         <div className="grid-lines"></div>
