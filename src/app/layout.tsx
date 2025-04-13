@@ -3,7 +3,7 @@ import '@/app/globals.css';
 import { Inter } from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
 
-const inter = Inter({ subsets: ['latin-ext']})
+const inter = Inter({ subsets: ['latin-ext']});
 
 export const metadata ={
   title: 'SNSスカウター',
