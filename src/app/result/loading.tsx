@@ -1,6 +1,6 @@
 'use client';
 
-import { ScouterViewer } from '@/components/ui/Scouter';
+import { ScouterViewer } from '@/components/ui/ScouterViewer';
 
 export default function Loading() {
   return (

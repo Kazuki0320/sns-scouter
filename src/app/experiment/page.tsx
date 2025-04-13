@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { Button, createButtonProps } from '@/components/ui/Button';
-import { ScouterViewer } from '@/components/ui/Scouter';
+import { ScouterViewer } from '@/components/ui/ScouterViewer';
 import { ExperimentSpeechBubble } from '@/components/ui/ExperimentSpeechBubble';
 import { SpeechBubble } from '@/components/ui/SpeechBubble';
 
