@@ -28,20 +28,6 @@ body {
   z-index: -1;
 }
 
-/* スキャンライン */
-.scanline {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background: rgba(16, 185, 129, 0.5);
-  box-shadow: 0 0 15px 3px rgba(16, 185, 129, 0.7);
-  opacity: 0.7;
-  z-index: 1;
-  animation: scanline 3s linear infinite;
-}
-
 /* パーティクル背景 */
 .particles {
   position: absolute;
@@ -62,18 +48,6 @@ body {
   background-size: 15px 15px;
   background-repeat: repeat;
   animation: particles 20s linear infinite;
-}
-
-
-
-/* アニメーションキーフレーム */
-@keyframes scanline {
-  0% {
-    transform: translateY(-100%);
-  }
-  100% {
-    transform: translateY(100vh);
-  }
 }
 
 @keyframes particles {

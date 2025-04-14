@@ -28,7 +28,14 @@ export default function RootLayout({
         enableSystem
         disableTransitionOnChange
         >
-          {children}
+          {/*背景エフェクト */}
+          <div className="absolute inset-0 -z-20">
+            <div className="grid-lines"></div>
+            <div className="particles"></div>
+          </div>
+          <div className="relative -z-10">
+            {children}
+          </div>
         </ThemeProvider>
       </body>
     </html>
