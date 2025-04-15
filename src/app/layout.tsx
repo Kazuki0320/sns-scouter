@@ -2,12 +2,16 @@ import React from 'react';
 import '@/app/globals.css';
 import { Inter } from 'next/font/google';
 import { ThemeProvider } from 'next-themes';
+import type { Viewport } from 'next';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
   title: 'SNSスカウター',
   description: 'あなたのSNS戦闘力を測定しよう！',
+};
+
+export const viewport: Viewport = {
   themeColor: [
     { media: '(prefers-color-scheme: light)', color: 'black' },
     { media: '(prefers-color-scheme: dark)', color: 'black' },
