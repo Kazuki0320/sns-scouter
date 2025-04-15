@@ -14,7 +14,7 @@ export default function Home() {
   };
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-4 relative overflow-hidden">
-        <div className={styles.scanline}></div>
+      <div className={styles.scanline}></div>
       <Form onSubmit={handleSubmit} />
     </div>
   );

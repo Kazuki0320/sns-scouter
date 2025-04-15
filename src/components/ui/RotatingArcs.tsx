@@ -103,7 +103,6 @@ export default function RotatingArcs({
       { x: 0, y: 0 }, // 中心
     ];
 
-
     // 進行状況に基づいて現在の位置を計算
     if (progress < stage.FIRST) {
       // セグメント移動パターン: 左上 → 右上
@@ -176,10 +175,16 @@ export default function RotatingArcs({
   }, []);
 
   return (
-    <Html position={position} rotation={rotation} transform distanceFactor={2} occlude={false}>
-      <div className='relative pointer-events-none'>
+    <Html
+      position={position}
+      rotation={rotation}
+      transform
+      distanceFactor={2}
+      occlude={false}
+    >
+      <div className="relative pointer-events-none">
         <div
-          className='relative scale-50 transform-gpu'
+          className="relative scale-50 transform-gpu"
           style={{
             transform: `scale(0.5) translate(${offset.x}px, ${offset.y}px)`,
             transition: targeting ? 'none' : 'transform 0.5s ease-out',
@@ -203,17 +208,27 @@ export default function RotatingArcs({
           {/* ターゲティングレティクル */}
           <div className={styles.targetingReticle}>
             {/* 三角形マーカー - 円の外側に配置 */}
-            <div className={`${styles.triangleMarker} ${styles.topMarker}`}></div>
-            <div className={`${styles.triangleMarker} ${styles.rightMarker}`}></div>
-            <div className={`${styles.triangleMarker} ${styles.bottomMarker}`}></div>
-            <div className={`${styles.triangleMarker} ${styles.leftMarker}`}></div>
+            <div
+              className={`${styles.triangleMarker} ${styles.topMarker}`}
+            ></div>
+            <div
+              className={`${styles.triangleMarker} ${styles.rightMarker}`}
+            ></div>
+            <div
+              className={`${styles.triangleMarker} ${styles.bottomMarker}`}
+            ></div>
+            <div
+              className={`${styles.triangleMarker} ${styles.leftMarker}`}
+            ></div>
           </div>
 
           {/* スキャンエフェクト */}
-          <div className={`${styles.scanEffect} ${scanning ? styles.scanning : ''}`}></div>
+          <div
+            className={`${styles.scanEffect} ${scanning ? styles.scanning : ''}`}
+          ></div>
 
           {/* ターゲット状態表示 */}
-          <div className='absolute top-[-30px] left-1/2 transform -translate-x-1/2 text-xl font-mono text-green-500'>
+          <div className="absolute top-[-30px] left-1/2 transform -translate-x-1/2 text-xl font-mono text-green-500">
             {targeting ? 'TARGETING...' : scanning ? 'LOCKED' : 'STANDBY'}
           </div>
         </div>

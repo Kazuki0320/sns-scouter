@@ -1,4 +1,3 @@
-
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -34,7 +33,9 @@
   font-weight: bold;
   font-family: 'Orbitron', monospace;
   text-align: center;
-  text-shadow: 0 0 2px #0f0, 0 0 4px #0f0;
+  text-shadow:
+    0 0 2px #0f0,
+    0 0 4px #0f0;
   background-color: transparent;
   font-size: 2rem;
   /* 👇 ここでアニメーション追加 */
@@ -80,4 +81,3 @@
   animation: textFade 1.5s infinite; /* テキストを点滅させる */
   color: white;
 }
-
