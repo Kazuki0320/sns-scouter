@@ -12,18 +12,15 @@
 }
 
 /* ===== アニメーションコンテナ ===== */
-.titleContainer,
-.subtitleContainer {
+.animationContainer {
   @apply text-center mb-2 transition-all duration-1000;
 }
 
-.titleContainer.animated,
-.subtitleContainer.animated {
+.animationContainer.animated {
   @apply transform translate-y-0 opacity-100;
 }
 
-.titleContainer.unanimated,
-.subtitleContainer.unanimated {
+.animationContainer.unanimated {
   @apply transform -translate-y-10 opacity-0;
 }
 
@@ -41,7 +38,7 @@
   to { width: 100% }
 }
 
-@keyframes blink-caret {
+/* @keyframes blink-caret {
   from, to { border-color: transparent }
   50% { border-color: #10b981 }
-}
+} */

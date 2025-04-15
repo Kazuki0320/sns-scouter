@@ -33,16 +33,12 @@ export default function Home() {
     <div className={styles.mainContainer}>
       <div className={styles.scanline}></div>
       <div
-        className={`${styles.titleContainer} ${titleAnimated ? styles.animated : styles.unanimated}`}
+        className={`${styles.animationContainer} ${titleAnimated ? styles.animated : styles.unanimated}`}
       >
         <h1 className={styles.scouterText}>
           SNSスカウター
         </h1>
-      </div>
-      <div 
-        className={`${styles.subtitleContainer} ${subtitleAnimated ? styles.animated : styles.unanimated}`}
-      >
-        <p className={styles.typingEffect}>
+        <p className={`${styles.animationContainer} ${subtitleAnimated ? styles.animated : styles.unanimated} ${styles.typingEffect}`}>
           あなたの戦闘力を測定しよう！
         </p>
       </div>
