@@ -13,7 +13,7 @@ export default function Home() {
     router.push(`/result?score=${battlePower}`);
   };
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-4 relative overflow-hidden">
+    <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden p-4">
       <div className={styles.scanline}></div>
       <Form onSubmit={handleSubmit} />
     </div>

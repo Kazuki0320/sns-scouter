@@ -202,7 +202,7 @@ function ModelWithErrorHandling() {
 // メインビューアー
 export function ScouterViewer() {
   return (
-    <div className="w-full h-full relative">
+    <div className="relative size-full">
       <Canvas camera={{ position: [0, 0, 2], fov: 50 }} shadows>
         {/* 背景・ライティング */}
         <color attach="background" args={['#f5f5f5']} />

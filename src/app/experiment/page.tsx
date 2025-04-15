@@ -28,7 +28,7 @@ export default function Page() {
       <div className="mx-auto p-4">
         <h1 className="text-4xl font-bold">Hello, Tailwind CSS!</h1>
       </div>
-      <div className="w-full h-[400px]">
+      <div className="h-[400px] w-full">
         <ScouterViewer />
       </div>
     </>

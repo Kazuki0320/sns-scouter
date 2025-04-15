@@ -45,7 +45,7 @@ export default function Form({ onSubmit }: FormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-80">
+    <form onSubmit={handleSubmit} className="flex w-80 flex-col gap-4">
       <label htmlFor="follower" className="sr-only">
         フォロワー数
       </label>
@@ -55,16 +55,16 @@ export default function Form({ onSubmit }: FormProps) {
         placeholder="フォロワー数を入力してください"
         value={inputValue}
         onChange={handleChange}
-        className="p-2 border-gray-300 rounded-md text-black"
+        className="rounded-md border-gray-300 p-2 text-black"
       />
-      {error && <div className="text-red-500 text-sm">{error}</div>}
+      {error && <div className="text-sm text-red-500">{error}</div>}
       <button
         type="submit"
         disabled={isDisabled}
-        className={`py-2 px-4 rounded-md transition ${
+        className={`rounded-md px-4 py-2 transition ${
           isDisabled
-            ? 'bg-[#324E54] cursor-not-allowed'
-            : 'bg-blue-500 hover:bg-blue-600 text-white'
+            ? 'cursor-not-allowed bg-[#324E54]'
+            : 'bg-blue-500 text-white hover:bg-blue-600'
         }`}
       >
         はじめる

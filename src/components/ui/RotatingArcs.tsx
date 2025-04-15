@@ -182,7 +182,7 @@ export default function RotatingArcs({
       distanceFactor={2}
       occlude={false}
     >
-      <div className="relative pointer-events-none">
+      <div className="pointer-events-none relative">
         <div
           className="relative scale-50 transform-gpu"
           style={{
@@ -228,7 +228,7 @@ export default function RotatingArcs({
           ></div>
 
           {/* ターゲット状態表示 */}
-          <div className="absolute top-[-30px] left-1/2 transform -translate-x-1/2 text-xl font-mono text-green-500">
+          <div className="absolute left-1/2 top-[-30px] -translate-x-1/2 transform font-mono text-xl text-green-500">
             {targeting ? 'TARGETING...' : scanning ? 'LOCKED' : 'STANDBY'}
           </div>
         </div>
