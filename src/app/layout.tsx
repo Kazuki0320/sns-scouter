@@ -34,7 +34,7 @@ export default function RootLayout({
         >
           {/*背景エフェクト */}
           <div className="absolute inset-0 -z-20">
-            <div className="grid-lines"></div>
+            <div className="gridLines"></div>
             <div className="particles"></div>
           </div>
           <div className="relative -z-10">

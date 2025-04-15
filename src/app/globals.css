@@ -23,7 +23,7 @@ body {
 }
 
 /* グリッドライン背景 */
-.grid-lines {
+.gridLines {
   position: absolute;
   top: 0;
   left: 0;
