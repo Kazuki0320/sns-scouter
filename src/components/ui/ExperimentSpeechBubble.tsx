@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '@/components/ui/experimentSpeechBubble.module.css';
+import styles from '@/styles/ui/experimentSpeechBubble.module.css';
 
 export function ExperimentSpeechBubble({ direction = 'down' }) {
   return (
