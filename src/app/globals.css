@@ -15,6 +15,13 @@ body {
   overflow-x: hidden;
 }
 
+:root {
+  --grid-color: rgba(16, 185, 129, 0.1);
+  --grid-size: 50px;
+  --background-size: 15px;
+  --particle-animation-duration: 20s;
+}
+
 /* グリッドライン背景 */
 .grid-lines {
   position: absolute;
@@ -22,9 +29,9 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: linear-gradient(to right, rgba(16, 185, 129, 0.1) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(16, 185, 129, 0.1) 1px, transparent 1px);
-  background-size: 50px 50px;
+  background-image: linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+  background-size: var(--grid-size) var(--grid-size);
   z-index: -1;
 }
 
@@ -45,9 +52,9 @@ body {
   width: 100%;
   height: 100%;
   background-image: radial-gradient(circle at center, rgba(16, 185, 129, 0.3) 0%, transparent 70%);
-  background-size: 15px 15px;
+  background-size: var(--background-size) var(--background-size);
   background-repeat: repeat;
-  animation: particles 20s linear infinite;
+  animation: particles var(--particle-animation-duration) linear infinite;
 }
 
 @keyframes particles {
