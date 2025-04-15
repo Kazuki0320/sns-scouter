@@ -3,19 +3,50 @@
 import Form from '@/components/ui/Form';
 import { useRouter } from 'next/navigation';
 import { getBattlePower } from '@/app/calc/ScouterCalculator';
-import styles from '@/components/ui/scanline.module.css';
+import styles from '@/styles/typography/scouterText.module.css';
+import { useState, useEffect } from 'react';
 
 export default function Home() {
   const router = useRouter();
+  const [titleAnimated, setTitleAnimated] = useState(false);
+  const [subtitleAnimated, setSubtitleAnimated] = useState(false);
+  const [showForm, setShowForm] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() =>{
+      setTitleAnimated(true);
+      setTimeout(() => {
+        setSubtitleAnimated(true);
+        setTimeout(() => {
+          setShowForm(true);
+        }, 1500)
+      }, 1000)
+    }, 2000)
+    return () => clearTimeout(timer);
+  }, []);
 
   const handleSubmit = (value: number) => {
     const battlePower = getBattlePower(value);
     router.push(`/result?score=${battlePower}`);
   };
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-4 relative overflow-hidden">
-        <div className={styles.scanline}></div>
-      <Form onSubmit={handleSubmit} />
+    <div className={styles.mainContainer}>
+      <div className={styles.scanline}></div>
+      <div
+        className={`${styles.titleContainer} ${titleAnimated ? styles.animated : styles.unanimated}`}
+      >
+        <h1 className={styles.scouterText}>
+          SNSスカウター
+        </h1>
+      </div>
+      <div 
+        className={`${styles.subtitleContainer} ${subtitleAnimated ? styles.animated : styles.unanimated}`}
+      >
+        <p className={styles.typingEffect}>
+          あなたの戦闘力を測定しよう！
+        </p>
+      </div>
+      {showForm &&<Form onSubmit={handleSubmit}/>}
     </div>
   );
 }
