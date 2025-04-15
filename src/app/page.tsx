@@ -12,6 +12,7 @@ export default function Home() {
   const [subtitleAnimated, setSubtitleAnimated] = useState(false);
   const [showForm, setShowForm] = useState(false);
 
+  // タイトルアニメーション
   useEffect(() => {
     const timer = setTimeout(() =>{
       setTitleAnimated(true);
