@@ -7,7 +7,11 @@ const inter = Inter({ subsets: ['latin']});
 
 export const metadata ={
   title: 'SNSスカウター',
-  description: 'あなたの戦闘力を測定しよう！',
+  description: 'あなたのSNS戦闘力を測定しよう！',
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: 'black'},
+    { media: '(prefers-color-scheme: dark)', color: 'black'},
+  ],
 };
 
 export default function RootLayout({
