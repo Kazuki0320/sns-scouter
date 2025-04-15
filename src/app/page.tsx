@@ -19,9 +19,9 @@ export default function Home() {
         setSubtitleAnimated(true);
         setTimeout(() => {
           setShowForm(true);
-        }, 1500)
-      }, 1000)
-    }, 2000)
+        }, 1500);
+      }, 1000);
+    }, 2000);
     return () => clearTimeout(timer);
   }, []);
 
