@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { getBattlePower } from '@/app/calc/ScouterCalculator';
 import styles from '@/components/ui/scanline.module.css';
 
-export default function RootLayout() {
+export default function Home() {
   const router = useRouter();
 
   const handleSubmit = (value: number) => {
