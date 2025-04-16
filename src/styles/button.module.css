@@ -1,0 +1,31 @@
+.submitButton {
+  @apply w-full
+         bg-gradient-to-r
+         from-yellow-500
+         to-orange-500
+         text-black
+         font-bold
+         py-3 sm:py-4 md:py-5
+         text-base sm:text-lg md:text-xl
+         rounded-lg
+         transition-all
+         duration-300
+         transform
+         shadow-[0_0_15px_rgba(249,115,22,0.5)];
+}
+
+.submitButton:hover {
+  @apply to-orange-600 scale-105;
+}
+
+.submitButton:active {
+  @apply scale-95;
+}
+
+.submitButton:disabled {
+  @apply cursor-not-allowed opacity-85;
+}
+
+.submitButton:not(:disabled) {
+  @apply cursor-pointer;
+} 

@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import styles from '@/styles/button.module.css';
 
 type FormProps = {
   onSubmit: (value: number) => void;
@@ -58,16 +59,13 @@ export default function Form({ onSubmit }: FormProps) {
         className="p-2 border-gray-300 rounded-md text-black"
       />
       {error && <div className="text-red-500 text-sm">{error}</div>}
+      {/* 測定ボタン */}
       <button
         type="submit"
         disabled={isDisabled}
-        className={`py-2 px-4 rounded-md transition ${
-          isDisabled
-            ? 'bg-[#324E54] cursor-not-allowed'
-            : 'bg-blue-500 hover:bg-blue-600 text-white'
-        }`}
+        className={styles.submitButton}
       >
-        はじめる
+        戦闘力を計算する
       </button>
     </form>
   );
