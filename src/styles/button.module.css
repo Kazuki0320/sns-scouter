@@ -28,7 +28,7 @@
 }
 
 .button:disabled {
-  @apply cursor-not-allowed opacity-85;
+  @apply cursor-not-allowed opacity-60;
 }
 
 .button:not(:disabled) {
