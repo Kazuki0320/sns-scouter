@@ -3,7 +3,7 @@
 import Form from '@/components/ui/Form';
 import { useRouter } from 'next/navigation';
 import { getBattlePower } from '@/app/calc/ScouterCalculator';
-import styles from '@/styles/typography/scouterText.module.css';
+import styles from '@/styles/scouterText.module.css';
 import { useState, useEffect } from 'react';
 
 export default function Home() {
@@ -12,7 +12,7 @@ export default function Home() {
   const [subtitleAnimated, setSubtitleAnimated] = useState(false);
   const [showForm, setShowForm] = useState(false);
 
-  // タイトルアニメーション
+  // 数秒の待機時間後に表示されるタイトルアニメーション
   useEffect(() => {
     const timer = setTimeout(() =>{
       setTitleAnimated(true);

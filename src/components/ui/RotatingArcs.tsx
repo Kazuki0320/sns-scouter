@@ -32,7 +32,7 @@
 
 import { useEffect, useState, useRef, useCallback } from 'react';
 import { Html } from '@react-three/drei';
-import styles from '@/styles/animations/rotatingArcs.module.css';
+import styles from '@/styles/rotatingArcs.module.css';
 
 const segmentMovement = (
   progress: number,
