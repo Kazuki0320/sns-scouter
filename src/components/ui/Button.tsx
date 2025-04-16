@@ -34,5 +34,5 @@ export function createButtonProps(
   name: string,
   disabled?: boolean
 ): Button {
-  return { type, name, color, disabled };
+  return { type, name, disabled };
 }
