@@ -59,7 +59,6 @@ export default function Form({ onSubmit }: FormProps) {
         className="p-2 border-gray-300 rounded-md text-black"
       />
       {error && <div className="text-red-500 text-sm">{error}</div>}
-      {/* 測定ボタン */}
       <button
         type="submit"
         disabled={isDisabled}
