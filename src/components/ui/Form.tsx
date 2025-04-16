@@ -64,7 +64,6 @@ export default function Form({ onSubmit }: FormProps) {
         button={createButtonProps(
           'submit',
           '戦闘力を計算する',
-          '',
           isDisabled
         )}
       />
