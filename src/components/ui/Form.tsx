@@ -46,7 +46,7 @@ export default function Form({ onSubmit }: FormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4 w-80">
+    <form onSubmit={handleSubmit} className="flex w-80 flex-col gap-4">
       <label htmlFor="follower" className="sr-only">
         フォロワー数
       </label>
@@ -68,6 +68,7 @@ export default function Form({ onSubmit }: FormProps) {
           isDisabled
         )}
       />
+
     </form>
   );
 }

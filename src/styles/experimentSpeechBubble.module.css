@@ -17,24 +17,24 @@
   border-top: 15px solid white;
 }
 
-.arrow-down {
+.arrowDown {
   bottom: -15px;
   left: 30px;
 }
 
-.arrow-up {
+.arrowUp {
   top: -15px;
   left: 30px;
   transform: rotate(180deg); /* 上向きにするために回転 */
 }
 
-.arrow-left {
+.arrowLeft {
   left: -15px;
   bottom: 30px;
   transform: rotate(90deg); /* 左向きにするために回転 */
 }
 
-.arrow-right {
+.arrowRight {
   right: -15px;
   bottom: 30px;
   transform: rotate(-90deg); /* 右向きにするために回転 */
