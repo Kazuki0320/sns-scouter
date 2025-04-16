@@ -60,7 +60,6 @@ export default function Form({ onSubmit }: FormProps) {
         min="0"
       />
       {error && <div className="text-red-500 text-sm">{error}</div>}
-      {/* 測定ボタン */}
       <Button
         button={createButtonProps(
           'submit',
