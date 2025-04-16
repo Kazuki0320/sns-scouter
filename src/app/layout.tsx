@@ -41,7 +41,6 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {/*背景エフェクト */}
           <div className="absolute inset-0 -z-20">
             <div className="gridLines"></div>
             <div className="particles"></div>
