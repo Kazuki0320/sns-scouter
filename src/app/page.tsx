@@ -14,7 +14,7 @@ export default function Home() {
 
   // 数秒の待機時間後に表示されるタイトルアニメーション
   useEffect(() => {
-    const timer = setTimeout(() =>{
+    const timer = setTimeout(() => {
       setTitleAnimated(true);
       setTimeout(() => {
         setSubtitleAnimated(true);
@@ -36,14 +36,14 @@ export default function Home() {
       <div
         className={`${styles.animationContainer} ${titleAnimated ? styles.animated : styles.unanimated}`}
       >
-        <h1 className={styles.scouterText}>
-          SNSスカウター
-        </h1>
-        <p className={`${styles.animationContainer} ${subtitleAnimated ? styles.animated : styles.unanimated} ${styles.typingEffect}`}>
+        <h1 className={styles.scouterText}>SNSスカウター</h1>
+        <p
+          className={`${styles.animationContainer} ${subtitleAnimated ? styles.animated : styles.unanimated} ${styles.typingEffect}`}
+        >
           あなたの戦闘力を測定しよう！
         </p>
       </div>
-      {showForm &&<Form onSubmit={handleSubmit}/>}
+      {showForm && <Form onSubmit={handleSubmit} />}
     </div>
   );
 }

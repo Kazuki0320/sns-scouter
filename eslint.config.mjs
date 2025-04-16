@@ -14,6 +14,10 @@ const compat = new FlatCompat({
 const eslintConfig = [
   ...compat.extends('next/core-web-vitals', 'next/typescript'),
   {
+    files: ['**/*.{js,jsx,ts,tsx}'],
+    plugins: {
+      tailwindcss: (await import('eslint-plugin-tailwindcss')).default,
+    },
     rules: {
       '@typescript-eslint/naming-convention': [
         'error',
@@ -31,6 +35,11 @@ const eslintConfig = [
         'single',
         { avoidEscape: true, allowTemplateLiterals: true },
       ],
+      'tailwindcss/classnames-order': 'error',
+      'tailwindcss/enforces-negative-arbitrary-values': 'error',
+      'tailwindcss/enforces-shorthand': 'error',
+      'tailwindcss/no-contradicting-classname': 'error',
+      'tailwindcss/no-custom-classname': 'error',
     },
   },
 ];

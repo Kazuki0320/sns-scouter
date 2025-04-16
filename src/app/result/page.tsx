@@ -30,7 +30,7 @@ export default function Page() {
     <>
       <h2>結果</h2>
       {!error && <h3>{score}</h3>}
-      {error && <div className="text-red-500 text-sm">{error}</div>}
+      {error && <div className="text-sm text-red-500">{error}</div>}
       <ShareButton tweetText={String(score)} />
     </>
   );
