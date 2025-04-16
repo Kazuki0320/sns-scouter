@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import styles from '@/styles/button.module.css';
+import { Button, createButtonProps } from '@/components/ui/Button';
 
 type FormProps = {
   onSubmit: (value: number) => void;
@@ -56,16 +56,19 @@ export default function Form({ onSubmit }: FormProps) {
         placeholder="フォロワー数を入力してください"
         value={inputValue}
         onChange={handleChange}
-        className="p-2 border-gray-300 rounded-md text-black"
+        className="w-full px-4 py-3 rounded-lg bg-black/50 border border-green-500/50 focus:border-green-500 focus:ring-2 focus:ring-green-500/50 text-white"
+        min="0"
       />
       {error && <div className="text-red-500 text-sm">{error}</div>}
-      <button
-        type="submit"
-        disabled={isDisabled}
-        className={styles.submitButton}
-      >
-        戦闘力を計算する
-      </button>
+      {/* 測定ボタン */}
+      <Button
+        button={createButtonProps(
+          'submit',
+          '戦闘力を計算する',
+          '',
+          isDisabled
+        )}
+      />
     </form>
   );
 }
