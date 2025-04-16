@@ -56,10 +56,10 @@ export default function Form({ onSubmit }: FormProps) {
         placeholder="フォロワー数を入力してください"
         value={inputValue}
         onChange={handleChange}
-        className="w-full px-4 py-3 rounded-lg bg-black/50 border border-green-500/50 focus:border-green-500 focus:ring-2 focus:ring-green-500/50 text-white"
+        className="w-full rounded-lg border border-green-500/50 bg-black/50 px-4 py-3 text-white focus:border-green-500 focus:ring-2 focus:ring-green-500/50"
         min="0"
       />
-      {error && <div className="text-red-500 text-sm">{error}</div>}
+      {error && <div className="text-sm text-red-500">{error}</div>}
       <Button
         button={createButtonProps(
           'submit',
