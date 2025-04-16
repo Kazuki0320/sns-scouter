@@ -26,7 +26,7 @@ export function ShareButton(props: ShareButtonProps): JSX.Element {
     }
   }
 
-  const buttonProps = createButtonProps('button', 'Xでシェアする', 'lightblue');
+  const buttonProps = createButtonProps('button', 'Xでシェアする');
 
   return <Button button={buttonProps} onClick={handleShare} />;
 }
