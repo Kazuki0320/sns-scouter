@@ -4,7 +4,6 @@ import styles from '@/styles/button.module.css';
 type Button = {
   type: 'submit' | 'reset' | 'button' | undefined;
   name: string;
-  color: string;
   disabled?: boolean;
 };
 
