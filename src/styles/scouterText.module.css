@@ -1,0 +1,44 @@
+/* ===== レイアウト ===== */
+.mainContainer {
+  @apply min-h-screen flex flex-col items-center justify-center p-4 relative overflow-hidden;
+}
+
+/* ===== タイトル関連 ===== */
+.scouterText {
+  @apply text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600 mb-2;
+  font-family: "Saiyan", sans-serif;
+  text-shadow: 0 0 10px rgba(16, 185, 129, 0.7);
+  letter-spacing: 2px;
+}
+
+/* ===== アニメーションコンテナ ===== */
+.animationContainer {
+  @apply text-center mb-2 transition-all duration-1000;
+}
+
+.animationContainer.animated {
+  @apply transform translate-y-0 opacity-100;
+}
+
+.animationContainer.unanimated {
+  @apply transform -translate-y-10 opacity-0;
+}
+
+/* ===== タイピングエフェクト ===== */
+.typingEffect {
+  @apply text-green-300 text-xl mb-4;
+  overflow: hidden;
+  border-right: 2px solid #10b981;
+  white-space: nowrap;
+  animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #10b981 }
+}
