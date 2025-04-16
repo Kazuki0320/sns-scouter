@@ -1,0 +1,32 @@
+.button {
+  @apply w-full
+         transform
+         rounded-lg
+         bg-gradient-to-r
+         from-yellow-500
+         to-orange-500
+         px-4
+         py-3
+         sm:py-4
+         md:py-5
+         text-base
+         sm:text-lg
+         md:text-xl
+         font-bold
+         text-black
+         shadow-[0_0_15px_rgba(249,115,22,0.5)]
+         transition-all
+         duration-300;
+}
+
+.button:hover {
+  @apply to-orange-600 scale-105;
+}
+
+.button:active:not(:disabled) {
+  @apply scale-95;
+}
+
+.button:disabled {
+  @apply opacity-60;
+}

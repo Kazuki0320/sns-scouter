@@ -1,9 +1,10 @@
 import React, { JSX } from 'react';
+import styles from '@/styles/button.module.css';
 
 type Button = {
   type: 'submit' | 'reset' | 'button' | undefined;
   name: string;
-  color: string;
+  disabled?: boolean;
 };
 
 type ButtonProps = {
@@ -18,7 +19,8 @@ export function Button(props: ButtonProps): JSX.Element {
     <>
       <button
         type={button.type}
-        style={{ backgroundColor: button.color }}
+        className={styles.button}
+        disabled={button.disabled}
         onClick={onClick}
       >
         {button.name}
@@ -30,7 +32,7 @@ export function Button(props: ButtonProps): JSX.Element {
 export function createButtonProps(
   type: 'submit' | 'reset' | 'button' | undefined,
   name: string,
-  color: string
+  disabled?: boolean
 ): Button {
-  return { type, name, color };
+  return { type, name, disabled };
 }
