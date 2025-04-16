@@ -22,7 +22,7 @@ export default function Home() {
           setShowForm(true);
         }, 1500);
       }, 1000);
-    }, 2000);
+    }, 1300);
     return () => clearTimeout(timer);
   }, []);
 
