@@ -32,26 +32,29 @@ export default function Home() {
     router.push(`/result?score=${battlePower}`);
   };
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
+    <div className="flex h-screen flex-col items-center justify-center">
       <div className={styles.mainContainer}>
         <div className={styles.scanline}></div>
         <div
           className={`${styles.animationContainer} ${titleAnimated ? styles.animated : styles.unanimated}`}
         >
-            <h1 className={styles.scouterText}>SNSスカウター</h1>
-            <p
-              className={`${styles.animationContainer} ${subtitleAnimated ? styles.animated : styles.unanimated} ${styles.typingEffect}`}
-            >
-              あなたの戦闘力を測定しよう！
-            </p>
-          </div>
-        {showForm && 
-        <div className={`max-w-md w-full bg-black bg-opacity-70 p-6 rounded-xl border-2 ${hasError ? "border-red-500" : "border-green-500"} shadow-[0_0_20px_rgba(16,185,129,0.5)] fade-in`}>
-            <Form onSubmit={(handleSubmit)} 
-            onError={(error: boolean) => setHasError(error)}
-            />
+          <h1 className={styles.scouterText}>SNSスカウター</h1>
+          <p
+            className={`${styles.animationContainer} ${subtitleAnimated ? styles.animated : styles.unanimated} ${styles.typingEffect}`}
+          >
+            あなたの戦闘力を測定しよう！
+          </p>
         </div>
-        }
+        {showForm && (
+          <div
+            className={`flex w-full max-w-md flex-col items-center justify-center rounded-xl border-2 bg-black bg-opacity-70 p-6 shadow-[0_0_20px_rgba(16,185,129,0.5)] ${hasError ? 'border-red-500' : 'border-green-500'}`}
+          >
+            <Form
+              onSubmit={handleSubmit}
+              onError={(error: boolean) => setHasError(error)}
+            />
+          </div>
+        )}
       </div>
     </div>
   );

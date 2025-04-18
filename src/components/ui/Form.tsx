@@ -52,7 +52,10 @@ export default function Form({ onSubmit, onError }: FormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex w-80 flex-col gap-4">
+    <form
+      onSubmit={handleSubmit}
+      className="flex w-80 flex-col items-center gap-4"
+    >
       <label htmlFor="follower" className="sr-only">
         フォロワー数
       </label>
@@ -65,7 +68,9 @@ export default function Form({ onSubmit, onError }: FormProps) {
         className="w-full rounded-lg border border-green-500/50 bg-black/50 px-4 py-3 text-white focus:border-green-500 focus:ring-2 focus:ring-green-500/50"
         min="0"
       />
-      {error && <div className="text-sm text-red-500">{error}</div>}
+      {error && (
+        <div className="w-full text-center text-sm text-red-500">{error}</div>
+      )}
       <Button
         button={createButtonProps('submit', '戦闘力を計算する', isDisabled)}
       />
