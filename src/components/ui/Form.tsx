@@ -1,16 +1,22 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Button, createButtonProps } from '@/components/ui/Button';
 
 type FormProps = {
   onSubmit: (value: number) => void;
+  onError: (hasError: boolean) => void;
 };
 
-export default function Form({ onSubmit }: FormProps) {
+export default function Form({ onSubmit, onError }: FormProps) {
   const [inputValue, setInputValue] = useState('');
   const [error, setError] = useState('');
   const isDisabled = inputValue === '';
+
+  // エラー状態が変更された時に親コンポーネントに通知
+  useEffect(() => {
+    onError(error !== '');
+  }, [error, onError]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
@@ -61,11 +67,7 @@ export default function Form({ onSubmit }: FormProps) {
       />
       {error && <div className="text-sm text-red-500">{error}</div>}
       <Button
-        button={createButtonProps(
-          'submit',
-          '戦闘力を計算する',
-          isDisabled
-        )}
+        button={createButtonProps('submit', '戦闘力を計算する', isDisabled)}
       />
     </form>
   );

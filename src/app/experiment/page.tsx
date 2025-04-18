@@ -6,7 +6,6 @@ import { ExperimentSpeechBubble } from '@/components/ui/ExperimentSpeechBubble';
 import { SpeechBubble } from '@/components/ui/SpeechBubble';
 
 export default function Page() {
-
   return (
     <>
       <h2>Experiment Page</h2>
