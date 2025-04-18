@@ -45,13 +45,13 @@ export default function Home() {
               あなたの戦闘力を測定しよう！
             </p>
           </div>
+        {showForm && 
         <div className={`max-w-md w-full bg-black bg-opacity-70 p-6 rounded-xl border-2 ${hasError ? "border-red-500" : "border-green-500"} shadow-[0_0_20px_rgba(16,185,129,0.5)] fade-in`}>
-          {showForm && 
             <Form onSubmit={(handleSubmit)} 
             onError={(error: boolean) => setHasError(error)}
             />
-          }
         </div>
+        }
       </div>
     </div>
   );
