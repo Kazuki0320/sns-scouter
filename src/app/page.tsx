@@ -11,6 +11,7 @@ export default function Home() {
   const [titleAnimated, setTitleAnimated] = useState(false);
   const [subtitleAnimated, setSubtitleAnimated] = useState(false);
   const [showForm, setShowForm] = useState(false);
+  const [hasError, setHasError] = useState(false);
 
   // 数秒の待機時間後に表示されるタイトルアニメーション
   useEffect(() => {
@@ -31,19 +32,30 @@ export default function Home() {
     router.push(`/result?score=${battlePower}`);
   };
   return (
-    <div className={styles.mainContainer}>
-      <div className={styles.scanline}></div>
-      <div
-        className={`${styles.animationContainer} ${titleAnimated ? styles.animated : styles.unanimated}`}
-      >
-        <h1 className={styles.scouterText}>SNSスカウター</h1>
-        <p
-          className={`${styles.animationContainer} ${subtitleAnimated ? styles.animated : styles.unanimated} ${styles.typingEffect}`}
+    <div className="flex h-screen flex-col items-center justify-center">
+      <div className={styles.mainContainer}>
+        <div className={styles.scanline}></div>
+        <div
+          className={`${styles.animationContainer} ${titleAnimated ? styles.animated : styles.unanimated}`}
         >
-          あなたの戦闘力を測定しよう！
-        </p>
+          <h1 className={styles.scouterText}>SNSスカウター</h1>
+          <p
+            className={`${styles.animationContainer} ${subtitleAnimated ? styles.animated : styles.unanimated} ${styles.typingEffect}`}
+          >
+            あなたの戦闘力を測定しよう！
+          </p>
+        </div>
+        {showForm && (
+          <div
+            className={`flex w-full max-w-md flex-col items-center justify-center rounded-xl border-2 bg-black bg-opacity-70 p-6 shadow-[0_0_20px_rgba(16,185,129,0.5)] ${hasError ? 'border-red-500' : 'border-green-500'}`}
+          >
+            <Form
+              onSubmit={handleSubmit}
+              onError={(error: boolean) => setHasError(error)}
+            />
+          </div>
+        )}
       </div>
-      {showForm && <Form onSubmit={handleSubmit} />}
     </div>
   );
 }

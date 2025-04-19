@@ -45,9 +45,7 @@ export default function RootLayout({
             <div className="gridLines"></div>
             <div className="particles"></div>
           </div>
-          <div className="relative z-10">
-            {children}
-          </div>
+          <div className="relative z-10">{children}</div>
         </ThemeProvider>
       </body>
     </html>
