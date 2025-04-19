@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Button, createButtonProps } from '@/components/ui/Button';
 
 type FormProps = {
@@ -13,11 +13,6 @@ export default function Form({ onSubmit, onError }: FormProps) {
   const [error, setError] = useState('');
   const isDisabled = inputValue === '';
 
-  // エラー状態が変更された時に親コンポーネントに通知
-  useEffect(() => {
-    onError(error !== '');
-  }, [error, onError]);
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     const sanitizedValue = value.replace(/\D/g, '');
@@ -25,16 +20,19 @@ export default function Form({ onSubmit, onError }: FormProps) {
     if (sanitizedValue === '') {
       setInputValue('');
       setError('半角数字を入力してください');
+      onError(true);
       return;
     }
 
     const parsed = Number(sanitizedValue);
     if (parsed < 0) {
       setError('0以上の整数を入力してください');
+      onError(true);
       return;
     }
 
     setError('');
+    onError(false);
     setInputValue(sanitizedValue);
   };
 
@@ -43,11 +41,12 @@ export default function Form({ onSubmit, onError }: FormProps) {
 
     if (inputValue === '') {
       setError('数値を入力してください');
+      onError(true);
       return;
     }
 
     const parsed = Number(inputValue);
-
+    onError(false);
     onSubmit(parsed);
   };
 
