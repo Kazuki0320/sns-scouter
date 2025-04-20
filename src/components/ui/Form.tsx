@@ -83,9 +83,12 @@ export default function Form({ onSubmit, onError }: FormProps) {
         Xのフォロワー数
       </label>
       <div className="flex items-center gap-2">
-        <div className={`rounded-full border p-2 ${
-          error && touched ? 'border-red-500 bg-red-900' : 'border-white bg-black'
-        } pulseGentle`}
+        <div
+          className={`rounded-full border p-2 ${
+            error && touched
+              ? 'border-red-500 bg-red-900'
+              : 'border-white bg-black'
+          } pulseGentle`}
         >
           <Image
             src="/logo-white.png"
@@ -128,10 +131,12 @@ export default function Form({ onSubmit, onError }: FormProps) {
         )}
       </div>
       <Button
-        button={createButtonProps('submit', '戦闘力を測定する', isDisabled) }
+        button={createButtonProps('submit', '戦闘力を測定する', isDisabled)}
       />
       <div className="animate-pulse mt-4 text-center text-xs text-green-400">
-        {inputValue ? 'タップして戦闘力をスキャン！' : 'Xのフォロワー数を入力してください'}
+        {inputValue
+          ? 'タップして戦闘力をスキャン！'
+          : 'Xのフォロワー数を入力してください'}
       </div>
     </form>
   );
