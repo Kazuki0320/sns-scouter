@@ -67,7 +67,7 @@ export default function Form({ onSubmit, onError }: FormProps) {
       </label>
       <div className="flex items-center gap-2">
         <div className={`rounded-full border p-2 ${
-          error && touched ? 'border-red-500 bg-red-900' : 'border-blue-500 bg-blue-900'
+          error && touched ? 'border-red-500 bg-red-900' : 'border-white bg-black'
         } pulseGentle`}
         >
           <Image
