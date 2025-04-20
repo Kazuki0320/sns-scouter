@@ -54,22 +54,22 @@ export default function Form({ onSubmit, onError }: FormProps) {
 
   const handleX = () => {
     setTouched(true);
-  }
+  };
 
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex w-80 flex-col items-center gap-4"
+      className="flex w-96 flex-col items-center gap-4"
     >
       <label htmlFor="follower" className="sr-only">
         フォロワー数
       </label>
       <div className="flex items-center gap-2">
-        <div className={`rounded-full bourder p-2 ${
+        <div className={`rounded-full border p-2 ${
           error && touched ? 'border-red-500 bg-red-900' : 'border-blue-500 bg-blue-900'
         }`}
         >
-          <X className="h-5 w-5 text-blue-400" />
+          <X className="size-5 text-blue-400" />
         </div>
         <input
           id="follower"
