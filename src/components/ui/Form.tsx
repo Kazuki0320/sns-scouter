@@ -59,7 +59,7 @@ export default function Form({ onSubmit, onError }: FormProps) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex w-96 flex-col items-center gap-4"
+      className="flex w-80 flex-col items-center gap-4"
     >
       <label htmlFor="follower" className="sr-only">
         フォロワー数
