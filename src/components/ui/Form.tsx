@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import { Button, createButtonProps } from '@/components/ui/Button';
 import { X } from 'lucide-react';
+import '@/app/globals.css';
 
 type FormProps = {
   onSubmit: (value: number) => void;
@@ -67,7 +68,7 @@ export default function Form({ onSubmit, onError }: FormProps) {
       <div className="flex items-center gap-2">
         <div className={`rounded-full border p-2 ${
           error && touched ? 'border-red-500 bg-red-900' : 'border-blue-500 bg-blue-900'
-        }`}
+        } pulseGentle`}
         >
           <X className="size-5 text-blue-400" />
         </div>

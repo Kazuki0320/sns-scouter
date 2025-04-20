@@ -47,6 +47,11 @@ body {
   z-index: -1;
 }
 
+/* パルスエフェクト */
+.pulseGentle {
+  animation: pulse-gentle 2s ease-in-out infinite;
+}
+
 .particles::before {
   content: '';
   position: absolute;
@@ -68,5 +73,17 @@ body {
   }
   100% {
     background-position: 100% 100%;
+  }
+}
+
+@keyframes pulse-gentle {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
   }
 }
