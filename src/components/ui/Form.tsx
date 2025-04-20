@@ -78,7 +78,7 @@ export default function Form({ onSubmit, onError }: FormProps) {
           placeholder="Xのフォロワー数を入力してください"
           value={inputValue}
           onChange={handleChange}
-          onBlur={handleX}
+          onBlur={handleXIcon}
           className="w-[300px] rounded-lg border border-green-500/50 bg-black/50 px-4 py-3 text-white focus:border-green-500 focus:ring-2 focus:ring-green-500/50"
           min="0"
         />
