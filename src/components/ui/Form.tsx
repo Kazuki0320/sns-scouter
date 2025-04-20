@@ -1,9 +1,11 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, createButtonProps } from '@/components/ui/Button';
 import Image from 'next/image';
 import '@/app/globals.css';
+import { Info } from 'lucide-react';
+import styles from '@/styles/tooltip.module.css';
 
 type FormProps = {
   onSubmit: (value: number) => void;
@@ -14,6 +16,7 @@ export default function Form({ onSubmit, onError }: FormProps) {
   const [inputValue, setInputValue] = useState('');
   const [error, setError] = useState('');
   const [touched, setTouched] = useState(false);
+  const [showTooltip, setShowTooltip] = useState(false);
   const isDisabled = inputValue === '';
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -57,6 +60,20 @@ export default function Form({ onSubmit, onError }: FormProps) {
     setTouched(true);
   };
 
+  const toggleTooltip = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setShowTooltip(true);
+  }
+
+  const handleMouseEnter = () => {
+    setShowTooltip(true);
+  }
+
+  const handleMouseLeave = () => {
+    setShowTooltip(false);
+  }
+
   return (
     <form
       onSubmit={handleSubmit}
@@ -92,6 +109,24 @@ export default function Form({ onSubmit, onError }: FormProps) {
       {error && (
         <div className="w-full text-center text-sm text-red-500">{error}</div>
       )}
+      <div className="relative mb-2 text-center">
+        <button
+          type="button"
+          className="text-gray-400 hover:text-green-400"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+          onClick={toggleTooltip}
+        >
+          <Info className="inline mr-1 size-4" />
+          <span className="text-sm">SNSスカウターについて</span>
+        </button>
+        {showTooltip && (
+          <div className={styles.tooltip}>
+            SNSスカウターは、あなたのXのフォロワー数から総合的な「戦闘力」を算出します。数値が高いほど、SNSでの影響力が大きいことを示します！
+            <div className={styles.tooltipArrow}></div>
+          </div>
+        )}
+      </div>
       <Button
         button={createButtonProps('submit', '戦闘力を測定する', isDisabled) }
       />
