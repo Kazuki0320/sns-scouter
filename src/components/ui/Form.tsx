@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Button, createButtonProps } from '@/components/ui/Button';
 import Image from 'next/image';
 import '@/app/globals.css';
@@ -64,15 +64,15 @@ export default function Form({ onSubmit, onError }: FormProps) {
     e.preventDefault();
     e.stopPropagation();
     setShowTooltip(true);
-  }
+  };
 
   const handleMouseEnter = () => {
     setShowTooltip(true);
-  }
+  };
 
   const handleMouseLeave = () => {
     setShowTooltip(false);
-  }
+  };
 
   return (
     <form
@@ -117,7 +117,7 @@ export default function Form({ onSubmit, onError }: FormProps) {
           onMouseLeave={handleMouseLeave}
           onClick={toggleTooltip}
         >
-          <Info className="inline mr-1 size-4" />
+          <Info className="mr-1 inline size-4" />
           <span className="text-sm">SNSスカウターについて</span>
         </button>
         {showTooltip && (
@@ -130,8 +130,8 @@ export default function Form({ onSubmit, onError }: FormProps) {
       <Button
         button={createButtonProps('submit', '戦闘力を測定する', isDisabled) }
       />
-      <div className="mt-4 text-center text-xs text-green-400 animate-pulse">
-        {inputValue ? "タップして戦闘力をスキャン！" : "Xのフォロワー数を入力してください"}
+      <div className="animate-pulse mt-4 text-center text-xs text-green-400">
+        {inputValue ? 'タップして戦闘力をスキャン！' : 'Xのフォロワー数を入力してください'}
       </div>
     </form>
   );
