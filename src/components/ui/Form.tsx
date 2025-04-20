@@ -53,7 +53,7 @@ export default function Form({ onSubmit, onError }: FormProps) {
     onSubmit(parsed);
   };
 
-  const handleX = () => {
+  const handleXIcon = () => {
     setTouched(true);
   };
 
