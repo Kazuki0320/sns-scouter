@@ -1,2 +1,5 @@
 node_modules
 build
+.github/pull-request-template.md
+package.json
+pnpm-lock.yaml
