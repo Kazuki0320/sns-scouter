@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { Button, createButtonProps } from '@/components/ui/Button';
-import { X } from 'lucide-react';
+import Image from 'next/image';
 import '@/app/globals.css';
 
 type FormProps = {
@@ -70,7 +70,13 @@ export default function Form({ onSubmit, onError }: FormProps) {
           error && touched ? 'border-red-500 bg-red-900' : 'border-blue-500 bg-blue-900'
         } pulseGentle`}
         >
-          <X className="size-5 text-blue-400" />
+          <Image
+            src="/logo-white.png"
+            alt="X logo"
+            width={20}
+            height={20}
+            className="size-5"
+          />
         </div>
         <input
           id="follower"
