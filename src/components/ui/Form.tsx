@@ -63,7 +63,7 @@ export default function Form({ onSubmit, onError }: FormProps) {
       className="flex w-80 flex-col items-center gap-4"
     >
       <label htmlFor="follower" className="sr-only">
-        フォロワー数
+        Xのフォロワー数
       </label>
       <div className="flex items-center gap-2">
         <div className={`rounded-full border p-2 ${
@@ -81,7 +81,7 @@ export default function Form({ onSubmit, onError }: FormProps) {
         <input
           id="follower"
           type="text"
-          placeholder="Xのフォロワー数を入力してください"
+          placeholder="Xのフォロワー数"
           value={inputValue}
           onChange={handleChange}
           onBlur={handleXIcon}
@@ -93,8 +93,11 @@ export default function Form({ onSubmit, onError }: FormProps) {
         <div className="w-full text-center text-sm text-red-500">{error}</div>
       )}
       <Button
-        button={createButtonProps('submit', '戦闘力を計算する', isDisabled)}
+        button={createButtonProps('submit', '戦闘力を測定する', isDisabled) }
       />
+      <div className="mt-4 text-center text-xs text-green-400 animate-pulse">
+        {inputValue ? "タップして戦闘力をスキャン！" : "Xのフォロワー数を入力してください"}
+      </div>
     </form>
   );
 }
