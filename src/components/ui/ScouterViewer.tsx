@@ -2,7 +2,7 @@
 
 import { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Html, Environment } from '@react-three/drei';
+import { Html, Environment } from '@react-three/drei';
 import { ScouterModel } from './ScouterModel';
 import styles from '@/styles/scouterText.module.css';
 
