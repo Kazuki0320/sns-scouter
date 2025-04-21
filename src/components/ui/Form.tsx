@@ -100,7 +100,8 @@ export default function Form({ onSubmit, onError }: FormProps) {
         </div>
         <input
           id="follower"
-          type="text"
+          type="tel"
+          inputMode="numeric"
           placeholder="Xのフォロワー数"
           value={inputValue}
           onChange={handleChange}
