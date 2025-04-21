@@ -205,7 +205,6 @@ export function ScouterViewer() {
     <div className="relative size-full">
       <Canvas camera={{ position: [0, 0, 2], fov: 50 }} shadows>
         {/* 背景・ライティング */}
-        <color attach="background" args={['#f5f5f5']} />
         <ambientLight intensity={0.7} />
         <directionalLight position={[5, 5, 5]} intensity={1} castShadow />
         <spotLight

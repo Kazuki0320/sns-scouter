@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { getBattlePower } from '@/app/calc/ScouterCalculator';
 import styles from '@/styles/scouterText.module.css';
 import { useState, useEffect } from 'react';
+import { ScouterViewer } from '@/components/ui/ScouterViewer';
 
 export default function Home() {
   const router = useRouter();
@@ -45,6 +46,7 @@ export default function Home() {
             あなたの戦闘力を測定しよう！
           </p>
         </div>
+        <ScouterViewer />
         {showForm && (
           <div
             className={`flex w-full max-w-md flex-col items-center justify-center rounded-xl border-2 bg-black bg-opacity-70 p-6 shadow-[0_0_20px_rgba(16,185,129,0.5)] ${hasError ? 'border-red-500' : 'border-green-500'}`}
