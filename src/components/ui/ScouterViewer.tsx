@@ -8,7 +8,7 @@ import styles from '@/styles/scouterText.module.css';
 
 export function ScouterViewer() {
   return (
-    <div className={`w-full h-[200px] mb-6 transition-all duration-1000`}>
+    <div className="mb-6 h-[200px] w-full transition-all duration-1000">
       <Canvas
         camera={{
           position: [0, 0, 0.5],
