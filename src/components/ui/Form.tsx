@@ -95,6 +95,11 @@ export default function Form({ onSubmit, onError }: FormProps) {
       <Button
         button={createButtonProps('submit', '戦闘力を測定する', isDisabled)}
       />
-    </form>
+      <div className="mt-4 animate-pulse text-center text-xs text-green-400">
+        {inputValue
+          ? 'タップして戦闘力をスキャン！'
+          : 'Xのフォロワー数を入力してください'}
+      </div>
+  </form>
   );
 }
