@@ -46,7 +46,8 @@ export default function Home() {
             あなたの戦闘力を測定しよう！
           </p>
         </div>
-        {subtitleAnimated && <ScouterViewer />}
+        {/** 3Dモデルの表示を一旦非表示 */}
+        {/* {subtitleAnimated && <ScouterViewer />} */}
         {showForm && (
           <div
             className={`flex w-full max-w-md flex-col items-center justify-center rounded-xl border-2 bg-black bg-opacity-70 p-6 shadow-[0_0_20px_rgba(16,185,129,0.5)] ${hasError ? 'border-red-500' : 'border-green-500'}`}
