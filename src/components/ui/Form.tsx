@@ -28,8 +28,8 @@ export default function Form({ onSubmit, onError }: FormProps) {
     }
 
     const parsed = Number(sanitizedValue);
-    if (parsed < 0) {
-      setError('0以上の整数を入力してください');
+    if (parsed <= 0) {
+      setError('1以上の整数を入力してください');
       onError(true);
       return;
     }
@@ -93,8 +93,13 @@ export default function Form({ onSubmit, onError }: FormProps) {
         <div className="w-full text-center text-sm text-red-500">{error}</div>
       )}
       <Button
-        button={createButtonProps('submit', '戦闘力を計算する', isDisabled)}
+        button={createButtonProps('submit', '戦闘力を測定する', isDisabled)}
       />
-    </form>
+      <div className="mt-4 animate-pulse text-center text-xs text-green-400">
+        {inputValue
+          ? 'タップして戦闘力をスキャン！'
+          : 'Xのフォロワー数を入力してください'}
+      </div>
+  </form>
   );
 }
