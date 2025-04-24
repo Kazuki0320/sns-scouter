@@ -4,15 +4,53 @@ import Form from '@/components/ui/Form';
 import { useRouter } from 'next/navigation';
 import { getBattlePower } from '@/app/calc/ScouterCalculator';
 import styles from '@/styles/scouterText.module.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { ScouterViewer } from '@/components/ui/ScouterViewer';
 
 export default function Home() {
   const router = useRouter();
+  const bgmRef = useRef<HTMLAudioElement | null>(null);
   const [titleAnimated, setTitleAnimated] = useState(false);
   const [subtitleAnimated, setSubtitleAnimated] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [hasError, setHasError] = useState(false);
+  const [soundEnabled, setSoundEnabled] = useState(true);
+  const [hasPlayed, setHasPlayed] = useState(false);
+
+  // BGM再生
+  useEffect(() => {
+    bgmRef.current = new Audio("/scouter.mp3");
+
+    if (bgmRef.current) {
+      bgmRef.current.loop = true;
+      bgmRef.current.volume = 0.5;
+
+      // ユーザーインタラクション後にBGMを再生
+      const playBgm = () => {
+        if (soundEnabled && bgmRef.current) {
+          bgmRef.current.play().catch((e) => console.log("BGM再生エラー", e));
+        }
+        document.removeEventListener("click", playBgm);
+      };
+      document.addEventListener("click", playBgm);
+    }
+
+    return () => {
+      if (bgmRef.current) {
+        bgmRef.current.pause();
+        bgmRef.current = null;
+      }
+    };
+  }, [soundEnabled]);
+
+  const handleUserInput = () => {
+    if (soundEnabled && !hasPlayed && bgmRef.current) {
+      bgmRef.current
+        .play()
+        .then(() => setHasPlayed(true))
+        .catch((e) => console.log("BGM再生エラー", e));
+    }
+  };
 
   // 数秒の待機時間後に表示されるタイトルアニメーション
   useEffect(() => {
@@ -55,6 +93,7 @@ export default function Home() {
             <Form
               onSubmit={handleSubmit}
               onError={(error: boolean) => setHasError(error)}
+              onUserInteraction={handleUserInput}
             />
           </div>
         )}

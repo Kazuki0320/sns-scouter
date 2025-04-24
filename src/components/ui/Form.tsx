@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, createButtonProps } from '@/components/ui/Button';
 import Image from 'next/image';
 import '@/app/globals.css';
@@ -8,15 +8,22 @@ import '@/app/globals.css';
 type FormProps = {
   onSubmit: (value: number) => void;
   onError: (hasError: boolean) => void;
+  onUserInteraction: () => void;
 };
 
-export default function Form({ onSubmit, onError }: FormProps) {
+export default function Form({ onSubmit, onError, onUserInteraction }: FormProps) {
   const [inputValue, setInputValue] = useState('');
   const [error, setError] = useState('');
   const [touched, setTouched] = useState(false);
   const isDisabled = inputValue === '';
 
+  useEffect(() => {
+    onError(error !== '');
+  }, [error, onError]);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onUserInteraction();
+
     const { value } = e.target;
     const sanitizedValue = value.replace(/\D/g, '');
 
@@ -100,6 +107,6 @@ export default function Form({ onSubmit, onError }: FormProps) {
           ? 'タップして戦闘力をスキャン！'
           : 'Xのフォロワー数を入力してください'}
       </div>
-  </form>
+    </form>
   );
 }
