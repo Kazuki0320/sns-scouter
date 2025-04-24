@@ -81,7 +81,7 @@ export default function Form({ onSubmit, onError }: FormProps) {
         <input
           id="follower"
           type="tel"
-          placeholder="Xのフォロワー数を入力してください"
+          placeholder="Xのフォロワー数"
           value={inputValue}
           onChange={handleChange}
           onBlur={handleXIcon}
