@@ -8,10 +8,9 @@ import '@/app/globals.css';
 type FormProps = {
   onSubmit: (value: number) => void;
   onError: (hasError: boolean) => void;
-  onUserInteraction: () => void;
 };
 
-export default function Form({ onSubmit, onError, onUserInteraction }: FormProps) {
+export default function Form({ onSubmit, onError }: FormProps) {
   const [inputValue, setInputValue] = useState('');
   const [error, setError] = useState('');
   const [touched, setTouched] = useState(false);
@@ -22,8 +21,6 @@ export default function Form({ onSubmit, onError, onUserInteraction }: FormProps
   }, [error, onError]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    onUserInteraction();
-
     const { value } = e.target;
     const sanitizedValue = value.replace(/\D/g, '');
 

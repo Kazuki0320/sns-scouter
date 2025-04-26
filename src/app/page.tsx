@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation';
 import { getBattlePower } from '@/app/calc/ScouterCalculator';
 import styles from '@/styles/scouterText.module.css';
 import { useState, useEffect, useRef } from 'react';
-import { ScouterViewer } from '@/components/ui/ScouterViewer';
 
 export default function Home() {
   const router = useRouter();
@@ -15,7 +14,7 @@ export default function Home() {
   const [showForm, setShowForm] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [soundEnabled, setSoundEnabled] = useState(true);
-  const [hasPlayed, setHasPlayed] = useState(false);
+  const [hasInteracted, setHasInteracted] = useState(false);
 
   // BGM再生
   useEffect(() => {
@@ -24,15 +23,6 @@ export default function Home() {
     if (bgmRef.current) {
       bgmRef.current.loop = true;
       bgmRef.current.volume = 0.5;
-
-      // ユーザーインタラクション後にBGMを再生
-      const playBgm = () => {
-        if (soundEnabled && bgmRef.current) {
-          bgmRef.current.play().catch((e) => console.log("BGM再生エラー", e));
-        }
-        document.removeEventListener("click", playBgm);
-      };
-      document.addEventListener("click", playBgm);
     }
 
     return () => {
@@ -41,15 +31,35 @@ export default function Home() {
         bgmRef.current = null;
       }
     };
-  }, [soundEnabled]);
+  }, []);
 
-  const handleUserInput = () => {
-    if (soundEnabled && !hasPlayed && bgmRef.current) {
-      bgmRef.current
-        .play()
-        .then(() => setHasPlayed(true))
-        .catch((e) => console.log("BGM再生エラー", e));
+  // タッチイベント検知
+  useEffect(() => {
+    const handleTouch = () => {
+      if (!hasInteracted && bgmRef.current && soundEnabled) {
+        bgmRef.current.play()
+          .then(() => {
+            setHasInteracted(true);
+            console.log("BGM再生開始");
+          })
+          .catch(e => console.error("BGM再生エラー:", e));
+      }
+    };
+
+    return () => window.removeEventListener('touchstart', handleTouch);
+  }, [hasInteracted, soundEnabled]);
+
+  // 音源のオン/オフ切り替え
+  const toggleSound = () => {
+    if (bgmRef.current) {
+      if (soundEnabled) {
+        bgmRef.current.pause();
+      } else {
+        bgmRef.current.play()
+          .catch(e => console.error("BGM再生エラー:", e));
+      }
     }
+    setSoundEnabled(!soundEnabled);
   };
 
   // 数秒の待機時間後に表示されるタイトルアニメーション
@@ -72,6 +82,17 @@ export default function Home() {
   };
   return (
     <div className="flex h-screen flex-col items-center justify-center">
+      {/* 音源オン/オフボタン */}
+      <button
+        onClick={toggleSound}
+              className="fixed top-4 right-4 z-50 rounded-full bg-green-500/20 p-3 hover:bg-green-500/30 transition-all duration-300"
+        aria-label={soundEnabled ? "BGMを停止" : "BGMを再生"}
+      >
+        <span className="text-2xl">
+          {soundEnabled ? "🔊" : "🔈"}
+        </span>
+      </button>
+
       <div className={styles.mainContainer}>
         <div className={styles.scanline}></div>
         <div
@@ -84,8 +105,6 @@ export default function Home() {
             あなたの戦闘力を測定しよう！
           </p>
         </div>
-        {/** 3Dモデルの表示を一旦非表示 */}
-        {/* {subtitleAnimated && <ScouterViewer />} */}
         {showForm && (
           <div
             className={`flex w-full max-w-md flex-col items-center justify-center rounded-xl border-2 bg-black bg-opacity-70 p-6 shadow-[0_0_20px_rgba(16,185,129,0.5)] ${hasError ? 'border-red-500' : 'border-green-500'}`}
@@ -93,7 +112,6 @@ export default function Home() {
             <Form
               onSubmit={handleSubmit}
               onError={(error: boolean) => setHasError(error)}
-              onUserInteraction={handleUserInput}
             />
           </div>
         )}
