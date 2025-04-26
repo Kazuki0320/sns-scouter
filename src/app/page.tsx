@@ -33,36 +33,6 @@ export default function Home() {
     };
   }, []);
 
-  // タッチイベント検知
-  useEffect(() => {
-    const handleTouch = () => {
-      if (!hasInteracted && bgmRef.current && soundEnabled) {
-        bgmRef.current.play()
-          .then(() => {
-            setHasInteracted(true);
-            console.log('BGM再生開始');
-          })
-          .catch(e => console.error('BGM再生エラー:', e));
-      }
-    };
-
-    window.addEventListener('touchstart', handleTouch, { once: true });
-    return () => window.removeEventListener('touchstart', handleTouch);
-  }, [hasInteracted, soundEnabled]);
-
-  // 音源のオン/オフ切り替え
-  const toggleSound = () => {
-    if (bgmRef.current) {
-      if (soundEnabled) {
-        bgmRef.current.pause();
-      } else {
-        bgmRef.current.play()
-          .catch(e => console.error('BGM再生エラー:', e));
-      }
-    }
-    setSoundEnabled(!soundEnabled);
-  };
-
   // 数秒の待機時間後に表示されるタイトルアニメーション
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -81,6 +51,24 @@ export default function Home() {
     const battlePower = getBattlePower(value);
     router.push(`/result?score=${battlePower}`);
   };
+
+  // 音源のオン/オフ切り替え
+  const toggleSound = () => {
+    if (bgmRef.current) {
+      if (soundEnabled) {
+        bgmRef.current.pause();
+      } else {
+        bgmRef.current.play()
+          .then(() => {
+            setHasInteracted(true);
+            console.log('BGM再生開始');
+          })
+          .catch(e => console.error('BGM再生エラー:', e));
+      }
+    }
+    setSoundEnabled(!soundEnabled);
+  };
+
   return (
     <div className="flex h-screen flex-col items-center justify-center">
       {/* 音源オン/オフボタン */}
