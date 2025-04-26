@@ -18,7 +18,7 @@ export default function Home() {
 
   // BGM再生
   useEffect(() => {
-    bgmRef.current = new Audio("/scouter.mp3");
+    bgmRef.current = new Audio('/scouter.mp3');
 
     if (bgmRef.current) {
       bgmRef.current.loop = true;
@@ -40,12 +40,13 @@ export default function Home() {
         bgmRef.current.play()
           .then(() => {
             setHasInteracted(true);
-            console.log("BGM再生開始");
+            console.log('BGM再生開始');
           })
-          .catch(e => console.error("BGM再生エラー:", e));
+          .catch(e => console.error('BGM再生エラー:', e));
       }
     };
 
+    window.addEventListener('touchstart', handleTouch, { once: true });
     return () => window.removeEventListener('touchstart', handleTouch);
   }, [hasInteracted, soundEnabled]);
 
@@ -56,7 +57,7 @@ export default function Home() {
         bgmRef.current.pause();
       } else {
         bgmRef.current.play()
-          .catch(e => console.error("BGM再生エラー:", e));
+          .catch(e => console.error('BGM再生エラー:', e));
       }
     }
     setSoundEnabled(!soundEnabled);
@@ -85,11 +86,11 @@ export default function Home() {
       {/* 音源オン/オフボタン */}
       <button
         onClick={toggleSound}
-              className="fixed top-4 right-4 z-50 rounded-full bg-green-500/20 p-3 hover:bg-green-500/30 transition-all duration-300"
-        aria-label={soundEnabled ? "BGMを停止" : "BGMを再生"}
+        className="fixed right-4 top-4 z-50 rounded-full bg-green-500/20 p-3 transition-all duration-300 hover:bg-green-500/30"
+        aria-label={soundEnabled ? 'BGMを停止' : 'BGMを再生'}
       >
         <span className="text-2xl">
-          {soundEnabled ? "🔊" : "🔈"}
+          {soundEnabled ? '🔊' : '🔈'}
         </span>
       </button>
 
