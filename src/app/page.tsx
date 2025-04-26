@@ -14,7 +14,6 @@ export default function Home() {
   const [showForm, setShowForm] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [soundEnabled, setSoundEnabled] = useState(true);
-  const [hasInteracted, setHasInteracted] = useState(false);
 
   // BGM再生
   useEffect(() => {
@@ -60,7 +59,6 @@ export default function Home() {
       } else {
         bgmRef.current.play()
           .then(() => {
-            setHasInteracted(true);
             console.log('BGM再生開始');
           })
           .catch(e => console.error('BGM再生エラー:', e));
