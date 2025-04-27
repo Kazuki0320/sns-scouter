@@ -32,7 +32,47 @@ export default function Home() {
     };
   }, []);
 
-  // 数秒の待機時間後に表示されるタイトルアニメーション
+  const isMounted = useRef(true); // マウント状態を追跡
+
+  // NOTE: アンマウント後の非同期 state 更新を防ぐため、マウント状態を ref で追跡
+  useEffect(() => {
+    // マウント解除時にフラグをfalseに
+    isMounted.current = true;
+    return () => {
+      isMounted.current = false;
+    };
+  }, []);
+
+  // NOTE: 数秒の待機時間後にタイトルから順番に要素が表示されていくアニメーション
+  useEffect(() => {
+    const animateSequence = async () => {
+      const titleDelay = 1300;
+      const subtitleDelay = 1000;
+      const formDelay = 1500;
+      
+      try {
+        await wait(titleDelay);
+        if (isMounted.current) setTitleAnimated(true);
+
+        await wait(subtitleDelay);
+        if (isMounted.current) setSubtitleAnimated(true);
+
+        await wait(formDelay);
+        if (isMounted.current) setShowForm(true);
+      } catch (error) {
+        // setTimeout自体は通常エラーを投げませんが、念のため
+        if (error instanceof Error && error.name !== 'CancelledError') {
+          // 例: キャンセル処理を実装した場合
+          console.error('Animation sequence error:', error);
+        }
+      }
+    };
+
+    animateSequence();
+
+    // async関数内の処理を直接クリーンアップするのは難しいが、
+    // isMountedフラグでアンマウント後の状態更新を防ぐ
+  }, []);
   useEffect(() => {
     const timer = setTimeout(() => {
       setTitleAnimated(true);
