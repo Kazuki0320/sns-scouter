@@ -9,7 +9,7 @@ interface SoundBannerProps {
   onClose: () => void;
 }
 
-export const SoundBanner: React.FC<SoundBannerProps> = ({
+export const soundBanner: React.FC<SoundBannerProps> = ({
   soundEnabled,
   onEnableSound,
   onDisableSound,
@@ -47,4 +47,4 @@ export const SoundBanner: React.FC<SoundBannerProps> = ({
   );
 };
 
-export default SoundBanner; 
+export default soundBanner; 
