@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { getBattlePower } from '@/app/calc/ScouterCalculator';
 import styles from '@/styles/scouterText.module.css';
 import { useState, useEffect, useRef } from 'react';
+import { Music, X } from 'lucide-react';
 
 export default function Home() {
   const router = useRouter();
@@ -13,7 +14,9 @@ export default function Home() {
   const [subtitleAnimated, setSubtitleAnimated] = useState(false);
   const [showForm, setShowForm] = useState(false);
   const [hasError, setHasError] = useState(false);
-  const [soundEnabled, setSoundEnabled] = useState(true);
+  const [soundEnabled, setSoundEnabled] = useState(false);
+  const [showSoundMenu, setShowSoundMenu] = useState(false);
+  const [readyForSoundControl, setReadyForSoundControl] = useState(false);
 
   // BGM再生
   useEffect(() => {
@@ -80,6 +83,8 @@ export default function Home() {
         setSubtitleAnimated(true);
         setTimeout(() => {
           setShowForm(true);
+          setShowSoundMenu(true);
+          setReadyForSoundControl(true);
         }, 1500);
       }, 1000);
     }, 1300);
@@ -91,35 +96,79 @@ export default function Home() {
     router.push(`/result?score=${battlePower}`);
   };
 
-  // 音源のオン/オフ切り替え
-  const toggleSound = () => {
+  // 音源のオン設定
+  const enableSound = () => {
     if (bgmRef.current) {
-      if (soundEnabled) {
-        bgmRef.current.pause();
-      } else {
-        bgmRef.current.play()
-          .then(() => {
-            console.log('BGM再生開始');
-          })
-          .catch(e => console.error('BGM再生エラー:', e));
-      }
+      bgmRef.current.play()
+        .then(() => {
+          setSoundEnabled(true);
+          setTimeout(() => setShowSoundMenu(false), 1500); // 設定後メニューを非表示
+        })
+        .catch(e => console.error('BGM再生エラー:', e));
     }
-    setSoundEnabled(!soundEnabled);
+  };
+
+  // 音源のオフ設定
+  const disableSound = () => {
+    if (bgmRef.current) {
+      bgmRef.current.pause();
+    }
+    setSoundEnabled(false);
+    setTimeout(() => setShowSoundMenu(false), 1500); // 設定後メニューを非表示
+  };
+
+  // メニューの表示/非表示切り替え
+  const toggleSoundMenu = () => {
+    setShowSoundMenu(!showSoundMenu);
   };
 
   return (
     <div className="flex h-screen flex-col items-center justify-center">
-      {/* 音源オン/オフボタン */}
-      <button
-        onClick={toggleSound}
-        className="fixed right-4 top-4 z-50 rounded-full bg-green-500/20 p-3 transition-all duration-300 hover:bg-green-500/30"
-        aria-label={soundEnabled ? 'BGMを停止' : 'BGMを再生'}
-      >
-        <span className="text-2xl">
-          {soundEnabled ? '🔊' : '🔈'}
-        </span>
-      </button>
-
+      {readyForSoundControl && (
+          <div className="fixed right-4 top-4 z-50 flex flex-col items-end">
+          <button
+            onClick={toggleSoundMenu}
+            className="rounded-full bg-green-500/20 p-3 transition-all duration-300 hover:bg-green-500/30"
+            aria-label="BGM設定"
+          >
+            <span className="text-2xl">
+              {soundEnabled ? '🔊' : '🔈'}
+            </span>
+          </button>
+        </div>
+      )}
+      
+      {showSoundMenu && (
+        <div className="fixed left-1/2 top-4 z-50 flex w-[90%] max-w-md -translate-x-1/2 transform flex-col items-center rounded-lg border border-green-500 bg-black bg-opacity-80 p-4 shadow-lg transition-all duration-300">
+          <div className="mb-2 flex w-full items-center justify-between">
+            <div className="flex items-center">
+              <Music className="mr-2 text-green-400" size={20} />
+              <span className="font-medium text-white">サウンド設定</span>
+            </div>
+            <button onClick={() => setShowSoundMenu(false)} className="text-green-400 hover:text-green-300">
+              <X size={20} />
+            </button>
+          </div>
+          <p className="mb-3 text-center text-sm text-gray-300">
+            より楽しんでもらうためにBGMを用意しました。再生してもよろしいですか？
+          </p>
+          <div className="flex w-full space-x-3">
+            <button 
+              onClick={enableSound} 
+              className={`flex-1 rounded px-4 py-2 text-sm text-white transition-colors ${soundEnabled ? 'bg-green-600' : 'bg-green-500 hover:bg-green-600'}`}
+            >
+              サウンド有効
+            </button>
+            <button 
+              onClick={disableSound}
+              className={`flex-1 rounded px-4 py-2 text-sm text-white transition-colors ${!soundEnabled ? 'bg-gray-600' : 'bg-gray-500 hover:bg-gray-600'}`}
+            >
+              ミュート
+            </button>
+          </div>
+        </div>
+      )}
+      
       <div className={styles.mainContainer}>
         <div className={styles.scanline}></div>
         <div
