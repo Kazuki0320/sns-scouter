@@ -24,7 +24,8 @@ export default function Home() {
 
     if (bgmRef.current) {
       bgmRef.current.loop = true;
-      bgmRef.current.volume = 0.5;
+      bgmRef.current.volume = 0.25;
+      bgmRef.current.preload = 'auto';
     }
 
     return () => {

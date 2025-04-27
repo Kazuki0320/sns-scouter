@@ -16,10 +16,6 @@ export default function Form({ onSubmit, onError }: FormProps) {
   const [touched, setTouched] = useState(false);
   const isDisabled = inputValue === '';
 
-  useEffect(() => {
-    onError(error !== '');
-  }, [error, onError]);
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
     const sanitizedValue = value.replace(/\D/g, '');
