@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { getBattlePower } from '@/app/calc/ScouterCalculator';
 import styles from '@/styles/scouterText.module.css';
 import { useState, useEffect, useRef } from 'react';
-import { Music, X } from 'lucide-react';
+import SoundBanner from '@/components/ui/SoundBanner';
 
 export default function Home() {
   const router = useRouter();
@@ -102,7 +102,7 @@ export default function Home() {
       bgmRef.current.play()
         .then(() => {
           setSoundEnabled(true);
-          setTimeout(() => setShowSoundMenu(false), 1500); // 設定後メニューを非表示
+          setTimeout(() => setShowSoundMenu(false), 1500);
         })
         .catch(e => console.error('BGM再生エラー:', e));
     }
@@ -114,7 +114,7 @@ export default function Home() {
       bgmRef.current.pause();
     }
     setSoundEnabled(false);
-    setTimeout(() => setShowSoundMenu(false), 1500); // 設定後メニューを非表示
+    setTimeout(() => setShowSoundMenu(false), 1500);
   };
 
   // メニューの表示/非表示切り替え
@@ -139,34 +139,12 @@ export default function Home() {
       )}
       
       {showSoundMenu && (
-        <div className="fixed left-1/2 top-4 z-50 flex w-[90%] max-w-md -translate-x-1/2 transform flex-col items-center rounded-lg border border-green-500 bg-black bg-opacity-80 p-4 shadow-lg transition-all duration-300">
-          <div className="mb-2 flex w-full items-center justify-between">
-            <div className="flex items-center">
-              <Music className="mr-2 text-green-400" size={20} />
-              <span className="font-medium text-white">サウンド設定</span>
-            </div>
-            <button onClick={() => setShowSoundMenu(false)} className="text-green-400 hover:text-green-300">
-              <X size={20} />
-            </button>
-          </div>
-          <p className="mb-3 text-center text-sm text-gray-300">
-            より楽しんでもらうためにBGMを用意しました。再生してもよろしいですか？
-          </p>
-          <div className="flex w-full space-x-3">
-            <button 
-              onClick={enableSound} 
-              className={`flex-1 rounded px-4 py-2 text-sm text-white transition-colors ${soundEnabled ? 'bg-green-600' : 'bg-green-500 hover:bg-green-600'}`}
-            >
-              サウンド有効
-            </button>
-            <button 
-              onClick={disableSound}
-              className={`flex-1 rounded px-4 py-2 text-sm text-white transition-colors ${!soundEnabled ? 'bg-gray-600' : 'bg-gray-500 hover:bg-gray-600'}`}
-            >
-              ミュート
-            </button>
-          </div>
-        </div>
+        <SoundBanner
+          soundEnabled={soundEnabled}
+          onEnableSound={enableSound}
+          onDisableSound={disableSound}
+          onClose={() => setShowSoundMenu(false)}
+        />
       )}
       
       <div className={styles.mainContainer}>
