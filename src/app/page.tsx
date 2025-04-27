@@ -24,7 +24,7 @@ export default function Home() {
 
     if (bgmRef.current) {
       bgmRef.current.loop = true;
-      bgmRef.current.volume = 0.25;
+      bgmRef.current.volume = 0.5;
     }
 
     return () => {
@@ -35,7 +35,7 @@ export default function Home() {
     };
   }, []);
 
-  const isMounted = useRef(true); // マウント状態を追跡
+  const isMounted = useRef(true);
 
   // NOTE: アンマウント後の非同期 state 更新を防ぐため、マウント状態を ref で追跡
   useEffect(() => {
@@ -45,6 +45,10 @@ export default function Home() {
       isMounted.current = false;
     };
   }, []);
+
+  const wait = (ms: number): Promise<void> => {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  };
 
   // NOTE: 数秒の待機時間後にタイトルから順番に要素が表示されていくアニメーション
   useEffect(() => {
@@ -65,7 +69,6 @@ export default function Home() {
       } catch (error) {
         // setTimeout自体は通常エラーを投げませんが、念のため
         if (error instanceof Error && error.name !== 'CancelledError') {
-          // 例: キャンセル処理を実装した場合
           console.error('Animation sequence error:', error);
         }
       }
@@ -73,8 +76,6 @@ export default function Home() {
 
     animateSequence();
 
-    // async関数内の処理を直接クリーンアップするのは難しいが、
-    // isMountedフラグでアンマウント後の状態更新を防ぐ
   }, []);
   useEffect(() => {
     const timer = setTimeout(() => {
