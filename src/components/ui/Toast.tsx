@@ -11,12 +11,12 @@ type ToastProps = {
   onClose?: () => void;
 };
 
-export const Toast = ({
+export function Toast({
   message,
   type = 'error',
   duration = 3000,
   onClose,
-}: ToastProps) => {
+}: ToastProps) {
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
@@ -42,4 +42,4 @@ export const Toast = ({
       <span className={styles.message}>{message}</span>
     </div>
   );
-}; 
+};
