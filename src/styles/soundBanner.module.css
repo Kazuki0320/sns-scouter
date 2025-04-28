@@ -1,7 +1,7 @@
 .wrapper {
   position: fixed;
   left: 50%;
-  top: 1rem; /* top-4 */
+  top: 1rem;
   z-index: 50;
   
   display: flex;
@@ -9,14 +9,14 @@
   align-items: center;
   
   width: 90%;
-  max-width: 28rem; /* max-w-md */
+  max-width: 28rem;
   
-  padding: 1rem; /* p-4 */
+  padding: 1rem;
   
-  background-color: rgba(0, 0, 0, 0.8); /* bg-black + bg-opacity-80 */
-  border: 1px solid #22c55e; /* border-green-500 */
-  border-radius: 0.5rem; /* rounded-lg */
-  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1); /* shadow-lg */
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 1px solid #22c55e;
+  border-radius: 0.5rem;
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -4px rgba(0,0,0,0.1);
   
   transform: translateX(-50%);
   transition-property: all;
@@ -39,7 +39,7 @@
 
 .icon {
   margin-right: 0.5rem;
-  color: #34d399; /* text-green-400 */
+  color: #34d399;
 }
 
 .title {
@@ -48,24 +48,24 @@
 }
 
 .closeButton {
-  color: #34d399; /* text-green-400 */
+  color: #34d399;
 }
 
 .closeButton:hover {
-  color: #6ee7b7; /* text-green-300 */
+  color: #6ee7b7;
 }
 
 .message {
   margin-bottom: 0.75rem;
   text-align: center;
   font-size: 0.875rem;
-  color: #d1d5db; /* text-gray-300 */
+  color: #d1d5db;
 }
 
 .buttonContainer {
   display: flex;
   width: 100%;
-  gap: 0.75rem; /* space-x-3 */
+  gap: 0.75rem;
 }
 
 .button {
@@ -79,25 +79,25 @@
 }
 
 .enableButton {
-  background-color: #22c55e; /* bg-green-500 */
+  background-color: #22c55e;
 }
 
 .enableButton:hover {
-  background-color: #16a34a; /* bg-green-600 */
+  background-color: #16a34a;
 }
 
 .enableButtonActive {
-  background-color: #16a34a; /* bg-green-600 */
+  background-color: #16a34a;
 }
 
 .disableButton {
-  background-color: #6b7280; /* bg-gray-500 */
+  background-color: #6b7280;
 }
 
 .disableButton:hover {
-  background-color: #4b5563; /* bg-gray-600 */
+  background-color: #4b5563;
 }
 
 .disableButtonActive {
-  background-color: #4b5563; /* bg-gray-600 */
+  background-color: #4b5563;
 }
