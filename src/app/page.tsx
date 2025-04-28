@@ -6,6 +6,7 @@ import { getBattlePower } from '@/app/calc/ScouterCalculator';
 import styles from '@/styles/scouterText.module.css';
 import { useState, useEffect, useRef } from 'react';
 import SoundBanner from '@/components/ui/SoundBanner';
+import { Toast } from '@/components/ui/Toast';
 
 export default function Home() {
   const router = useRouter();
@@ -17,6 +18,8 @@ export default function Home() {
   const [soundEnabled, setSoundEnabled] = useState(false);
   const [showSoundMenu, setShowSoundMenu] = useState(false);
   const [readyForSoundControl, setReadyForSoundControl] = useState(false);
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [toastType, setToastType] = useState<'success' | 'error'>('error');
 
   // BGM再生
   useEffect(() => {
@@ -106,7 +109,11 @@ export default function Home() {
           setSoundEnabled(true);
           setTimeout(() => setShowSoundMenu(false), 1500);
         })
-        .catch(e => console.error('BGM再生エラー:', e));
+        .catch(e => {
+          console.error('BGM再生エラー:', e);
+          setToastMessage('BGMの再生に失敗しました。ブラウザの設定を確認してください。');
+          setToastType('error');
+        });
     }
   };
 
@@ -146,6 +153,14 @@ export default function Home() {
           onEnableSound={enableSound}
           onDisableSound={disableSound}
           onClose={() => setShowSoundMenu(false)}
+        />
+      )}
+      
+      {toastMessage && (
+        <Toast
+          message={toastMessage}
+          type={toastType}
+          onClose={() => setToastMessage(null)}
         />
       )}
       
