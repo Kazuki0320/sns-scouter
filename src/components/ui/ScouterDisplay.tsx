@@ -41,9 +41,15 @@ function RandomNumberHTML({
 export function ScouterDisplay() {
   const modelRef = useRef<THREE.Group>(null);
 
-  const [textPosition, setTextPosition] = useState<[number, number, number] | null>(null);
-  const [textRotation, setTextRotation] = useState<[number, number, number]>([0, 0, 0]);
-  const [arcPosition, setArcPosition] = useState<[number, number, number] | null>(null);
+  const [textPosition, setTextPosition] = useState<
+    [number, number, number] | null
+  >(null);
+  const [textRotation, setTextRotation] = useState<[number, number, number]>([
+    0, 0, 0,
+  ]);
+  const [arcPosition, setArcPosition] = useState<
+    [number, number, number] | null
+  >(null);
 
   useEffect(() => {
     if (modelRef.current) {

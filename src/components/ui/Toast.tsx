@@ -42,4 +42,4 @@ export function Toast({
       <span className={styles.message}>{message}</span>
     </div>
   );
-};
+}

@@ -51,7 +51,7 @@ export default function Home() {
   }, []);
 
   const wait = (ms: number): Promise<void> => {
-    return new Promise(resolve => setTimeout(resolve, ms));
+    return new Promise((resolve) => setTimeout(resolve, ms));
   };
 
   // NOTE: 数秒の待機時間後にタイトルから順番に要素が表示されていくアニメーション
@@ -60,7 +60,7 @@ export default function Home() {
       const titleDelay = 1300;
       const subtitleDelay = 1000;
       const formDelay = 1500;
-      
+
       try {
         await wait(titleDelay);
         if (isMounted.current) setTitleAnimated(true);
@@ -77,10 +77,9 @@ export default function Home() {
         }
       }
     };
-
     animateSequence();
-
   }, []);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setTitleAnimated(true);
@@ -104,14 +103,17 @@ export default function Home() {
   // 音源のオン設定
   const enableSound = () => {
     if (bgmRef.current) {
-      bgmRef.current.play()
+      bgmRef.current
+        .play()
         .then(() => {
           setSoundEnabled(true);
           setTimeout(() => setShowSoundMenu(false), 1500);
         })
-        .catch(e => {
+        .catch((e) => {
           console.error('BGM再生エラー:', e);
-          setToastMessage('BGMの再生に失敗しました。ブラウザの設定を確認してください。');
+          setToastMessage(
+            'BGMの再生に失敗しました。ブラウザの設定を確認してください。'
+          );
           setToastType('error');
         });
     }
@@ -134,19 +136,17 @@ export default function Home() {
   return (
     <div className="flex h-screen flex-col items-center justify-center">
       {readyForSoundControl && (
-          <div className="fixed right-4 top-4 z-50 flex flex-col items-end">
+        <div className="fixed right-4 top-4 z-50 flex flex-col items-end">
           <button
             onClick={toggleSoundMenu}
             className="rounded-full bg-green-500/20 p-3 transition-all duration-300 hover:bg-green-500/30"
             aria-label="BGM設定"
           >
-            <span className="text-2xl">
-              {soundEnabled ? '🔊' : '🔈'}
-            </span>
+            <span className="text-2xl">{soundEnabled ? '🔊' : '🔈'}</span>
           </button>
         </div>
       )}
-      
+
       {showSoundMenu && (
         <SoundBanner
           soundEnabled={soundEnabled}
@@ -155,7 +155,7 @@ export default function Home() {
           onClose={() => setShowSoundMenu(false)}
         />
       )}
-      
+
       {toastMessage && (
         <Toast
           message={toastMessage}
@@ -163,7 +163,7 @@ export default function Home() {
           onClose={() => setToastMessage(null)}
         />
       )}
-      
+
       <div className={styles.mainContainer}>
         <div className={styles.scanline}></div>
         <div

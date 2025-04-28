@@ -66,9 +66,12 @@ export default function Form({ onSubmit, onError }: FormProps) {
         フォロワー数
       </label>
       <div className="flex items-center gap-2">
-        <div className={`rounded-full border p-2 ${
-          error && touched ? 'border-red-500 bg-red-900' : 'border-white bg-black'
-        } pulseGentle`}
+        <div
+          className={`rounded-full border p-2 ${
+            error && touched
+              ? 'border-red-500 bg-red-900'
+              : 'border-white bg-black'
+          } pulseGentle`}
         >
           <Image
             src="/logo-white.png"

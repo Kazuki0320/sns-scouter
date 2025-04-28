@@ -13,7 +13,7 @@ export const soundBanner: React.FC<SoundBannerProps> = ({
   soundEnabled,
   onEnableSound,
   onDisableSound,
-  onClose
+  onClose,
 }) => {
   return (
     <div className={styles.wrapper}>
@@ -30,13 +30,13 @@ export const soundBanner: React.FC<SoundBannerProps> = ({
         より楽しんでもらうためにBGMを用意しました。再生してもよろしいですか？
       </p>
       <div className={styles.buttonContainer}>
-        <button 
-          onClick={onEnableSound} 
+        <button
+          onClick={onEnableSound}
           className={`${styles.button} ${soundEnabled ? styles.enableButtonActive : styles.enableButton}`}
         >
           サウンド有効
         </button>
-        <button 
+        <button
           onClick={onDisableSound}
           className={`${styles.button} ${!soundEnabled ? styles.disableButtonActive : styles.disableButton}`}
         >
@@ -47,4 +47,4 @@ export const soundBanner: React.FC<SoundBannerProps> = ({
   );
 };
 
-export default soundBanner; 
+export default soundBanner;
