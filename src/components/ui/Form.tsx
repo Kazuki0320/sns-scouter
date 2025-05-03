@@ -66,22 +66,24 @@ export default function Form({ onSubmit, onError }: FormProps) {
         フォロワー数
       </label>
       <div className="flex items-center gap-2">
-        <div className={`rounded-full border p-2 ${
-          error && touched ? 'border-red-500 bg-red-900' : 'border-white bg-black'
-        } pulseGentle`}
+        <div
+          className={`rounded-full border p-2 ${
+            error && touched
+              ? 'border-red-500 bg-red-900'
+              : 'border-white bg-black'
+          } pulseGentle`}
         >
           <Image
             src="/logo-white.png"
             alt="X logo"
             width={20}
             height={20}
-            className="size-5"
           />
         </div>
         <input
           id="follower"
-          type="text"
-          placeholder="Xのフォロワー数を入力してください"
+          type="tel"
+          placeholder="Xのフォロワー数"
           value={inputValue}
           onChange={handleChange}
           onBlur={handleXIcon}
@@ -100,6 +102,6 @@ export default function Form({ onSubmit, onError }: FormProps) {
           ? 'タップして戦闘力をスキャン！'
           : 'Xのフォロワー数を入力してください'}
       </div>
-  </form>
+    </form>
   );
 }

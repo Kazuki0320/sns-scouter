@@ -1,0 +1,105 @@
+.wrapper {
+  position: fixed;
+  left: 50%;
+  top: 1rem;
+  z-index: 50;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 90%;
+  max-width: 28rem;
+
+  padding: 1rem;
+
+  background-color: rgba(0, 0, 0, 0.8);
+  border: 1px solid #22c55e;
+  border-radius: 0.5rem;
+  box-shadow:
+    0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -4px rgba(0, 0, 0, 0.1);
+
+  transform: translateX(-50%);
+  transition-property: all;
+  transition-duration: 300ms;
+  transition-timing-function: ease;
+}
+
+.header {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.titleWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  margin-right: 0.5rem;
+  color: #34d399;
+}
+
+.title {
+  font-weight: 500;
+  color: white;
+}
+
+.closeButton {
+  color: #34d399;
+}
+
+.closeButton:hover {
+  color: #6ee7b7;
+}
+
+.message {
+  margin-bottom: 0.75rem;
+  text-align: center;
+  font-size: 0.875rem;
+  color: #d1d5db;
+}
+
+.buttonContainer {
+  display: flex;
+  width: 100%;
+  gap: 0.75rem;
+}
+
+.button {
+  flex: 1;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  color: white;
+  transition-property: color, background-color;
+  transition-duration: 150ms;
+}
+
+.enableButton {
+  background-color: #22c55e;
+}
+
+.enableButton:hover {
+  background-color: #16a34a;
+}
+
+.enableButtonActive {
+  background-color: #16a34a;
+}
+
+.disableButton {
+  background-color: #6b7280;
+}
+
+.disableButton:hover {
+  background-color: #4b5563;
+}
+
+.disableButtonActive {
+  background-color: #4b5563;
+}
