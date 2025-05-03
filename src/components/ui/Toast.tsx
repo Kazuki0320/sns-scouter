@@ -19,16 +19,23 @@ export function Toast({
 }: ToastProps) {
   const [visible, setVisible] = useState(true);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setVisible(false);
-      if (onClose) {
-        setTimeout(onClose, 300);
-      }
-    }, duration);
+useEffect(() => {
+  let closeTimerId: NodeJS.Timeout | null = null;
 
-    return () => clearTimeout(timer);
-  }, [duration, onClose]);
+  const visibilityTimerId = setTimeout(() => {
+    setVisible(false);
+    if (onClose) {
+      closeTimerId = setTimeout(onClose, 300);
+    }
+  }, duration);
+
+  return () => {
+    clearTimeout(visibilityTimerId);
+    if (closeTimerId) {
+      clearTimeout(closeTimerId);
+    }
+  };
+}, [duration, onClose]);
 
   if (!visible) return null;
 
