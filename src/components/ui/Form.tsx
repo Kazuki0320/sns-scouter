@@ -78,7 +78,6 @@ export default function Form({ onSubmit, onError }: FormProps) {
             alt="X logo"
             width={20}
             height={20}
-            className="size-5"
           />
         </div>
         <input

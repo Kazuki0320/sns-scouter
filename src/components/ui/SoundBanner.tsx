@@ -46,5 +46,3 @@ export function SoundBanner({
     </div>
   );
 };
-
-export default soundBanner;
