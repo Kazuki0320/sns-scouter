@@ -86,7 +86,7 @@ export default function Home() {
       .play()
       .then(() => {
         setSoundEnabled(true);
-        setTimeout(() => setShowSoundMenu(false), 1500);
+        setTimeout(() => setShowSoundMenu(false));
       })
       .catch((e) => {
         console.error('BGM再生エラー:', e);
@@ -103,7 +103,7 @@ export default function Home() {
       bgmRef.current.pause();
     }
     setSoundEnabled(false);
-    setTimeout(() => setShowSoundMenu(false), 1500);
+    setTimeout(() => setShowSoundMenu(false));
   };
 
   // メニューの表示/非表示切り替え
@@ -138,7 +138,6 @@ export default function Home() {
         <Toast
           message={toastMessage}
           type={toastType}
-          onClose={() => setToastMessage(null)}
         />
       )}
 
