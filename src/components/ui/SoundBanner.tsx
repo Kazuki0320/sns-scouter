@@ -9,12 +9,12 @@ interface SoundBannerProps {
   onClose: () => void;
 }
 
-export const soundBanner: React.FC<SoundBannerProps> = ({
+export function SoundBanner({
   soundEnabled,
   onEnableSound,
   onDisableSound,
   onClose,
-}) => {
+}: SoundBannerProps) {
   return (
     <div className={styles.wrapper}>
       <div className={styles.header}>
