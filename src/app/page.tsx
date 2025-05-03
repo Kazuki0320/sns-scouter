@@ -21,6 +21,7 @@ export default function Home() {
   const [readyForSoundControl, setReadyForSoundControl] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [toastType, setToastType] = useState<'success' | 'error'>('error');
+  const isFirstInteraction = useRef(true);
 
   // NOTE: アンマウント後の非同期 state 更新を防ぐため、マウント状態を ref で追跡
   useEffect(() => {
@@ -86,6 +87,11 @@ export default function Home() {
       .play()
       .then(() => {
         setSoundEnabled(true);
+        if (isFirstInteraction.current) {
+          setToastMessage('BGMを再生しました');
+          setToastType('success');
+          isFirstInteraction.current = false;
+        }
         setTimeout(() => setShowSoundMenu(false));
       })
       .catch((e) => {
@@ -103,12 +109,25 @@ export default function Home() {
       bgmRef.current.pause();
     }
     setSoundEnabled(false);
+    if (isFirstInteraction.current) {
+      setToastMessage('BGMを停止しました');
+      setToastType('success');
+      isFirstInteraction.current = false;
+    }
     setTimeout(() => setShowSoundMenu(false));
   };
 
   // メニューの表示/非表示切り替え
   const toggleSoundMenu = () => {
-    setShowSoundMenu(!showSoundMenu);
+    if (!isFirstInteraction.current) {
+      if (soundEnabled) {
+        disableSound();
+      } else {
+        enableSound();
+      }
+    } else {
+      setShowSoundMenu(!showSoundMenu);
+    }
   };
 
   return (
