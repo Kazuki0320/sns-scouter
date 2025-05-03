@@ -5,11 +5,12 @@ import { useRouter } from 'next/navigation';
 import { getBattlePower } from '@/app/calc/ScouterCalculator';
 import styles from '@/styles/scouterText.module.css';
 import { useState, useEffect, useRef } from 'react';
-import SoundBanner from '@/components/ui/SoundBanner';
+import { SoundBanner } from '@/components/ui/SoundBanner';
 import { Toast } from '@/components/ui/Toast';
 
 export default function Home() {
   const router = useRouter();
+  const isMounted = useRef(true);
   const bgmRef = useRef<HTMLAudioElement | null>(null);
   const [titleAnimated, setTitleAnimated] = useState(false);
   const [subtitleAnimated, setSubtitleAnimated] = useState(false);
@@ -21,29 +22,8 @@ export default function Home() {
   const [toastMessage, setToastMessage] = useState<string | null>(null);
   const [toastType, setToastType] = useState<'success' | 'error'>('error');
 
-  // BGM再生
-  useEffect(() => {
-    bgmRef.current = new Audio('/scouter.mp3');
-
-    if (bgmRef.current) {
-      bgmRef.current.loop = true;
-      bgmRef.current.volume = 0.25;
-      bgmRef.current.preload = 'auto';
-    }
-
-    return () => {
-      if (bgmRef.current) {
-        bgmRef.current.pause();
-        bgmRef.current = null;
-      }
-    };
-  }, []);
-
-  const isMounted = useRef(true);
-
   // NOTE: アンマウント後の非同期 state 更新を防ぐため、マウント状態を ref で追跡
   useEffect(() => {
-    // マウント解除時にフラグをfalseに
     isMounted.current = true;
     return () => {
       isMounted.current = false;
@@ -60,6 +40,7 @@ export default function Home() {
       const titleDelay = 1300;
       const subtitleDelay = 1000;
       const formDelay = 1500;
+      const soundMenuDelay = 1500;
 
       try {
         await wait(titleDelay);
@@ -70,6 +51,13 @@ export default function Home() {
 
         await wait(formDelay);
         if (isMounted.current) setShowForm(true);
+
+        await wait(soundMenuDelay);
+        if (isMounted.current) {
+          setShowSoundMenu(true);
+          setReadyForSoundControl(true);
+        } 
+
       } catch (error) {
         // setTimeout自体は通常エラーを投げませんが、念のため
         if (error instanceof Error && error.name !== 'CancelledError') {
@@ -80,21 +68,6 @@ export default function Home() {
     animateSequence();
   }, []);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setTitleAnimated(true);
-      setTimeout(() => {
-        setSubtitleAnimated(true);
-        setTimeout(() => {
-          setShowForm(true);
-          setShowSoundMenu(true);
-          setReadyForSoundControl(true);
-        }, 1500);
-      }, 1000);
-    }, 1300);
-    return () => clearTimeout(timer);
-  }, []);
-
   const handleSubmit = (value: number) => {
     const battlePower = getBattlePower(value);
     router.push(`/result?score=${battlePower}`);
@@ -102,21 +75,26 @@ export default function Home() {
 
   // 音源のオン設定
   const enableSound = () => {
-    if (bgmRef.current) {
-      bgmRef.current
-        .play()
-        .then(() => {
-          setSoundEnabled(true);
-          setTimeout(() => setShowSoundMenu(false), 1500);
-        })
-        .catch((e) => {
-          console.error('BGM再生エラー:', e);
-          setToastMessage(
-            'BGMの再生に失敗しました。ブラウザの設定を確認してください。'
-          );
-          setToastType('error');
-        });
+    if (!bgmRef.current) {
+      bgmRef.current = new Audio('/scouter.mp3');
+      bgmRef.current.loop = true;
+      bgmRef.current.volume = 0.25;
+      bgmRef.current.preload = 'auto';
     }
+
+    bgmRef.current
+      .play()
+      .then(() => {
+        setSoundEnabled(true);
+        setTimeout(() => setShowSoundMenu(false), 1500);
+      })
+      .catch((e) => {
+        console.error('BGM再生エラー:', e);
+        setToastMessage(
+          'BGMの再生に失敗しました。ブラウザの設定を確認してください。'
+        );
+        setToastType('error');
+      });
   };
 
   // 音源のオフ設定
