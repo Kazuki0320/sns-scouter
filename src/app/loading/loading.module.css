@@ -9,37 +9,10 @@
   }
 }
 
-/* ランダム生成した数値を点滅させる  */
-@keyframes textFade {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-}
-
 @keyframes spin {
   to {
     transform: rotate(360deg);
   }
-}
-
-.randomNumber {
-  color: white;
-  padding: 0.5rem 0.75rem;
-  border-radius: 0.375rem;
-  font-weight: bold;
-  font-family: 'Orbitron', monospace;
-  text-align: center;
-  text-shadow:
-    0 0 2px #0f0,
-    0 0 4px #0f0;
-  background-color: transparent;
-  font-size: 2rem;
-  /* 👇 ここでアニメーション追加 */
-  animation: fadeIn 0.8s ease-out;
 }
 
 .loadingBanner {
