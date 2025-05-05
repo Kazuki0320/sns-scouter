@@ -71,7 +71,7 @@ export default function Home() {
 
   const handleSubmit = (value: number) => {
     const battlePower = getBattlePower(value);
-    router.push(`/result?score=${battlePower}`);
+    router.push(`/loding?score=${battlePower}`);
   };
 
   // 音源のオン設定

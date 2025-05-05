@@ -3,13 +3,24 @@
 import { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
 import { Html, Environment } from '@react-three/drei';
-import { ScouterModel } from './ScouterModel';
 import styles from '@/styles/scouterText.module.css';
-import { ScouterDisplay } from './ScouterDisplay';
+import { ScouterDisplay } from "@/components/ui/ScouterDisplay";
+import { Button, createButtonProps } from '@/components/ui/Button';
+import { useRouter, useSearchParams } from 'next/navigation';
 
-export function ScouterViewer() {
+export default function Loading() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const score = searchParams.get('score');
+
+  const handleSubmit = () => {
+    if (score) {
+      router.push(`/result?score=${score}`);
+    }
+  };
+  
   return (
-    <div className="mb-6 h-[200px] w-full transition-all duration-1000">
+    <div className="h-[400px] w-full">
       <Canvas
         camera={{
           position: [0, 0, 0.5],
@@ -51,10 +62,13 @@ export function ScouterViewer() {
             </Html>
           }
         >
-          <ScouterModel />
           <ScouterDisplay />
         </Suspense>
       </Canvas>
+      <Button
+        onClick={handleSubmit}
+        button={createButtonProps('button', '結果を見る')}
+      />
     </div>
   );
 }

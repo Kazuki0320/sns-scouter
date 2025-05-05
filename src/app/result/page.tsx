@@ -2,11 +2,8 @@
 
 import { ShareButton } from '@/components/ui/ShareButton';
 import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import Loading from './loading';
 
 export default function Page() {
-  const [loading, setLoading] = useState(true);
   const battlePowerResult = useSearchParams();
   const score = battlePowerResult ? battlePowerResult.get('score') : null;
 
@@ -15,16 +12,6 @@ export default function Page() {
     score === null || score === '' || Number.isNaN(Number(score))
       ? 'スカウターの測定に失敗しました。もう一度お試しください。'
       : '';
-
-  // NOTE: ローディング画面を一定時間表示するための一時的な処理
-  useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 4000);
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (loading) {
-    return Loading();
-  }
 
   return (
     <>
