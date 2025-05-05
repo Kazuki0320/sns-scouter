@@ -21,7 +21,7 @@ export default function Loading() {
   
   return (
     <div className="min-h-screen flex items-center justify-center">
-      <div className="h-[800px] w-[800px] relative">
+      <div className="h-[750px] w-[800px]">
         <Canvas
           camera={{
             position: [0, 0, 0.5],
