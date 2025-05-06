@@ -7,9 +7,6 @@ import RotatingArcs from '@/components/ui/RotatingArcs';
 export function ScouterDisplay() {
   const modelRef = useRef<THREE.Group>(null);
 
-  const [textPosition, setTextPosition] = useState<
-    [number, number, number] | null
-  >(null);
   const [textRotation, setTextRotation] = useState<[number, number, number]>([
     0, 0, 0,
   ]);
@@ -25,14 +22,8 @@ export function ScouterDisplay() {
       box.getCenter(center);
       box.getSize(size);
 
-      const displayCenter: [number, number, number] = [
-        center.x,
-        center.y,
-        center.z + size.z * 0.2,
-      ];
       const displayRotation: [number, number, number] = [0, 0, 0];
 
-      setTextPosition(displayCenter);
       setTextRotation(displayRotation);
 
       const arcDisplayCenter: [number, number, number] = [
