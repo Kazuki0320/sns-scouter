@@ -9,11 +9,11 @@ import { ScouterDisplay } from './ScouterDisplay';
 
 export function ScouterViewer() {
   return (
-    <div className="mb-6 h-[400px] w-[600px] transition-all duration-1000">
+    <div className="mb-6 h-[700px] w-[800px] transition-all duration-1000">
       <Canvas
         camera={{
-          position: [0, 0, 1.5],
-          fov: 50,
+          position: [0, 0, 2],
+          fov: 45,
           near: 0.1,
           far: 100,
         }}
@@ -51,7 +51,7 @@ export function ScouterViewer() {
             </Html>
           }
         >
-          <ScouterModel scale={1} />
+          <ScouterModel scale={1} position={[0, -0.2, 0]} />
           <ScouterDisplay />
           <OrbitControls 
             enablePan={false}

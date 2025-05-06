@@ -17,9 +17,9 @@ function ScouterNumberHTML({
       position={position}
       rotation={rotation}
       transform
-      distanceFactor={0.8}
-      scale={2}
+      scale={5}
       occlude={false}
+      center
     >
     </Html>
   );
@@ -47,19 +47,19 @@ export function ScouterDisplay() {
       box.getSize(size);
 
       const displayCenter: [number, number, number] = [
-        center.x - size.x * 0.15,
+        center.x,
         center.y,
-        center.z + size.z * 0.1,
+        center.z + size.z * 0.2,
       ];
-      const displayRotation: [number, number, number] = [0, Math.PI / 4, 0];
+      const displayRotation: [number, number, number] = [0, 0, 0];
 
       setTextPosition(displayCenter);
       setTextRotation(displayRotation);
 
       const arcDisplayCenter: [number, number, number] = [
-        center.x - size.x * 0.15,
+        center.x,
         center.y,
-        center.z + size.z * 0.15,
+        center.z + size.z * 0.25,
       ];
       setArcPosition(arcDisplayCenter);
     }
