@@ -17,7 +17,7 @@ export default function Loading() {
   
   return (
     <div className="flex items-center justify-center">
-      <div className="h-[650px] w-[800px] flex flex-col items-center justify-center">
+      <div className="flex h-[650px] w-[800px] flex-col items-center justify-center">
         <ScouterViewer />
         <div className="mt-2">
           <Button
