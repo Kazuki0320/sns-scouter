@@ -2,17 +2,17 @@
 
 import { Suspense } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { Html, Environment } from '@react-three/drei';
+import { Html, Environment, OrbitControls } from '@react-three/drei';
 import { ScouterModel } from './ScouterModel';
 import styles from '@/styles/scouterText.module.css';
 import { ScouterDisplay } from './ScouterDisplay';
 
 export function ScouterViewer() {
   return (
-    <div className="mb-6 h-[200px] w-full transition-all duration-1000">
+    <div className="mb-6 h-[400px] w-[600px] transition-all duration-1000">
       <Canvas
         camera={{
-          position: [0, 0, 0.5],
+          position: [0, 0, 1.5],
           fov: 50,
           near: 0.1,
           far: 100,
@@ -51,8 +51,14 @@ export function ScouterViewer() {
             </Html>
           }
         >
-          <ScouterModel />
+          <ScouterModel scale={1} />
           <ScouterDisplay />
+          <OrbitControls 
+            enablePan={false}
+            enableZoom={false}
+            minPolarAngle={Math.PI / 4}
+            maxPolarAngle={Math.PI * 3/4}
+          />
         </Suspense>
       </Canvas>
     </div>

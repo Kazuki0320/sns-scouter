@@ -4,36 +4,23 @@ import { useRef, useState, useEffect } from 'react';
 import * as THREE from 'three';
 import { Html } from '@react-three/drei';
 import RotatingArcs from '@/components/ui/RotatingArcs';
-import { ScouterModel } from '@/components/ui/ScouterModel';
-import styles from '@/styles/scouterText.module.css';
 
-function RandomNumberHTML({
+function ScouterNumberHTML({
   position,
   rotation,
 }: {
   position: [number, number, number];
   rotation: [number, number, number];
 }) {
-  const [randomNumber, setRandomNumber] = useState<number>(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setRandomNumber(Math.floor(Math.random() * 9000) + 1000);
-    }, 2000);
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
     <Html
       position={position}
       rotation={rotation}
       transform
       distanceFactor={0.8}
-      scale={1}
+      scale={2}
       occlude={false}
     >
-      <div className={styles.scouterText}>{randomNumber}</div>
     </Html>
   );
 }
@@ -80,9 +67,8 @@ export function ScouterDisplay() {
 
   return (
     <group ref={modelRef}>
-      <ScouterModel />
       {textPosition && (
-        <RandomNumberHTML position={textPosition} rotation={textRotation} />
+        <ScouterNumberHTML position={textPosition} rotation={textRotation} />
       )}
       {arcPosition && (
         <RotatingArcs position={arcPosition} rotation={textRotation} />
