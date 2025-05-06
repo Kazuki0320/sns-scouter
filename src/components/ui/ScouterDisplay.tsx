@@ -16,7 +16,6 @@ function ScouterNumberHTML({
     <Html
       position={position}
       rotation={rotation}
-      transform
       scale={5}
       occlude={false}
       center
