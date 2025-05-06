@@ -2,27 +2,7 @@
 
 import { useRef, useState, useEffect } from 'react';
 import * as THREE from 'three';
-import { Html } from '@react-three/drei';
 import RotatingArcs from '@/components/ui/RotatingArcs';
-
-function ScouterNumberHTML({
-  position,
-  rotation,
-}: {
-  position: [number, number, number];
-  rotation: [number, number, number];
-}) {
-  return (
-    <Html
-      position={position}
-      rotation={rotation}
-      scale={5}
-      occlude={false}
-      center
-    >
-    </Html>
-  );
-}
 
 export function ScouterDisplay() {
   const modelRef = useRef<THREE.Group>(null);
@@ -66,9 +46,6 @@ export function ScouterDisplay() {
 
   return (
     <group ref={modelRef}>
-      {textPosition && (
-        <ScouterNumberHTML position={textPosition} rotation={textRotation} />
-      )}
       {arcPosition && (
         <RotatingArcs position={arcPosition} rotation={textRotation} />
       )}
