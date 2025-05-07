@@ -3,6 +3,8 @@
 import React, { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { ShareButton } from '@/components/ui/ShareButton';
+import { Html } from '@react-three/drei';
+import styles from '@/styles/scouterText.module.css';
 
 // SearchParamsを取得するコンポーネント
 function ResultContent() {
@@ -16,33 +18,26 @@ function ResultContent() {
       : '';
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center bg-black p-4 text-white">
-      <h1 className="mb-4 text-3xl font-bold">戦闘力測定結果</h1>
-      {!error && (
-        <>
-          <div className="mb-8 text-5xl font-bold text-green-500">{parseInt(score || '0').toLocaleString()}</div>
-          <ShareButton tweetText={score ? String(score) : '測定不能'} />
-        </>
-      )}
-      {error && <div className="text-xl text-red-500">{error}</div>}
-      <button
-        onClick={() => window.location.href = '/'}
-        className="rounded-lg bg-green-600 px-6 py-3 font-semibold text-white transition hover:bg-green-700"
-      >
-        トップページに戻る
-      </button>
-    </div>
+    <>
+      <h2>結果</h2>
+      {!error && <h3>{score}</h3>}
+      {error && <div className="text-sm text-red-500">{error}</div>}
+      <ShareButton tweetText={String(score)} />
+    </>
   );
 }
 
-export default function Result() {
+export default function Page() {
   return (
-    <Suspense fallback={
-      <div className="flex min-h-screen flex-col items-center justify-center bg-black p-4 text-white">
-        <div className="text-xl">読み込み中...</div>
-      </div>
-    }>
-      <ResultContent />
-    </Suspense>
+      // result画面に関しては後ほど実装するためSuspenseに関しても最低限buildを通す処理とする
+      <Suspense fallback={
+        <Html fullscreen>
+          <div className={styles.loadingBanner}>
+            <span className="text-sm font-semibold">読み込み中...</span>
+          </div>
+        </Html>
+      }>
+        <ResultContent />
+      </Suspense>
   );
 }
