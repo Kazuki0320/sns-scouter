@@ -97,10 +97,10 @@ export default function RotatingArcs({
 
     // 3つのキーポイントを定義
     const keyPoints = [
-      { x: -80, y: -60 }, // 左上
-      { x: 100, y: -80 }, // 右上
-      { x: -80, y: 60 }, // 左下
-      { x: 0, y: 0 }, // 中心
+      { x: -150, y: -100 },
+      { x: 150, y: -100 },
+      { x: -150, y: 100 },
+      { x: 0, y: 0 },
     ];
 
     // 進行状況に基づいて現在の位置を計算
@@ -178,15 +178,15 @@ export default function RotatingArcs({
     <Html
       position={position}
       rotation={rotation}
-      transform
-      distanceFactor={2}
+      distanceFactor={0.5}
       occlude={false}
+      center
     >
       <div className="pointer-events-none relative">
         <div
           className="relative scale-50 transform-gpu"
           style={{
-            transform: `scale(0.5) translate(${offset.x}px, ${offset.y}px)`,
+            transform: `scale(1) translate(${offset.x}px, ${offset.y}px)`,
             transition: targeting ? 'none' : 'transform 0.5s ease-out',
           }}
         >
