@@ -3,6 +3,7 @@
 import React, { Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { ShareButton } from '@/components/ui/ShareButton';
+import { Canvas } from '@react-three/fiber';
 import { Html } from '@react-three/drei';
 import styles from '@/styles/scouterText.module.css';
 
@@ -18,18 +19,18 @@ function ResultContent() {
       : '';
 
   return (
-    <>
+    <Html fullscreen>
       <h2>結果</h2>
       {!error && <h3>{score}</h3>}
       {error && <div className="text-sm text-red-500">{error}</div>}
       <ShareButton tweetText={String(score)} />
-    </>
+    </Html>
   );
 }
 
 export default function Page() {
   return (
-      // result画面に関しては後ほど実装するためSuspenseに関しても最低限buildを通す処理とする
+    <Canvas>
       <Suspense fallback={
         <Html fullscreen>
           <div className={styles.loadingBanner}>
@@ -39,5 +40,6 @@ export default function Page() {
       }>
         <ResultContent />
       </Suspense>
+    </Canvas>
   );
 }
