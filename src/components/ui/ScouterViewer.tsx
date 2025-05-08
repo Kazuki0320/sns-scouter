@@ -6,7 +6,11 @@ import { Html, Environment, OrbitControls } from '@react-three/drei';
 import { ScouterModel } from '@/components/ui/ScouterModel';
 import styles from '@/styles/scouterText.module.css';
 
-export function ScouterViewer() {
+export type ScouterViewerProps = {
+  onRotationComplete?: () => void;
+}
+
+export function ScouterViewer({ onRotationComplete }: ScouterViewerProps) {
   return (
     <div className="mb-1 h-[500px] w-[800px] transition-all duration-1000">
       <Canvas
@@ -50,7 +54,11 @@ export function ScouterViewer() {
             </Html>
           }
         >
-          <ScouterModel scale={1} position={[0, 0.2, 0]} />
+          <ScouterModel 
+            scale={1} 
+            position={[0, 0.2, 0]} 
+            onRotationComplete={onRotationComplete}
+          />
           <OrbitControls 
             enablePan={false}
             enableZoom={false}
