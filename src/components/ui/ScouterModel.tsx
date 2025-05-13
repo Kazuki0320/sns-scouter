@@ -16,7 +16,6 @@ type MeshWithMaterial = THREE.Mesh & {
   material: THREE.Material & {
     transparent?: boolean;
     opacity?: number;
-    needsUpdate?: boolean;
   };
 };
 
