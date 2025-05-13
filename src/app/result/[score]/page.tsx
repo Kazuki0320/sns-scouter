@@ -4,7 +4,6 @@ import React, { Suspense, use } from 'react';
 import { ShareButton } from '@/components/ui/ShareButton';
 import { Canvas } from '@react-three/fiber';
 import { Html } from '@react-three/drei';
-import styles from '@/styles/scouterText.module.css';
 
 // パスパラメータを受け取るコンポーネント
 function ResultContent({ score }: { score: number }) {
@@ -35,16 +34,6 @@ export default function Page({ params }: { params: Promise<{ score: string }> })
   }
 
   return (
-    <Canvas>
-      <Suspense fallback={
-        <Html fullscreen>
-          <div className={styles.loadingBanner}>
-            <span className="text-sm font-semibold">読み込み中...</span>
-          </div>
-        </Html>
-      }>
         <ResultContent score={scoreNumber} />
-      </Suspense>
-    </Canvas>
   );
 } 
