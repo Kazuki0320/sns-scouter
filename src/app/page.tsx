@@ -70,8 +70,7 @@ export default function Home() {
   }, []);
 
   const handleSubmit = (value: number) => {
-    const battlePower = getBattlePower(value);
-    router.push(`/loading?score=${battlePower}`);
+    router.push(`/scouter/${value}`);
   };
 
   // 音源のオン設定
