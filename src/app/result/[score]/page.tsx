@@ -1,6 +1,6 @@
 'use client';
 
-import React, { Suspense, use } from 'react';
+import React, { use } from 'react';
 import { ShareButton } from '@/components/ui/ShareButton';
 import { Canvas } from '@react-three/fiber';
 import { Html } from '@react-three/drei';
@@ -8,11 +8,11 @@ import { Html } from '@react-three/drei';
 // パスパラメータを受け取るコンポーネント
 function ResultContent({ score }: { score: number }) {
   return (
-    <Html fullscreen>
-      <h2>結果</h2>
-      <h3>{score}</h3>
-      <ShareButton tweetText={String(score)} />
-    </Html>
+		<>
+			<h2>結果</h2>
+			<h3>{score}</h3>
+			<ShareButton tweetText={String(score)} />
+		</>
   );
 }
 
@@ -34,6 +34,6 @@ export default function Page({ params }: { params: Promise<{ score: string }> })
   }
 
   return (
-        <ResultContent score={scoreNumber} />
+      <ResultContent score={scoreNumber} />
   );
 } 

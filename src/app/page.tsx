@@ -2,7 +2,6 @@
 
 import Form from '@/components/ui/Form';
 import { useRouter } from 'next/navigation';
-import { getBattlePower } from '@/app/calc/ScouterCalculator';
 import styles from '@/styles/scouterText.module.css';
 import { useState, useEffect, useRef } from 'react';
 import { SoundBanner } from '@/components/ui/SoundBanner';

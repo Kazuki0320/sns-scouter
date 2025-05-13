@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { ScouterViewer } from '@/components/ui/ScouterViewer';
 import { Button, createButtonProps } from '@/components/ui/Button';
-import { Suspense, useState, use } from 'react';
+import { useState, use } from 'react';
 import { getBattlePower } from '@/app/calc/ScouterCalculator';
 
 // パスパラメータを受け取るコンポーネント
@@ -35,6 +35,7 @@ function ScouterSection({ onRotationComplete }: { onRotationComplete: () => void
 export default function Page({ params }: { params: Promise<{ follower: string }> }) {
   const { follower } = use(params);
   const followerNumber = Number(follower);
+  const [rotationCompleted, setRotationCompleted] = useState(false);
 
   // フォロワー数が無効な場合はエラーを表示
   if (isNaN(followerNumber)) {
@@ -46,9 +47,6 @@ export default function Page({ params }: { params: Promise<{ follower: string }>
       </div>
     );
   }
-
-  // 回転完了状態を管理
-  const [rotationCompleted, setRotationCompleted] = useState(false);
   
   // 回転完了時のハンドラー
   const handleRotationComplete = () => {
@@ -62,7 +60,7 @@ export default function Page({ params }: { params: Promise<{ follower: string }>
         
         {/* 回転完了時のみボタンを表示 */}
         {rotationCompleted && (
-            <ResultButton follower={followerNumber} />
+          <ResultButton follower={followerNumber} />
         )}
       </div>
     </div>
