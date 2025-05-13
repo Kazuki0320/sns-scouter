@@ -23,7 +23,7 @@ function ResultContent() {
       <h2>結果</h2>
       {!error && <h3>{score}</h3>}
       {error && <div className="text-sm text-red-500">{error}</div>}
-      <ShareButton tweetText={String(score)} />
+      {!error && <ShareButton tweetText={String(score)} />}
     </Html>
   );
 }
