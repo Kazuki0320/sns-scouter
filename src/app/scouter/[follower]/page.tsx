@@ -62,15 +62,7 @@ export default function Page({ params }: { params: Promise<{ follower: string }>
         
         {/* 回転完了時のみボタンを表示 */}
         {rotationCompleted && (
-          <Suspense fallback={
-            <div className="mt-2">
-              <Button
-                button={createButtonProps('button', '読み込み中...', true)}
-              />
-            </div>
-          }>
             <ResultButton follower={followerNumber} />
-          </Suspense>
         )}
       </div>
     </div>
