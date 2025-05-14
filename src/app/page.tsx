@@ -69,7 +69,8 @@ export default function Home() {
   }, []);
 
   const handleSubmit = (value: number) => {
-    router.push(`/scouter/${value}`);
+    sessionStorage.setItem('follower', String(value));
+    router.push('/scouter');
   };
 
   // 音源のオン設定

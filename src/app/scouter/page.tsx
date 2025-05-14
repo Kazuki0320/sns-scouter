@@ -3,16 +3,17 @@
 import { useRouter } from 'next/navigation';
 import { ScouterViewer } from '@/components/ui/ScouterViewer';
 import { Button, createButtonProps } from '@/components/ui/Button';
-import { useState, use } from 'react';
+import { useState } from 'react';
 import { getBattlePower } from '@/app/calc/ScouterCalculator';
 
-// パスパラメータを受け取るコンポーネント
+// 戦闘力計算用コンポーネント
 function ResultButton({ follower }: { follower: number }) {
   const router = useRouter();
   
   const handleSubmit = () => {
     const battlePower = getBattlePower(follower);
-    router.push(`/result/${battlePower}`);
+    sessionStorage.setItem('battlePower', String(battlePower));
+    router.push('/result');
   };
   
   return (
@@ -32,12 +33,17 @@ function ScouterSection({ onRotationComplete }: { onRotationComplete: () => void
   );
 }
 
-export default function Page({ params }: { params: Promise<{ follower: string }> }) {
-  const { follower } = use(params);
-  const followerNumber = Number(follower);
+export default function ScouterPage() {
+  const router = useRouter();
   const [rotationCompleted, setRotationCompleted] = useState(false);
 
-  // フォロワー数が無効な場合はエラーを表示
+  const storedFollower = sessionStorage.getItem('follower');
+  if (!storedFollower) {
+    router.push('/');
+    return;
+  }
+
+  const followerNumber = Number(storedFollower);
   if (isNaN(followerNumber)) {
     return (
       <div className="flex items-center justify-center">
