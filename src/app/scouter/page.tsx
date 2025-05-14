@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { ScouterViewer } from '@/components/ui/ScouterViewer';
 import { Button, createButtonProps } from '@/components/ui/Button';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { getBattlePower } from '@/app/calc/ScouterCalculator';
 
 // 戦闘力計算用コンポーネント
@@ -35,36 +35,46 @@ function ScouterSection({ onRotationComplete }: { onRotationComplete: () => void
 
 export default function ScouterPage() {
   const router = useRouter();
+  const [followerNumber, setFollowerNumber] = useState<number | null>(null);
   const [rotationCompleted, setRotationCompleted] = useState(false);
 
-  const storedFollower = sessionStorage.getItem('follower');
-  if (!storedFollower) {
-    router.push('/');
-    return;
-  }
+  // セッションストレージからフォロワー数を取得し、
+  // 不正な値や未設定の場合はトップページにリダイレクト
+  useEffect(() => {
+    const storedFollower = sessionStorage.getItem('follower');
+    if (!storedFollower) {
+      router.push('/');
+      return;
+    }
 
-  const followerNumber = Number(storedFollower);
-  if (isNaN(followerNumber)) {
+    const numFollower = Number(storedFollower);
+    if (isNaN(numFollower)) {
+      router.push('/');
+      return;
+    }
+
+    setFollowerNumber(numFollower);
+  }, [router]);
+
+  const handleRotationComplete = () => {
+    setRotationCompleted(true);
+  };
+
+  if (followerNumber === null) {
     return (
       <div className="flex items-center justify-center">
         <div className="text-sm text-red-500">
-          フォロワー数の取得に失敗しました。もう一度お試しください。
+          フォロワー数の取得に失敗しました。トップページに戻ります。
         </div>
       </div>
     );
   }
-  
-  // 回転完了時のハンドラー
-  const handleRotationComplete = () => {
-    setRotationCompleted(true);
-  };
 
   return (
     <div className="flex items-center justify-center">
       <div className="flex h-[650px] w-[800px] flex-col items-center justify-center">
         <ScouterSection onRotationComplete={handleRotationComplete} />
         
-        {/* 回転完了時のみボタンを表示 */}
         {rotationCompleted && (
           <ResultButton follower={followerNumber} />
         )}

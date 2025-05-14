@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { ShareButton } from '@/components/ui/ShareButton';
+import { useState, useEffect } from 'react';
 
 function ResultContent({ score }: { score: number }) {
   const error = Number.isNaN(score)
@@ -20,13 +21,35 @@ function ResultContent({ score }: { score: number }) {
 
 export default function ResultPage() {
   const router = useRouter();
-  const storedScore = sessionStorage.getItem('battlePower');
-  
-  if (!storedScore) {
-    router.push('/');
-    return;
+  const [score, setScore] = useState<number | null>(null);
+
+  // セッションストレージからスコアを取得
+  // サーバーサイドレンダリング時にsessionStorageにアクセスするとエラーになるため、
+  // useEffectを使用してクライアントサイドでのみ実行する
+  useEffect(() => {
+    const storedScore = sessionStorage.getItem('battlePower');
+    if (!storedScore) {
+      router.push('/');
+      return;
+    }
+    const numScore = Number(storedScore);
+    if (isNaN(numScore)) {
+      router.push('/');
+      return;
+    }
+    setScore(numScore);
+  }, [router]);
+
+  if (score === null) {
+    return (
+      <div className="flex items-center justify-center">
+        <div className="text-sm text-red-500">
+          戦闘力の取得に失敗しました。トップページに戻ります。
+        </div>
+      </div>
+    );
   }
 
-  const score = Number(storedScore);
+  // scoreが必ず数値であることが保証される
   return <ResultContent score={score} />;
 }
