@@ -37,24 +37,31 @@ export default function ScouterPage() {
   const router = useRouter();
   const [followerNumber, setFollowerNumber] = useState<number | null>(null);
   const [rotationCompleted, setRotationCompleted] = useState(false);
+  const [isRedirecting, setIsRedirecting] = useState(false);
 
-  // セッションストレージからフォロワー数を取得し、
-  // 不正な値や未設定の場合はトップページにリダイレクト
+  // セッションストレージからフォロワー数を取得
   useEffect(() => {
     const storedFollower = sessionStorage.getItem('follower');
     if (!storedFollower) {
-      router.push('/');
+      setIsRedirecting(true);
       return;
     }
 
     const numFollower = Number(storedFollower);
     if (isNaN(numFollower)) {
-      router.push('/');
+      setIsRedirecting(true);
       return;
     }
 
     setFollowerNumber(numFollower);
-  }, [router]);
+  }, []);
+
+  // リダイレクト処理
+  useEffect(() => {
+    if (isRedirecting) {
+      router.push('/');
+    }
+  }, [isRedirecting, router]);
 
   const handleRotationComplete = () => {
     setRotationCompleted(true);

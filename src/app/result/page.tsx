@@ -22,23 +22,31 @@ function ResultContent({ score }: { score: number }) {
 export default function ResultPage() {
   const router = useRouter();
   const [score, setScore] = useState<number | null>(null);
+  const [isRedirecting, setIsRedirecting] = useState(false);
 
   // セッションストレージからスコアを取得
-  // サーバーサイドレンダリング時にsessionStorageにアクセスするとエラーになるため、
-  // useEffectを使用してクライアントサイドでのみ実行する
   useEffect(() => {
     const storedScore = sessionStorage.getItem('battlePower');
     if (!storedScore) {
-      router.push('/');
+      setIsRedirecting(true);
       return;
     }
+
     const numScore = Number(storedScore);
     if (isNaN(numScore)) {
-      router.push('/');
+      setIsRedirecting(true);
       return;
     }
+
     setScore(numScore);
-  }, [router]);
+  }, []);
+
+  // リダイレクト処理
+  useEffect(() => {
+    if (isRedirecting) {
+      router.push('/');
+    }
+  }, [isRedirecting, router]);
 
   if (score === null) {
     return (
@@ -50,6 +58,5 @@ export default function ResultPage() {
     );
   }
 
-  // scoreが必ず数値であることが保証される
   return <ResultContent score={score} />;
 }
