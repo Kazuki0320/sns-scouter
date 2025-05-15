@@ -39,7 +39,6 @@ export default function ResultPage() {
     }
 
     setScore(numScore);
-    sessionStorage.removeItem('battlePower');
   }, []);
 
   // リダイレクト処理

@@ -69,15 +69,11 @@ export default function Home() {
   }, []);
 
   const handleSubmit = (value: number) => {
-    sessionStorage.setItem('follower', String(value));
-    router.push('/scouter');
     try {
-        sessionStorage.setItem('follower', String(value));
-        router.push('/scouter');
+      sessionStorage.setItem('follower', String(value));
+      router.push('/scouter');
     } catch (e) {
-        console.error("セッションストレージへの保存に失敗しました:", e);
-        setToastMessage("データの処理中にエラーが発生しました。もう一度お試しください。");
-        setToastType("error");
+      console.error('セッションストレージへの保存に失敗しました:', e);
     }
   };
 

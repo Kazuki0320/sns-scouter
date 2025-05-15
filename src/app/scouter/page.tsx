@@ -59,7 +59,6 @@ export default function ScouterPage() {
     }
 
     setFollowerNumber(numFollower);
-    sessionStorage.removeItem('follower');
   }, []);
 
   // リダイレクト処理
