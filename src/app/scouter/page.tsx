@@ -12,8 +12,13 @@ function ResultButton({ follower }: { follower: number }) {
   
   const handleSubmit = () => {
     const battlePower = getBattlePower(follower);
-    sessionStorage.setItem('battlePower', String(battlePower));
-    router.push('/result');
+    try {
+      sessionStorage.setItem('battlePower',  String(battlePower));
+      router.push('/result');
+    } catch (e) {
+      console.error("セッションストレージへの保存に失敗:", e);
+      // ユーザーにエラーを通知する処理などをここに記述
+    }
   };
   
   return (
