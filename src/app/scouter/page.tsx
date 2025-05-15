@@ -16,7 +16,7 @@ function ResultButton({ follower }: { follower: number }) {
       sessionStorage.setItem('battlePower',  String(battlePower));
       router.push('/result');
     } catch (e) {
-      console.error("セッションストレージへの保存に失敗:", e);
+      console.error('セッションストレージへの保存に失敗:', e);
       // ユーザーにエラーを通知する処理などをここに記述
     }
   };
