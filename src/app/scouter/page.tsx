@@ -65,6 +65,7 @@ export default function ScouterPage() {
   useEffect(() => {
     if (isRedirecting) {
       router.push('/');
+      sessionStorage.removeItem('follower');
     }
   }, [isRedirecting, router]);
 
