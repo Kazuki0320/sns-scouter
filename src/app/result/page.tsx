@@ -45,6 +45,7 @@ export default function ResultPage() {
   useEffect(() => {
     if (isRedirecting) {
       router.push('/');
+      sessionStorage.removeItem('battlePower');
     }
   }, [isRedirecting, router]);
 
