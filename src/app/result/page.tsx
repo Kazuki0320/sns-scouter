@@ -1,37 +1,63 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
 import { ShareButton } from '@/components/ui/ShareButton';
-import { useSearchParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
-import Loading from './loading';
+import { useState, useEffect } from 'react';
 
-export default function Page() {
-  const [loading, setLoading] = useState(true);
-  const battlePowerResult = useSearchParams();
-  const score = battlePowerResult ? battlePowerResult.get('score') : null;
-
-  // TODO: 以下のエラーが発生した時、ユーザーのトップページに戻すための何かしらの処理を考える
-  const error =
-    score === null || score === '' || Number.isNaN(Number(score))
-      ? 'スカウターの測定に失敗しました。もう一度お試しください。'
-      : '';
-
-  // NOTE: ローディング画面を一定時間表示するための一時的な処理
-  useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 4000);
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (loading) {
-    return Loading();
-  }
+function ResultContent({ score }: { score: number }) {
+  const error = Number.isNaN(score)
+    ? 'スカウターの測定に失敗しました。もう一度お試しください。'
+    : '';
 
   return (
     <>
       <h2>結果</h2>
       {!error && <h3>{score}</h3>}
       {error && <div className="text-sm text-red-500">{error}</div>}
-      <ShareButton tweetText={String(score)} />
+      {!error && <ShareButton tweetText={String(score)} />}
     </>
   );
+}
+
+export default function ResultPage() {
+  const router = useRouter();
+  const [score, setScore] = useState<number | null>(null);
+  const [isRedirecting, setIsRedirecting] = useState(false);
+
+  // セッションストレージからスコアを取得
+  useEffect(() => {
+    const storedScore = sessionStorage.getItem('battlePower');
+    if (!storedScore) {
+      setIsRedirecting(true);
+      return;
+    }
+
+    const numScore = Number(storedScore);
+    if (isNaN(numScore)) {
+      setIsRedirecting(true);
+      return;
+    }
+
+    setScore(numScore);
+  }, []);
+
+  // リダイレクト処理
+  useEffect(() => {
+    if (isRedirecting) {
+      router.push('/');
+      sessionStorage.removeItem('battlePower');
+    }
+  }, [isRedirecting, router]);
+
+  if (score === null) {
+    return (
+      <div className="flex items-center justify-center">
+        <div className="text-sm text-red-500">
+          戦闘力の取得に失敗しました。トップページに戻ります。
+        </div>
+      </div>
+    );
+  }
+
+  return <ResultContent score={score} />;
 }

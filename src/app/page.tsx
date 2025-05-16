@@ -2,7 +2,6 @@
 
 import Form from '@/components/ui/Form';
 import { useRouter } from 'next/navigation';
-import { getBattlePower } from '@/app/calc/ScouterCalculator';
 import styles from '@/styles/scouterText.module.css';
 import { useState, useEffect, useRef } from 'react';
 import { SoundBanner } from '@/components/ui/SoundBanner';
@@ -70,8 +69,12 @@ export default function Home() {
   }, []);
 
   const handleSubmit = (value: number) => {
-    const battlePower = getBattlePower(value);
-    router.push(`/result?score=${battlePower}`);
+    try {
+      sessionStorage.setItem('follower', String(value));
+      router.push('/scouter');
+    } catch (e) {
+      console.error('セッションストレージへの保存に失敗しました:', e);
+    }
   };
 
   // 音源のオン設定
